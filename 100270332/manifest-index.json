@@ -1,0 +1,368 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/manifest-index.json",
+  "@type": "sc:Collection",
+  "label": "雅楽譜 IIIF Manifest Index",
+  "manifests": [
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume0_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "雅楽譜総目録"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume1_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "唱物之部 神楽歌譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume2_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "唱物之部 東遊大和歌譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume3_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "唱物之部 催馬楽歌譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume4_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "唱物之部 朗詠譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume5_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "和琴之部 神楽歌譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume6_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "和琴之部 東歌大和歌譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume7_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "和琴之部 催馬楽譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume8_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "琵琶之譜 大曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume9_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "琵琶之譜 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume10_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "琵琶之譜 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume11_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "琵琶之譜 高麗大曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume12_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "琵琶之譜 高麗中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume13_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "琵琶之譜 催馬楽譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume14_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "琵琶之譜 延只拍子曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume15_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "筝之部 大曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume16_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "筝之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume17_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "筝之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume18_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "筝之部 高麗大曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume19_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "筝之部 高麗中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume20_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "筝之部 催馬楽譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume21_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "筝之部 延只拍子曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume22_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "鳳笙之部 大曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume23_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "鳳笙之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume24_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "鳳笙之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume25_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "鳳笙之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume26_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "鳳笙之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume27_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "鳳笙之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume28_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "鳳笙之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume29_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "鳳笙之部 催馬楽譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume30_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "鳳笙之部 延只拍子曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume31_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "鳳笙之部 舞楽用曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume32_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 神楽譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume33_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 東歌大和歌譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume34_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 大曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume35_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume36_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume37_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume38_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume39_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume40_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume41_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 高麗大曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume42_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 高麗中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume43_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 催馬楽譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume44_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 延只拍子曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume45_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "篳篥之部 舞楽用曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume46_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 神楽譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume47_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 東歌大和歌譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume48_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 大曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume49_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume50_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume51_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume52_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume53_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume54_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume55_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 高麗大曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume56_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 高麗中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume57_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 催馬楽譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume58_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 延只拍子曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume59_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "笛之部 舞楽用曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume60_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "皷類之譜 鞨皷太皷鉦皷大曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume61_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "皷類之譜 鞨皷一皷三皷中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume62_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "皷類之譜 太皷中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume63_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "皷類之譜 鉦皷中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume64_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "舞之部 人長東歌大和歌舞譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume65_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "舞之部 左舞大曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume66_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "舞之部 左舞中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume67_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "舞之部 左舞中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume68_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "舞之部 右舞大曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume69_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "舞之部 右舞中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume70_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "舞之部 右舞中小曲譜"
+    },
+    {
+      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332/volume71_manifest.json",
+      "@type": "sc:Manifest",
+      "label": "歌笛篳篥和琴秘曲譜"
+    }
+  ]
+}
