@@ -1,47 +1,6 @@
-# Python
+.history
+.venv
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-.venv/
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Temporary files
-*.tmp
-*.temp
-.history/
-
-# Large data directories (if any)
-form*
-detailed_analysis/
-
-# Build artifacts
-dist/
-build/
-*.egg-info/
-
-# Logs
-*.log
-
-# Node modules (if any)
-node_modules/
-
-# Backup files
-*.bak
-*.backup
+*.py
+manifest_original.json
+.gitignore
