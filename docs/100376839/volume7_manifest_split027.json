@@ -1,0 +1,112 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100376839/g06_027_manifest.json",
+  "@type": "sc:Manifest",
+  "metadata": [
+    {
+      "label": "Title",
+      "value": "明治撰定譜"
+    },
+    {
+      "label": "Date",
+      "value": "多/久毎 "
+    },
+    {
+      "label": "DOI",
+      "value": "10.20730/100376839"
+    },
+    {
+      "label": "楽曲範囲",
+      "value": "ページ 28"
+    },
+    {
+      "label": "分割タイプ",
+      "value": "楽曲（タイトル含む）"
+    },
+    {
+      "label": "楽曲名",
+      "value": "打球楽"
+    },
+    {
+      "label": "楽曲ID",
+      "value": "g06_027"
+    },
+    {
+      "label": "調",
+      "value": "太食調"
+    },
+    {
+      "label": "部",
+      "value": "篳篥之部"
+    },
+    {
+      "label": "撰定年",
+      "value": "明治9年撰定"
+    },
+    {
+      "label": "譜集名",
+      "value": "篳篥中小曲譜太食調"
+    },
+    {
+      "label": "トラック番号",
+      "value": "6"
+    },
+    {
+      "label": "分割生成日時",
+      "value": "2025-07-12 23:50:01"
+    }
+  ],
+  "label": "打球楽 (太食調) - ページ28",
+  "attribution": "東京藝術大学附属図書館 国文学研究資料館",
+  "license": "https://kokusho.nijl.ac.jp/page/usage.html",
+  "viewingDirection": "right-to-left",
+  "viewingHint": "individuals",
+  "sequences": [
+    {
+      "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/sequence/normal",
+      "@type": "sc:Sequence",
+      "canvases": [
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/310",
+          "@type": "sc:Canvas",
+          "label": "310",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/310",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00309.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00309.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/310"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00309.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "within": {
+    "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100376839/manifest-index.json",
+    "@type": "sc:Collection",
+    "label": "楽譜集マニフェスト一覧"
+  }
+}

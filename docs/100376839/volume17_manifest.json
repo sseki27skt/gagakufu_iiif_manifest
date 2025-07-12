@@ -1,0 +1,982 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100376839/volume17_manifest.json",
+  "@type": "sc:Manifest",
+  "metadata": [
+    {
+      "label": "Title",
+      "value": "明治撰定譜"
+    },
+    {
+      "label": "Date",
+      "value": "多/久毎 "
+    },
+    {
+      "label": "DOI",
+      "value": "10.20730/100376839"
+    }
+  ],
+  "label": "雅楽譜（舞楽要笛譜）",
+  "attribution": "東京藝術大学附属図書館 国文学研究資料館",
+  "license": "https://kokusho.nijl.ac.jp/page/usage.html",
+  "viewingDirection": "right-to-left",
+  "viewingHint": "individuals",
+  "sequences": [
+    {
+      "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/sequence/normal",
+      "@type": "sc:Sequence",
+      "canvases": [
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/789",
+          "@type": "sc:Canvas",
+          "label": "789",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/789",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00788.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00788.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/789"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00788.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/790",
+          "@type": "sc:Canvas",
+          "label": "790",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/790",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00789.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00789.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/790"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00789.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/791",
+          "@type": "sc:Canvas",
+          "label": "791",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/791",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00790.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00790.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/791"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00790.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/792",
+          "@type": "sc:Canvas",
+          "label": "792",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/792",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00791.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00791.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/792"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00791.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/793",
+          "@type": "sc:Canvas",
+          "label": "793",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/793",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00792.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00792.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/793"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00792.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/794",
+          "@type": "sc:Canvas",
+          "label": "794",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/794",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00793.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00793.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/794"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00793.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/795",
+          "@type": "sc:Canvas",
+          "label": "795",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/795",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00794.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00794.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/795"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00794.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/796",
+          "@type": "sc:Canvas",
+          "label": "796",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/796",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00795.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00795.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/796"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00795.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/797",
+          "@type": "sc:Canvas",
+          "label": "797",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/797",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00796.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00796.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/797"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00796.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/798",
+          "@type": "sc:Canvas",
+          "label": "798",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/798",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00797.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00797.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/798"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00797.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/799",
+          "@type": "sc:Canvas",
+          "label": "799",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/799",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00798.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00798.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/799"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00798.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/800",
+          "@type": "sc:Canvas",
+          "label": "800",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/800",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00799.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00799.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/800"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00799.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/801",
+          "@type": "sc:Canvas",
+          "label": "801",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/801",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00800.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00800.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/801"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00800.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/802",
+          "@type": "sc:Canvas",
+          "label": "802",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/802",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00801.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00801.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/802"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00801.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/803",
+          "@type": "sc:Canvas",
+          "label": "803",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/803",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00802.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00802.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/803"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00802.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/804",
+          "@type": "sc:Canvas",
+          "label": "804",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/804",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00803.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00803.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/804"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00803.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/805",
+          "@type": "sc:Canvas",
+          "label": "805",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/805",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00804.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00804.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/805"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00804.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/806",
+          "@type": "sc:Canvas",
+          "label": "806",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/806",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00805.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00805.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/806"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00805.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/807",
+          "@type": "sc:Canvas",
+          "label": "807",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/807",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00806.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00806.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/807"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00806.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/808",
+          "@type": "sc:Canvas",
+          "label": "808",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/808",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00807.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00807.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/808"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00807.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/809",
+          "@type": "sc:Canvas",
+          "label": "809",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/809",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00808.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00808.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/809"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00808.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/810",
+          "@type": "sc:Canvas",
+          "label": "810",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/810",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00809.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00809.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/810"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00809.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/811",
+          "@type": "sc:Canvas",
+          "label": "811",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/811",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00810.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00810.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/811"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00810.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/812",
+          "@type": "sc:Canvas",
+          "label": "812",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/812",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00811.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00811.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/812"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00811.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/813",
+          "@type": "sc:Canvas",
+          "label": "813",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/813",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00812.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00812.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/813"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00812.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/814",
+          "@type": "sc:Canvas",
+          "label": "814",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/814",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00813.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00813.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/814"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00813.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/815",
+          "@type": "sc:Canvas",
+          "label": "815",
+          "height": 5668,
+          "width": 8064,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/annotation/815",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00814.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 5668,
+                "width": 8064,
+                "dc:identifier": "TKGL-20424",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00814.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/815"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100376839/v4/TKGL/TKGL-20424/TKGL-20424-00814.tif/full/full/0/default.jpg",
+              "label": "Original (8064 x 5668px)",
+              "format": "image/jpeg"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "within": {
+    "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100376839/manifest-index.json",
+    "@type": "sc:Collection",
+    "label": "楽譜集マニフェスト一覧"
+  }
+}
