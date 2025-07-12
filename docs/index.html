@@ -37,20 +37,6 @@
             opacity: 0.9;
         }
         
-        .github-link {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: white;
-            text-decoration: none;
-            font-size: 12px;
-            opacity: 0.9;
-        }
-        
-        .github-link:hover {
-            opacity: 1;
-        }
-        
         .main-container {
             display: flex;
             flex: 1;
@@ -301,18 +287,12 @@
                 width: 100%;
                 max-height: 300px;
             }
-            
-            .github-link {
-                position: static;
-                display: block;
-                margin-top: 10px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <a href="https://github.com/sseki27skt/gagakufu_iiif_manifest" target="_blank" class="github-link">
+        <a href="https://github.com/sseki27skt/gagakufu_iiif_manifest" target="_blank" style="position: absolute; top: 15px; right: 20px; color: white; text-decoration: none; font-size: 12px; opacity: 0.9;">
             📂 GitHub Repository
         </a>
         <h1>🎼 雅楽譜 IIIF ビューアー</h1>
@@ -371,14 +351,12 @@
         let currentManifestUrl = null;
         let manifestCache = new Map();
         
-        // GitHub Pages用の設定
-        const GITHUB_BASE_URL = 'https://sseki27skt.github.io/gagakufu_iiif_manifest';
+        // Universal Viewer の設定
         const UV_BASE_URL = 'https://universalviewer.io/examples/uv/uv.html';
         
-        // Mixed Content対策：HTTPSページからHTTPリソースにアクセスする際の警告回避
+        // GitHub Pages用設定：Mixed Content問題は発生しない
         function detectProtocolIssue() {
-            const isHTTPS = window.location.protocol === 'https:';
-            // GitHub Pagesは常にHTTPSなので、ローカルHTTPサーバーの問題はない
+            // GitHub Pages版では常にHTTPSなので問題なし
             return false;
         }
         
@@ -508,6 +486,9 @@
                     cache: 'no-cache'
                 }).catch(fetchError => {
                     console.error('Fetch error details:', fetchError);
+                    if (fetchError.message.includes('ERR_BLOCKED_BY_CLIENT')) {
+                        throw new Error('リクエストがブロックされました。広告ブロッカーやセキュリティ拡張機能を無効にしてください。');
+                    }
                     throw new Error(`ネットワークエラー: ${fetchError.message}`);
                 });
                 
@@ -660,7 +641,7 @@
                                 <li>広告ブロッカーを無効にする</li>
                                 <li>ブラウザの拡張機能を確認する</li>
                                 <li>別のブラウザで試す</li>
-                                <li>ページを再読み込みする</li>
+                                <li>HTTPSの代わりにHTTPでアクセスする</li>
                             </ul>
                         </div>
                     </div>
@@ -718,9 +699,9 @@
                         <p>${errorMessage}</p>
                         <p>以下をご確認ください：</p>
                         <ul style="text-align: left; color: #666;">
+                            <li>ローカルHTTPサーバーが起動していること</li>
                             <li>マニフェストURLが正しいこと</li>
                             <li>ネットワーク接続が正常であること</li>
-                            <li>広告ブロッカーが無効になっていること</li>
                         </ul>
                         <button class="retry-button" onclick="parent.location.reload()">ページを再読み込み</button>
                     </div>
@@ -846,76 +827,29 @@
             }
         }
         
-        // タイトルを段階的に読み込む関数
-        async function loadTitlesInBatches(tasks, batchSize = 5) {
-            console.log(`Loading titles in batches for ${tasks.length} items`);
-            
-            for (let i = 0; i < tasks.length; i += batchSize) {
-                const batch = tasks.slice(i, i + batchSize);
-                
-                // バッチ内のタスクを並列実行
-                const promises = batch.map(task => 
-                    loadAndUpdateManifestTitle(task.item, task.url, task.volume)
-                );
-                
-                try {
-                    await Promise.allSettled(promises);
-                    console.log(`Completed batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(tasks.length / batchSize)}`);
-                    
-                    // 少し待ってから次のバッチを処理（サーバー負荷軽減）
-                    if (i + batchSize < tasks.length) {
-                        await new Promise(resolve => setTimeout(resolve, 200));
-                    }
-                } catch (error) {
-                    console.error('Error in batch processing:', error);
-                }
-            }
-            
-            console.log('All title loading completed');
-        }
-        
-        // マニフェストのタイトルを取得して表示を更新
-        async function loadAndUpdateManifestTitle(itemElement, manifestUrl, volume) {
-            try {
-                const title = await getManifestTitle(manifestUrl);
-                if (title) {
-                    // タイトルが取得できた場合、表示を更新
-                    itemElement.innerHTML = `
-                        <div style="line-height: 1.3;">
-                            <div style="color: #666; font-size: 10px; margin-bottom: 2px;">Vol.${String(volume).padStart(2, '0')}</div>
-                            <div style="font-weight: 500; font-size: 12px; color: #333;">${title}</div>
-                        </div>
-                    `;
-                } else {
-                    // タイトルが取得できない場合はVolume番号のみ
-                    itemElement.innerHTML = `
-                        <div style="font-weight: 500; color: #666;">
-                            Volume ${String(volume).padStart(2, '0')}
-                        </div>
-                    `;
-                }
-            } catch (error) {
-                console.error(`Failed to load title for ${manifestUrl}:`, error);
-                // エラーの場合はVolume番号のみ
-                itemElement.innerHTML = `
-                    <div style="font-weight: 500; color: #666;">
-                        Volume ${String(volume).padStart(2, '0')}
-                        <div style="font-size: 10px; color: #999;">(タイトル取得失敗)</div>
-                    </div>
-                `;
-            }
-        }
-        
-        // GitHub Pages用マニフェスト一覧を読み込み
+        // ローカルマニフェスト一覧を読み込み
         async function loadManifestList() {
             try {
                 console.log('Starting to load manifest list...');
+                
+                // プロトコルの問題をチェック
+                if (detectProtocolIssue()) {
+                    loadFallbackManifestList();
+                    return;
+                }
+                
                 showStatus('マニフェスト一覧を読み込み中...', 'info');
                 
                 const listContainer = document.getElementById('manifestList');
                 listContainer.innerHTML = '<div class="loading">マニフェスト一覧を読み込み中...</div>';
                 
-                // GitHub Pages用マニフェストファイルの一覧を生成
+                // GitHub Pages版では常に利用可能
+                console.log('GitHub Pages mode - no server check needed');
+                
+                // GitHub Pages用のベースURL
+                const baseUrl = 'https://sseki27skt.github.io/gagakufu_iiif_manifest';
+                
+                // ローカルマニフェストファイルの一覧を生成
                 const manifestFiles = [];
                 
                 console.log('Generating manifest file list...');
@@ -924,7 +858,7 @@
                 for (let i = 0; i <= 42; i++) {
                     manifestFiles.push({
                         volume: i,
-                        url: `${GITHUB_BASE_URL}/100376839/volume${i}_manifest.json`,
+                        url: `${baseUrl}/100376839/volume${i}_manifest.json`,
                         series: '100376839'
                     });
                 }
@@ -933,7 +867,7 @@
                 for (let i = 0; i <= 72; i++) {
                     manifestFiles.push({
                         volume: i,
-                        url: `${GITHUB_BASE_URL}/100270332/volume${i}_manifest.json`,
+                        url: `${baseUrl}/100270332/volume${i}_manifest.json`,
                         series: '100270332'
                     });
                 }
@@ -1084,6 +1018,125 @@
             }
         }
         
+        // タイトルを段階的に読み込む関数
+        async function loadTitlesInBatches(tasks, batchSize = 5) {
+            console.log(`Loading titles in batches for ${tasks.length} items`);
+            
+            for (let i = 0; i < tasks.length; i += batchSize) {
+                const batch = tasks.slice(i, i + batchSize);
+                
+                // バッチ内のタスクを並列実行
+                const promises = batch.map(task => 
+                    loadAndUpdateManifestTitle(task.item, task.url, task.volume)
+                );
+                
+                try {
+                    await Promise.allSettled(promises);
+                    console.log(`Completed batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(tasks.length / batchSize)}`);
+                    
+                    // 少し待ってから次のバッチを処理（サーバー負荷軽減）
+                    if (i + batchSize < tasks.length) {
+                        await new Promise(resolve => setTimeout(resolve, 200));
+                    }
+                } catch (error) {
+                    console.error('Error in batch processing:', error);
+                }
+            }
+            
+            console.log('All title loading completed');
+        }
+        
+        // マニフェストのタイトルを取得して表示を更新
+        async function loadAndUpdateManifestTitle(itemElement, manifestUrl, volume) {
+            try {
+                const title = await getManifestTitle(manifestUrl);
+                if (title) {
+                    // タイトルが取得できた場合、表示を更新
+                    itemElement.innerHTML = `
+                        <div style="line-height: 1.3;">
+                            <div style="color: #666; font-size: 10px; margin-bottom: 2px;">Vol.${String(volume).padStart(2, '0')}</div>
+                            <div style="font-weight: 500; font-size: 12px; color: #333;">${title}</div>
+                        </div>
+                    `;
+                } else {
+                    // タイトルが取得できない場合はVolume番号のみ
+                    itemElement.innerHTML = `
+                        <div style="font-weight: 500; color: #666;">
+                            Volume ${String(volume).padStart(2, '0')}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error(`Failed to load title for ${manifestUrl}:`, error);
+                // エラーの場合はVolume番号のみ
+                itemElement.innerHTML = `
+                    <div style="font-weight: 500; color: #666;">
+                        Volume ${String(volume).padStart(2, '0')}
+                        <div style="font-size: 10px; color: #999;">(タイトル取得失敗)</div>
+                    </div>
+                `;
+            }
+        }
+        
+        // フォールバック：外部マニフェストのみ表示
+        function loadFallbackManifestList() {
+            console.log('Loading fallback manifest list (external only)');
+            showStatus('ローカルサーバーにアクセスできません。外部マニフェストのみ表示します。', 'error');
+            
+            const listContainer = document.getElementById('manifestList');
+            listContainer.innerHTML = '';
+            
+            // 外部マニフェストのみ表示
+            const externalManifests = [
+                {
+                    title: 'Bodleian Library - Japanese manuscript',
+                    url: 'https://iiif.bodleian.ox.ac.uk/iiif/manifest/e32a277e-91e2-4a6d-8ba6-cc4bad230410.json'
+                },
+                {
+                    title: 'Gallica BnF - Manuscript',
+                    url: 'https://gallica.bnf.fr/iiif/ark:/12148/btv1b8449691v/manifest.json'
+                },
+                {
+                    title: 'Stanford Digital Repository - Manuscript',
+                    url: 'https://purl.stanford.edu/bb139rb4902/iiif/manifest'
+                }
+            ];
+            
+            const header = document.createElement('div');
+            header.className = 'manifest-header';
+            header.textContent = '🌐 外部IIIF例（フォールバック）';
+            listContainer.appendChild(header);
+            
+            externalManifests.forEach(manifest => {
+                const item = document.createElement('div');
+                item.className = 'manifest-item';
+                item.dataset.url = manifest.url;
+                item.textContent = manifest.title;
+                item.onclick = () => loadManifest(manifest.url);
+                listContainer.appendChild(item);
+            });
+            
+            // ローカルサーバー起動の説明を追加
+            const helpDiv = document.createElement('div');
+            helpDiv.innerHTML = `
+                <div style="padding: 15px; background: #e8f5e8; border-radius: 6px; margin-top: 10px; border-left: 4px solid #4caf50;">
+                    <p style="margin: 0 0 10px 0; font-size: 13px; color: #2e7d32; font-weight: bold;">
+                        🌐 GitHub Pages版で公開中
+                    </p>
+                    <p style="margin: 0 0 5px 0; font-size: 12px; color: #2e7d32;">
+                        • ローカルサーバー不要でアクセス可能
+                    </p>
+                    <p style="margin: 0 0 5px 0; font-size: 12px; color: #2e7d32;">
+                        • 115巻すべてのマニフェストが利用可能
+                    </p>
+                    <p style="margin: 0; font-size: 12px; color: #2e7d32;">
+                        • Universal Viewerで高解像度表示
+                    </p>
+                </div>
+            `;
+            listContainer.appendChild(helpDiv);
+        }
+        
         // カスタムマニフェストを読み込み
         function loadCustomManifest() {
             const url = document.getElementById('customUrl').value.trim();
@@ -1092,7 +1145,20 @@
                 return;
             }
             
-            loadManifest(url);
+            // 相対パスの場合は絶対URLに変換
+            // GitHub Pages用のベースURL
+            const baseUrl = 'https://sseki27skt.github.io/gagakufu_iiif_manifest';
+            
+            let manifestUrl = url;
+            if (url.startsWith('./')) {
+                manifestUrl = `${baseUrl}/${url.substring(2)}`;
+            } else if (url.startsWith('/')) {
+                manifestUrl = `${baseUrl}${url}`;
+            } else if (!url.startsWith('http')) {
+                manifestUrl = `${baseUrl}/${url}`;
+            }
+            
+            loadManifest(manifestUrl);
         }
         
         // マニフェスト一覧を更新
@@ -1102,13 +1168,15 @@
         
         // 初期化
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('IIIF Viewer initializing on GitHub Pages...');
+            console.log('IIIF Viewer initializing...');
             console.log('Current protocol:', window.location.protocol);
             console.log('Current origin:', window.location.origin);
-            console.log('GitHub base URL:', GITHUB_BASE_URL);
             
             // 全画面表示サポートを有効化
             enableFullscreenSupport();
+            
+            // プロトコルの問題を早期検出
+            const hasProtocolIssue = detectProtocolIssue();
             
             // 初期メッセージ
             const iframe = document.getElementById('universal-viewer');
@@ -1131,17 +1199,25 @@
                                 <p style="margin:0 0 8px 0;font-size:13px;color:#333;">• 東京芸術大学所蔵版（Vol.0-42）</p>
                                 <p style="margin:0;font-size:13px;color:#333;">• 外部IIIF例（Bodleian Library、Gallica BnF）</p>
                             </div>
+                            ${hasProtocolIssue ? `
+                            <div style="background:#ffebee;padding:15px;border-radius:6px;margin:20px 0;border-left:4px solid #f44336;">
+                                <p style="margin:0 0 10px 0;font-size:13px;color:#c62828;font-weight:bold;">
+                                    ⚠️ セキュリティ制限について
+                                </p>
+                                <p style="margin:0 0 8px 0;font-size:12px;color:#c62828;">
+                                    現在HTTPSページからHTTPリソースへのアクセスが制限されています。
+                                </p>
+                                <p style="margin:0;font-size:12px;color:#c62828;">
+                                    ローカルマニフェストを表示するには、HTTPでアクセスしてください。
+                                </p>
+                            </div>
+                            ` : ''}
                             <p style="margin:20px 0 0 0;font-size:14px;color:#888;">
                                 または、カスタムURLを入力して任意のIIIFマニフェストを表示できます
                             </p>
                             <div style="margin-top:30px;padding:15px;background:#fff3cd;border-radius:6px;border-left:4px solid #ffc107;">
                                 <p style="margin:0;font-size:13px;color:#856404;">
                                     💡 ヒント: マニフェストを選択すると、高解像度の雅楽譜画像をズーム・パン操作で詳細に閲覧できます
-                                </p>
-                            </div>
-                            <div style="margin-top:20px;padding:15px;background:#e8f5e8;border-radius:6px;border-left:4px solid #4caf50;">
-                                <p style="margin:0;font-size:13px;color:#2e7d32;">
-                                    🌐 GitHub Pagesで公開されています。ローカルサーバーは不要です。
                                 </p>
                             </div>
                         </div>
@@ -1153,6 +1229,7 @@
             // マニフェスト一覧を読み込み
             loadManifestList();
             
+            // デフォルトマニフェストの自動読み込みを削除（ユーザーの手動選択を待つ）
             showStatus('マニフェストを選択して雅楽譜の閲覧を開始してください', 'info');
         });
         
