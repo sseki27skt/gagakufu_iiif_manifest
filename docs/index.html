@@ -419,9 +419,9 @@
         function handleFullscreenChange() {
             const iframe = document.getElementById('universal-viewer');
             const isFullscreen = !!(document.fullscreenElement || 
-                                   document.webkitFullscreenElement || 
-                                   document.mozFullScreenElement || 
-                                   document.msFullscreenElement);
+                                    document.webkitFullscreenElement || 
+                                    document.mozFullScreenElement || 
+                                    document.msFullscreenElement);
             
             if (isFullscreen) {
                 console.log('Entered fullscreen mode');
@@ -459,8 +459,8 @@
             
             try {
                 const title = manifest.label || 
-                             manifest.metadata?.find(m => m.label === 'Title')?.value || 
-                             '不明';
+                              manifest.metadata?.find(m => m.label === 'Title')?.value || 
+                              '不明';
                 const pageCount = manifest.sequences?.[0]?.canvases?.length || 0;
                 
                 document.getElementById('currentTitle').textContent = title;
@@ -724,7 +724,13 @@
         // マニフェストからタイトル情報を取得する関数（雅楽譜専用改良版）
         async function getManifestTitle(manifestUrl) {
             try {
-                const response = await fetch(manifestUrl);
+                const response = await fetch(manifestUrl, {
+                    cache: 'no-cache',
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache'
+                    }
+                });
                 if (!response.ok) return null;
                 
                 const manifest = await response.json();
