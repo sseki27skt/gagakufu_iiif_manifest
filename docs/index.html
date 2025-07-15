@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>雅楽譜閲覧支援サイト</title>
     <meta name="description" content="IIIFで公開されている雅楽譜を閲覧できます">
+    
+    <!-- 旧字正規化設定ファイル -->
+    <script src="kanji-normalization-config.js"></script>
     <style>
         * {
             margin: 0;
@@ -13,23 +16,42 @@
         }
         
         body {
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             height: 100vh;
             display: flex;
             flex-direction: column;
         }
         
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #3730a3 50%, #581c87 100%);
             color: white;
             padding: 15px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 32px rgba(30, 64, 175, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
         
         .header h1 {
             font-size: 24px;
             margin-bottom: 5px;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        
+        .header h1:hover {
+            opacity: 0.8;
+            transform: translateY(-1px);
         }
         
         .header p {
@@ -278,29 +300,363 @@
             margin-bottom: 10px;
         }
         
-        @media (max-width: 768px) {
-            .main-container {
-                flex-direction: column;
+        /* 検索・フィルタ機能のスタイル */
+        .search-section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .search-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 10px 40px 10px 10px; /* 右側にバツボタンのスペースを確保 */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #2196f3;
+            box-shadow: 0 0 5px rgba(33, 150, 243, 0.3);
+        }
+        
+        .search-container {
+            position: relative;
+            margin-bottom: 10px; /* marginをcontainerに移動 */
+        }
+        
+        .search-clear {
+            position: absolute;
+            right: 12px; /* 少し余裕を持たせる */
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 18px; /* 少し大きくして見やすく */
+            cursor: pointer;
+            color: #6c757d;
+            width: 20px;
+            height: 20px;
+            display: none; /* 初期状態は非表示 */
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+        
+        .search-clear.visible {
+            display: flex; /* 表示時はflexboxで中央配置 */
+        }
+        
+        .search-clear:hover {
+            color: #495057;
+            background-color: #f8f9fa;
+        }
+        
+        .search-actions {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .btn-small {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-small:hover {
+            background: #f8f9fa;
+            border-color: #2196f3;
+        }
+        
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sort-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 6px 30px 6px 10px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 100px;
+            background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>");
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 12px;
+        }
+        
+        .sort-select:hover {
+            border-color: #3b82f6;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+        }
+        
+        .sort-select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+        }
+        
+        /* モダンなフィルタープルダウン */
+        .filter-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px 40px 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            min-width: 120px;
+            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.05);
+            background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+        }
+        
+        .filter-select:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+        }
+        
+        .filter-select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), 0 4px 15px rgba(59, 130, 246, 0.2);
+        }
+        
+        .filter-select option {
+            padding: 10px;
+            background: white;
+            color: #374151;
+            font-weight: 500;
+        }
+        
+        .filter-select option:checked {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        /* フィルターセクションのレイアウト */
+        .filters {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        @media (min-width: 400px) {
+            .filters {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 12px;
             }
-            
-            .sidebar {
-                width: 100%;
-                max-height: 300px;
-            }
+        }
+        
+        /* 楽曲アイテムのスタイル */
+        .piece-item {
+            padding: 12px;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+        
+        .piece-item:hover {
+            border-color: #2196f3;
+            background: #f8f9ff;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .piece-item:active {
+            transform: translateY(0);
+        }
+        
+        .piece-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+        
+        .piece-meta {
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .piece-badge {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        
+        .piece-badge.instrument {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+        
+        .piece-badge.mode {
+            background: #e8f5e8;
+            color: #388e3c;
+        }
+        
+        .piece-badge.collection {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+        
+        /* 統計情報のスタイル */
+        .statistics-panel {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .statistics-panel h4 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .stat-group {
+            margin-bottom: 15px;
+        }
+        
+        .stat-group h5 {
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+        
+        .stat-total {
+            background: #e3f2fd;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            margin-top: 15px;
+            color: #1976d2;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <a href="https://github.com/sseki27skt/gagakufu_iiif_manifest" target="_blank" style="position: absolute; top: 15px; right: 20px; color: white; text-decoration: none; font-size: 12px; opacity: 0.9;">
-            📂 GitHub Repository
-        </a>
-        <h1>雅楽譜 IIIFビューワー</h1>
+        <div style="position: absolute; top: 15px; right: 20px; display: flex; gap: 15px; align-items: center;">
+            <a href="about.html" style="color: white; text-decoration: none; font-size: 14px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 8px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); font-weight: 500; transition: all 0.3s ease;">
+                About
+            </a>
+            <a href="https://github.com/sseki27skt" target="_blank" style="color: white; text-decoration: none; font-size: 12px; opacity: 0.9; display: flex; align-items: center; gap: 4px;">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                sseki27skt
+            </a>
+        </div>
+        <h1 style="cursor: pointer;" onclick="goToHome()">雅楽譜 IIIFビューワー</h1>
         <p>IIIFで公開されている雅楽譜の閲覧を支援</p>
     </div>
     
     <div class="main-container">
         <div class="sidebar">
+            <!-- 楽曲検索セクション -->
+            <div class="search-section">
+                <h3>楽曲検索</h3>
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" 
+                           placeholder="楽曲名を検索..." 
+                           onInput="searchPieces()">
+                    <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
+                </div>
+                
+                <div class="filters">
+                    <select id="instrumentFilter" class="filter-select" onChange="searchPieces()">
+                        <option value="">楽器</option>
+                    </select>
+                    
+                    <select id="modeFilter" class="filter-select" onChange="searchPieces()">
+                        <option value="">調子</option>
+                    </select>
+                    
+                    <select id="collectionFilter" class="filter-select" onChange="searchPieces()">
+                        <option value="">資料</option>
+                    </select>
+                </div>
+                
+                <div class="search-actions">
+                    <button class="btn-small" onclick="clearSearchResults()">検索結果をクリア</button>
+                </div>
+                
+                <div id="searchResults" class="search-results" style="display: none;">
+                    <div class="search-header">
+                        <div class="search-stats" id="searchStats"></div>
+                        <div class="sort-controls">
+                            <select id="sortBy" class="sort-select" onChange="sortSearchResults()">
+                                <option value="page_range">ページ順</option>
+                                <option value="piece_name">楽曲名順</option>
+                                <option value="instrument">楽器順</option>
+                                <option value="mode">調順</option>
+                                <option value="collection">資料順</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="piecesList"></div>
+                </div>
+            </div>
+            
             <!-- マニフェスト一覧 -->
             <div class="section">
                 <h3>📂 マニフェスト一覧</h3>
@@ -471,11 +827,33 @@
             }
         }
         
+        // ホームページに遷移する関数（ページリロード方式）
+        function goToHome() {
+            // ページを完全にリロードして初期状態に戻す
+            // これにより以下が確実にリセットされる：
+            // - Universal Viewerの状態
+            // - マニフェストの選択状態
+            // - 検索・フィルタの状態
+            // - その他のアプリケーション状態
+            window.location.reload();
+        }
+        
         // マニフェストを読み込んでUniversal Viewerで表示
         async function loadManifest(manifestUrl) {
             try {
                 showStatus('マニフェストを読み込み中...', 'info');
                 console.log('Loading manifest:', manifestUrl);
+                
+                // ローカル環境でのCORSエラーを回避
+                const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+                if (isLocal && manifestUrl.includes('sseki27skt.github.io')) {
+                    // ローカル環境ではGitHub PagesのURLをローカルURLに変換
+                    manifestUrl = manifestUrl.replace(
+                        'https://sseki27skt.github.io/gagakufu_iiif_manifest',
+                        `${window.location.protocol}//${window.location.host}`
+                    );
+                    console.log('Converted to local URL:', manifestUrl);
+                }
                 
                 // マニフェストをフェッチ（詳細なエラーハンドリング付き）
                 const response = await fetch(manifestUrl, {
@@ -724,6 +1102,16 @@
         // マニフェストからタイトル情報を取得する関数（雅楽譜専用改良版）
         async function getManifestTitle(manifestUrl) {
             try {
+                // ローカル環境でのCORSエラーを回避
+                const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+                if (isLocal && manifestUrl.includes('sseki27skt.github.io')) {
+                    // ローカル環境ではGitHub PagesのURLをローカルURLに変換
+                    manifestUrl = manifestUrl.replace(
+                        'https://sseki27skt.github.io/gagakufu_iiif_manifest',
+                        `${window.location.protocol}//${window.location.host}`
+                    );
+                }
+                
                 const response = await fetch(manifestUrl, {
                     cache: 'no-cache',
                     headers: {
@@ -849,11 +1237,14 @@
                 const listContainer = document.getElementById('manifestList');
                 listContainer.innerHTML = '<div class="loading">マニフェスト一覧を読み込み中...</div>';
                 
-                // GitHub Pages版では常に利用可能
-                console.log('GitHub Pages mode - no server check needed');
+                // 環境を判定してベースURLを設定
+                const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+                console.log(isLocal ? 'Local mode - using local files' : 'GitHub Pages mode - no server check needed');
                 
-                // GitHub Pages用のベースURL
-                const baseUrl = 'https://sseki27skt.github.io/gagakufu_iiif_manifest';
+                // 環境に応じたベースURL
+                const baseUrl = isLocal ? 
+                    `${window.location.protocol}//${window.location.host}` : 
+                    'https://sseki27skt.github.io/gagakufu_iiif_manifest';
                 
                 // ローカルマニフェストファイルの一覧を生成
                 const manifestFiles = [];
@@ -877,20 +1268,6 @@
                         series: '100270332'
                     });
                 }
-                
-                // 外部の例
-                manifestFiles.push(
-                    {
-                        title: 'Bodleian Library - Japanese manuscript',
-                        url: 'https://iiif.bodleian.ox.ac.uk/iiif/manifest/e32a277e-91e2-4a6d-8ba6-cc4bad230410.json',
-                        series: 'external'
-                    },
-                    {
-                        title: 'Gallica BnF - Manuscript',
-                        url: 'https://gallica.bnf.fr/iiif/ark:/12148/btv1b8449691v/manifest.json',
-                        series: 'external'
-                    }
-                );
                 
                 console.log(`Generated ${manifestFiles.length} manifest files`);
                 listContainer.innerHTML = '';
@@ -916,92 +1293,72 @@
                     
                     const groupTitle = {
                         '100376839': '📜 東京芸術大学所蔵版（Vol.0-42）',
-                        '100270332': '🎵 宮内庁書陵部所蔵版（Vol.0-72）',
-                        'external': '🌐 外部IIIF例'
+                        '100270332': '🎵 宮内庁書陵部所蔵版（Vol.0-72）'
                     }[series];
                     
-                    if (series === 'external') {
-                        // 外部の例はシンプルに表示
-                        const header = document.createElement('div');
-                        header.className = 'manifest-header';
-                        header.textContent = groupTitle;
-                        header.style.cursor = 'default';
-                        header.style.background = '#e8f5e8';
-                        listContainer.appendChild(header);
-                        
-                        files.forEach(file => {
-                            const item = document.createElement('div');
-                            item.className = 'manifest-item';
-                            item.dataset.url = file.url;
-                            item.textContent = file.title;
-                            item.onclick = () => loadManifest(file.url);
-                            listContainer.appendChild(item);
-                        });
-                    } else {
-                        // ローカルファイルを折りたたみ可能なグループで表示
-                        const groupContainer = document.createElement('div');
-                        
-                        const header = document.createElement('div');
-                        header.className = 'manifest-header';
-                        header.textContent = groupTitle;
-                        
-                        const contentContainer = document.createElement('div');
-                        contentContainer.className = 'manifest-group-content';
-                        
-                        // 宮内庁版はデフォルトで開く、芸大版は閉じる
-                        const isDefaultOpen = series === '100270332';
-                        if (!isDefaultOpen) {
+                    // ローカルファイルを折りたたみ可能なグループで表示
+                    const groupContainer = document.createElement('div');
+                    
+                    const header = document.createElement('div');
+                    header.className = 'manifest-header';
+                    header.textContent = groupTitle;
+                    
+                    const contentContainer = document.createElement('div');
+                    contentContainer.className = 'manifest-group-content';
+                    
+                    // 宮内庁版はデフォルトで開く、芸大版は閉じる
+                    const isDefaultOpen = series === '100270332';
+                    if (!isDefaultOpen) {
+                        header.classList.add('collapsed');
+                        contentContainer.classList.add('collapsed');
+                    }
+                    
+                    // クリックで折りたみ切り替え
+                    header.onclick = () => {
+                        const isCollapsed = header.classList.contains('collapsed');
+                        if (isCollapsed) {
+                            header.classList.remove('collapsed');
+                            contentContainer.classList.remove('collapsed');
+                        } else {
                             header.classList.add('collapsed');
                             contentContainer.classList.add('collapsed');
                         }
+                    };
+                    
+                    console.log(`Displaying all ${files.length} files from ${series}`);
+                    
+                    // タイトル読み込み用の配列
+                    const titleLoadTasks = [];
+                    
+                    for (const file of files) {
+                        const item = document.createElement('div');
+                        item.className = 'manifest-item';
+                        item.dataset.url = file.url;
+                        item.onclick = () => loadManifest(file.url);
                         
-                        // クリックで折りたたみ切り替え
-                        header.onclick = () => {
-                            const isCollapsed = header.classList.contains('collapsed');
-                            if (isCollapsed) {
-                                header.classList.remove('collapsed');
-                                contentContainer.classList.remove('collapsed');
-                            } else {
-                                header.classList.add('collapsed');
-                                contentContainer.classList.add('collapsed');
-                            }
-                        };
+                        // 初期表示：Volume番号のみ
+                        item.innerHTML = `
+                            <div style="line-height: 1.3;">
+                                <div style="font-weight: 500; color: #333;">Volume ${String(file.volume).padStart(2, '0')}</div>
+                                <div style="font-size: 11px; color: #999;">タイトル読み込み中...</div>
+                            </div>
+                        `;
+                        contentContainer.appendChild(item);
                         
-                        console.log(`Displaying all ${files.length} files from ${series}`);
-                        
-                        // タイトル読み込み用の配列
-                        const titleLoadTasks = [];
-                        
-                        for (const file of files) {
-                            const item = document.createElement('div');
-                            item.className = 'manifest-item';
-                            item.dataset.url = file.url;
-                            item.onclick = () => loadManifest(file.url);
-                            
-                            // 初期表示：Volume番号のみ
-                            item.innerHTML = `
-                                <div style="line-height: 1.3;">
-                                    <div style="font-weight: 500; color: #333;">Volume ${String(file.volume).padStart(2, '0')}</div>
-                                    <div style="font-size: 11px; color: #999;">タイトル読み込み中...</div>
-                                </div>
-                            `;
-                            contentContainer.appendChild(item);
-                            
-                            // タイトル読み込みタスクを配列に追加
-                            titleLoadTasks.push({
-                                item: item,
-                                url: file.url,
-                                volume: file.volume
-                            });
-                        }
-                        
-                        // タイトルを段階的に読み込み（5個ずつ並列処理）
-                        loadTitlesInBatches(titleLoadTasks, 5);
-                        
-                        groupContainer.appendChild(header);
-                        groupContainer.appendChild(contentContainer);
-                        listContainer.appendChild(groupContainer);
+                        // タイトル読み込みタスクを配列に追加
+                        titleLoadTasks.push({
+                            item: item,
+                            url: file.url,
+                            volume: file.volume
+                        });
                     }
+                    
+                    // タイトルを段階的に読み込み（5個ずつ並列処理）
+                    loadTitlesInBatches(titleLoadTasks, 5);
+                    
+                    groupContainer.appendChild(header);
+                    groupContainer.appendChild(contentContainer);
+                    listContainer.appendChild(groupContainer);
                 }
                 
                 console.log('Manifest list generation completed');
@@ -1084,61 +1441,38 @@
             }
         }
         
-        // フォールバック：外部マニフェストのみ表示
+        // フォールバック：ヘルプメッセージのみ表示
         function loadFallbackManifestList() {
-            console.log('Loading fallback manifest list (external only)');
-            showStatus('ローカルサーバーにアクセスできません。外部マニフェストのみ表示します。', 'error');
+            console.log('Loading fallback manifest list (help only)');
+            showStatus('ローカルサーバーにアクセスできません。', 'error');
             
             const listContainer = document.getElementById('manifestList');
             listContainer.innerHTML = '';
             
-            // 外部マニフェストのみ表示
-            const externalManifests = [
-                {
-                    title: 'Bodleian Library - Japanese manuscript',
-                    url: 'https://iiif.bodleian.ox.ac.uk/iiif/manifest/e32a277e-91e2-4a6d-8ba6-cc4bad230410.json'
-                },
-                {
-                    title: 'Gallica BnF - Manuscript',
-                    url: 'https://gallica.bnf.fr/iiif/ark:/12148/btv1b8449691v/manifest.json'
-                },
-                {
-                    title: 'Stanford Digital Repository - Manuscript',
-                    url: 'https://purl.stanford.edu/bb139rb4902/iiif/manifest'
-                }
-            ];
-            
-            const header = document.createElement('div');
-            header.className = 'manifest-header';
-            header.textContent = '🌐 外部IIIF例（フォールバック）';
-            listContainer.appendChild(header);
-            
-            externalManifests.forEach(manifest => {
-                const item = document.createElement('div');
-                item.className = 'manifest-item';
-                item.dataset.url = manifest.url;
-                item.textContent = manifest.title;
-                item.onclick = () => loadManifest(manifest.url);
-                listContainer.appendChild(item);
-            });
-            
-            // ローカルサーバー起動の説明を追加
+            // GitHub Pages での利用を促すメッセージを表示
             const helpDiv = document.createElement('div');
+            helpDiv.style.cssText = `
+                background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+                border: 1px solid #c8e6c9;
+                border-radius: 8px;
+                padding: 16px;
+                margin: 16px 0;
+                text-align: center;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            `;
             helpDiv.innerHTML = `
-                <div style="padding: 15px; background: #e8f5e8; border-radius: 6px; margin-top: 10px; border-left: 4px solid #4caf50;">
-                    <p style="margin: 0 0 10px 0; font-size: 13px; color: #2e7d32; font-weight: bold;">
-                        🌐 GitHub Pages版で公開中
-                    </p>
-                    <p style="margin: 0 0 5px 0; font-size: 12px; color: #2e7d32;">
-                        • ローカルサーバー不要でアクセス可能
-                    </p>
-                    <p style="margin: 0 0 5px 0; font-size: 12px; color: #2e7d32;">
-                        • 115巻すべてのマニフェストが利用可能
-                    </p>
-                    <p style="margin: 0; font-size: 12px; color: #2e7d32;">
-                        • Universal Viewerで高解像度表示
-                    </p>
-                </div>
+                <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: #1b5e20;">
+                    🌐 GitHub Pages版で公開中
+                </p>
+                <p style="margin: 0 0 5px 0; font-size: 12px; color: #2e7d32;">
+                    • ローカルサーバー不要でアクセス可能
+                </p>
+                <p style="margin: 0 0 5px 0; font-size: 12px; color: #2e7d32;">
+                    • 115巻すべてのマニフェストが利用可能
+                </p>
+                <p style="margin: 0; font-size: 12px; color: #2e7d32;">
+                    • Universal Viewerで高解像度表示
+                </p>
             `;
             listContainer.appendChild(helpDiv);
         }
@@ -1167,6 +1501,503 @@
             loadManifest(manifestUrl);
         }
         
+        // マニフェスト一覧を更新
+        function refreshManifestList() {
+            loadManifestList();
+        }
+        
+        // === 楽曲検索機能 ===
+        let piecesData = null;
+        
+        // 楽曲データを読み込み
+        async function loadPiecesData() {
+            if (piecesData) return piecesData;
+            
+            // ローカル開発環境とGitHub Pagesの両方に対応
+            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const loadBaseUrl = isLocal ? 
+                `${window.location.protocol}//${window.location.host}` : 
+                'https://sseki27skt.github.io/gagakufu_iiif_manifest';
+            
+            console.log('Loading pieces data from:', `${loadBaseUrl}/100376839_pieces/pieces-index.json`);
+            
+            try {
+                const response = await fetch(`${loadBaseUrl}/100376839_pieces/pieces-index.json`, {
+                    cache: 'no-cache',
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache'
+                    }
+                });
+                
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) throw new Error('Failed to load pieces data');
+                
+                const data = await response.json();
+                
+                // ローカル環境では各piece manifestのURLをローカル用に変換
+                if (isLocal && data.pieces) {
+                    data.pieces.forEach(piece => {
+                        if (piece['@id']) {
+                            // GitHub PagesのURLをローカルURLに変換
+                            piece['@id'] = piece['@id'].replace(
+                                'https://sseki27skt.github.io/gagakufu_iiif_manifest',
+                                `${window.location.protocol}//${window.location.host}`
+                            );
+                        }
+                    });
+                }
+                
+                piecesData = data;
+                
+                console.log('Pieces data loaded:', data);
+                
+                // フィルタ選択肢を初期化
+                initializeFilters(data.statistics);
+                
+                return data;
+            } catch (error) {
+                console.error('Failed to load pieces data:', error);
+                return null;
+            }
+        }
+        
+        // フィルタ選択肢を初期化
+        function initializeFilters(statistics) {
+            console.log('Initializing filters with statistics:', statistics);
+            
+            const instrumentFilter = document.getElementById('instrumentFilter');
+            const modeFilter = document.getElementById('modeFilter');
+            const collectionFilter = document.getElementById('collectionFilter');
+            
+            if (!instrumentFilter || !modeFilter || !collectionFilter) {
+                console.error('Filter elements not found!');
+                return;
+            }
+            
+            // 楽器フィルタ
+            instrumentFilter.innerHTML = '<option value="">楽器</option>';
+            statistics.instruments.forEach(instrument => {
+                const option = document.createElement('option');
+                option.value = instrument;
+                option.textContent = instrument;
+                instrumentFilter.appendChild(option);
+            });
+            
+            // 調子フィルタ（指定した順序で表示）
+            modeFilter.innerHTML = '<option value="">調子</option>';
+            const modeOrder = ['壱越調', '平調', '双調', '黄鐘調', '太食調', '盤渉調'];
+            
+            // 指定した順序で調を追加
+            modeOrder.forEach(mode => {
+                if (statistics.modes.includes(mode)) {
+                    const option = document.createElement('option');
+                    option.value = mode;
+                    option.textContent = mode;
+                    modeFilter.appendChild(option);
+                }
+            });
+            
+            // 万が一、指定した順序にない調があった場合はその後に追加
+            statistics.modes.forEach(mode => {
+                if (!modeOrder.includes(mode)) {
+                    const option = document.createElement('option');
+                    option.value = mode;
+                    option.textContent = mode;
+                    modeFilter.appendChild(option);
+                }
+            });
+            
+            // 資料フィルタ
+            collectionFilter.innerHTML = '<option value="">資料</option>';
+            if (statistics.collections) {
+                Object.keys(statistics.collections).forEach(collection => {
+                    const option = document.createElement('option');
+                    option.value = collection;
+                    option.textContent = collection;
+                    collectionFilter.appendChild(option);
+                });
+            }
+            
+            console.log('Filters initialized successfully');
+        }
+        
+        // ========================================
+        // 旧字正規化機能
+        // ========================================
+        
+        /**
+         * 旧字正規化マッピングを取得する関数
+         * 設定ファイルから読み込み、フォールバック設定も提供
+         */
+        function getKanjiNormalizationMap() {
+            // 設定ファイルが読み込まれている場合はそれを使用
+            if (typeof window.KANJI_NORMALIZATION_CONFIG !== 'undefined') {
+                return window.KANJI_NORMALIZATION_CONFIG;
+            }
+            
+            // フォールバック: 設定ファイルが読み込まれていない場合の最小限の設定
+            return {
+                '樂': '楽',        // 還城樂 → 還城楽
+                '龍': '竜',        // 龍笛 → 竜笛
+            };
+        }
+
+        /**
+         * 旧字を新字に正規化する関数
+         * @param {string} text - 正規化対象のテキスト
+         * @returns {string} 正規化されたテキスト
+         */
+        function normalizeKanji(text) {
+            let normalized = text;
+            const kanjiMap = getKanjiNormalizationMap();
+            
+            // 各旧字-新字ペアに対して置換を実行
+            for (const [oldKanji, newKanji] of Object.entries(kanjiMap)) {
+                normalized = normalized.replace(new RegExp(oldKanji, 'g'), newKanji);
+            }
+            
+            return normalized;
+        }
+        
+        /**
+         * 旧字正規化マッピングに新しいペアを動的に追加する関数
+         * @param {string} oldKanji - 旧字
+         * @param {string} newKanji - 新字
+         */
+        function addKanjiNormalization(oldKanji, newKanji) {
+            if (typeof window.KANJI_NORMALIZATION_CONFIG !== 'undefined') {
+                window.KANJI_NORMALIZATION_CONFIG[oldKanji] = newKanji;
+                console.log(`✅ 旧字正規化ペア追加: ${oldKanji} → ${newKanji}`);
+                console.log('💡 変更を永続化するには kanji-normalization-config.js を編集してください');
+            } else {
+                console.warn('⚠️ 設定ファイルが読み込まれていません');
+            }
+        }
+        
+        /**
+         * 現在の旧字正規化マッピングを表示する関数
+         */
+        function showKanjiNormalizationMap() {
+            const kanjiMap = getKanjiNormalizationMap();
+            console.log('='.repeat(50));
+            console.log('🔤 現在の旧字正規化マッピング:');
+            console.log('='.repeat(50));
+            
+            let count = 0;
+            for (const [oldKanji, newKanji] of Object.entries(kanjiMap)) {
+                console.log(`  ${oldKanji} → ${newKanji}`);
+                count++;
+            }
+            
+            console.log('='.repeat(50));
+            console.log(`📊 合計: ${count} ペア`);
+            console.log('='.repeat(50));
+            console.log('💡 新しいペアを追加: addKanjiNormalization("旧字", "新字")');
+        }
+        
+        // 楽曲検索機能
+        async function searchPieces() {
+            const data = await loadPiecesData();
+            if (!data) return;
+            
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const instrumentFilter = document.getElementById('instrumentFilter').value;
+            const modeFilter = document.getElementById('modeFilter').value;
+            const collectionFilter = document.getElementById('collectionFilter').value;
+            
+            // 2-1: フィルターが未選択でキーワードが空の場合、検索結果を非表示
+            if (!searchTerm && !instrumentFilter && !modeFilter && !collectionFilter) {
+                hideSearchResults();
+                return;
+            }
+            
+            // 検索語を正規化（旧字→新字変換）
+            const normalizedSearchTerm = normalizeKanji(searchTerm);
+            
+            // フィルタリング
+            let filteredPieces = data.pieces.filter(piece => {
+                // 楽曲タイトルのみを正規化して比較
+                const normalizedPieceName = normalizeKanji(piece.metadata.piece_name.toLowerCase());
+                
+                const matchesSearch = !searchTerm || 
+                    normalizedPieceName.includes(normalizedSearchTerm) ||
+                    // 元の検索語でも検索（旧字での検索も可能）
+                    piece.metadata.piece_name.toLowerCase().includes(searchTerm);
+                
+                const matchesInstrument = !instrumentFilter || 
+                    piece.metadata.instrument === instrumentFilter;
+                
+                const matchesMode = !modeFilter || 
+                    piece.metadata.mode === modeFilter;
+                
+                const matchesCollection = !collectionFilter || 
+                    piece.metadata.collection === collectionFilter;
+                
+                return matchesSearch && matchesInstrument && matchesMode && matchesCollection;
+            });
+            
+            // 結果を表示
+            displaySearchResults(filteredPieces, data.pieces.length);
+        }
+        
+        // 検索結果を表示
+        function displaySearchResults(pieces, totalCount) {
+            const resultsContainer = document.getElementById('searchResults');
+            const statsContainer = document.getElementById('searchStats');
+            
+            // 検索結果を表示
+            resultsContainer.style.display = 'block';
+            
+            // 統計表示
+            statsContainer.textContent = `${pieces.length} / ${totalCount} 曲`;
+            
+            // ページ順でソートしてから結果を保存
+            const sortedPieces = [...pieces].sort((a, b) => {
+                // ページ範囲による詳細ソート：開始ページ -> 終了ページの順
+                const aRange = a.metadata.page_range.split('-');
+                const bRange = b.metadata.page_range.split('-');
+                const aStart = parseInt(aRange[0]);
+                const bStart = parseInt(bRange[0]);
+                const aEnd = parseInt(aRange[1] || aRange[0]); // 終了ページがない場合は開始ページと同じ
+                const bEnd = parseInt(bRange[1] || bRange[0]);
+                
+                // まず開始ページで比較
+                if (aStart !== bStart) {
+                    return aStart - bStart;
+                }
+                // 開始ページが同じ場合は終了ページで比較
+                return aEnd - bEnd;
+            });
+            
+            currentSortedResults = sortedPieces;
+            
+            // ソート選択をページ順にリセット
+            document.getElementById('sortBy').value = 'page_range';
+            
+            // 楽曲リスト表示
+            displayPiecesList(sortedPieces);
+        }
+        
+        // 検索結果を非表示にする
+        function hideSearchResults() {
+            const resultsContainer = document.getElementById('searchResults');
+            const statsContainer = document.getElementById('searchStats');
+            
+            resultsContainer.style.display = 'none';
+            statsContainer.textContent = '';
+            
+            // 現在の検索結果をクリア
+            currentSortedResults = [];
+        }
+        
+        // 2-2: 検索結果をクリアする関数
+        function clearSearchResults() {
+            // すべての検索条件をクリア
+            document.getElementById('searchInput').value = '';
+            document.getElementById('instrumentFilter').value = '';
+            document.getElementById('modeFilter').value = '';
+            document.getElementById('collectionFilter').value = '';
+            
+            // 検索結果を非表示
+            hideSearchResults();
+            
+            // 検索クリアボタンも更新
+            updateSearchClearButton();
+            
+            console.log('🔍 検索結果をクリアしました');
+        }
+        
+        // 検索をクリア
+        // 検索をクリア（既存の機能、主に×ボタン用）
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('instrumentFilter').value = '';
+            document.getElementById('modeFilter').value = '';
+            document.getElementById('collectionFilter').value = '';
+            searchPieces(); // これにより、すべて空の場合は検索結果が非表示になる
+            updateSearchClearButton();
+        }
+        
+        // 検索クリアボタンの表示切り替え
+        function updateSearchClearButton() {
+            const searchInput = document.getElementById('searchInput');
+            const clearButton = document.getElementById('searchClear');
+            
+            if (searchInput.value) {
+                clearButton.classList.add('visible');
+            } else {
+                clearButton.classList.remove('visible');
+            }
+        }
+        
+        // 全楽曲を表示
+        async function showAllPieces() {
+            const data = await loadPiecesData();
+            if (!data) return;
+            
+            // 検索条件をクリア
+            document.getElementById('searchInput').value = '';
+            document.getElementById('instrumentFilter').value = '';
+            document.getElementById('modeFilter').value = '';
+            document.getElementById('collectionFilter').value = '';
+            updateSearchClearButton();
+            
+            // 全楽曲を表示（検索結果として表示）
+            displaySearchResults(data.pieces, data.pieces.length);
+        }
+        
+        // 統計情報を表示
+        async function showStatistics() {
+            const data = await loadPiecesData();
+            if (!data) return;
+            
+            const stats = data.statistics;
+            const instrumentStats = {};
+            const modeStats = {};
+            
+            // 楽器別、調別の統計を計算
+            data.pieces.forEach(piece => {
+                const instrument = piece.metadata.instrument;
+                const mode = piece.metadata.mode;
+                
+                instrumentStats[instrument] = (instrumentStats[instrument] || 0) + 1;
+                modeStats[mode] = (modeStats[mode] || 0) + 1;
+            });
+            
+            // 統計情報をHTMLで表示
+            const statsHtml = `
+                <div class="statistics-panel">
+                    <h4>📊 楽曲統計</h4>
+                    <div class="stat-group">
+                        <h5>楽器別 (${stats.instruments.length}種類)</h5>
+                        ${stats.instruments.map(inst => 
+                            `<div class="stat-item">
+                                <span class="piece-badge instrument">${inst}</span>
+                                <span>${instrumentStats[inst]}曲</span>
+                            </div>`
+                        ).join('')}
+                    </div>
+                    <div class="stat-group">
+                        <h5>調別 (${stats.modes.length}種類)</h5>
+                        ${stats.modes.map(mode => 
+                            `<div class="stat-item">
+                                <span class="piece-badge mode">${mode}</span>
+                                <span>${modeStats[mode]}曲</span>
+                            </div>`
+                        ).join('')}
+                    </div>
+                    <div class="stat-total">
+                        <strong>総楽曲数: ${stats.total_pieces}曲</strong>
+                    </div>
+                </div>
+            `;
+            
+            const resultsContainer = document.getElementById('searchResults');
+            const piecesListContainer = document.getElementById('piecesList');
+            const statsContainer = document.getElementById('searchStats');
+            
+            resultsContainer.style.display = 'block';
+            statsContainer.textContent = '統計情報';
+            piecesListContainer.innerHTML = statsHtml;
+        }
+        
+        // 検索結果をソート
+        let currentSortedResults = [];
+        
+        function sortSearchResults() {
+            const sortBy = document.getElementById('sortBy').value;
+            
+            const sorted = [...currentSortedResults].sort((a, b) => {
+                let aVal, bVal;
+                
+                switch (sortBy) {
+                    case 'piece_name':
+                        aVal = a.metadata.piece_name;
+                        bVal = b.metadata.piece_name;
+                        break;
+                    case 'instrument':
+                        aVal = a.metadata.instrument;
+                        bVal = b.metadata.instrument;
+                        break;
+                    case 'mode':
+                        aVal = a.metadata.mode;
+                        bVal = b.metadata.mode;
+                        break;
+                    case 'collection':
+                        aVal = a.metadata.collection || '';
+                        bVal = b.metadata.collection || '';
+                        break;
+                    case 'page_range':
+                        // ページ範囲による詳細ソート：開始ページ -> 終了ページの順
+                        const aRange = a.metadata.page_range.split('-');
+                        const bRange = b.metadata.page_range.split('-');
+                        const aStart = parseInt(aRange[0]);
+                        const bStart = parseInt(bRange[0]);
+                        const aEnd = parseInt(aRange[1] || aRange[0]); // 終了ページがない場合は開始ページと同じ
+                        const bEnd = parseInt(bRange[1] || bRange[0]);
+                        
+                        // まず開始ページで比較
+                        if (aStart !== bStart) {
+                            return aStart - bStart;
+                        }
+                        // 開始ページが同じ場合は終了ページで比較
+                        return aEnd - bEnd;
+                    default:
+                        return 0;
+                }
+                
+                return aVal.localeCompare(bVal);
+            });
+            
+            currentSortedResults = sorted;
+            displayPiecesList(sorted);
+        }
+        
+        // 楽曲リストの表示（ソート機能付き）
+        function displayPiecesList(pieces) {
+            const piecesListContainer = document.getElementById('piecesList');
+            
+            // コレクション名を短縮表示するヘルパー関数
+            function getShortCollectionName(collection) {
+                if (!collection) return '不明';
+                if (collection === '東京藝術大学所蔵') return '藝大';
+                return collection;
+            }
+            
+            if (pieces.length === 0) {
+                piecesListContainer.innerHTML = '<div class="piece-item">検索条件に一致する楽曲が見つかりません</div>';
+            } else {
+                piecesListContainer.innerHTML = pieces.map(piece => `
+                    <div class="piece-item" onclick="loadManifest('${piece['@id']}')">
+                        <div class="piece-title">${piece.metadata.piece_name}</div>
+                        <div class="piece-meta">
+                            <span class="piece-badge instrument">${piece.metadata.instrument}</span>
+                            <span class="piece-badge mode">${piece.metadata.mode}</span>
+                            <span class="piece-badge collection">${getShortCollectionName(piece.metadata.collection)}</span>
+                            <span>ページ ${piece.metadata.page_range}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+        
+        // 初期化時に楽曲データを読み込み
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPiecesData();
+            
+            // 検索入力のイベントリスナーを追加
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function() {
+                searchPieces();
+                updateSearchClearButton();
+            });
+            
+            // 初期状態でクリアボタンを非表示
+            updateSearchClearButton();
+        });
+
         // マニフェスト一覧を更新
         function refreshManifestList() {
             loadManifestList();
@@ -1202,8 +2033,7 @@
                             <div style="background:#e3f2fd;padding:20px;border-radius:8px;margin:20px 0;border-left:4px solid #2196f3;">
                                 <p style="margin:0 0 10px 0;font-size:14px;color:#1565c0;font-weight:bold;">📚 利用可能なコレクション：</p>
                                 <p style="margin:0 0 8px 0;font-size:13px;color:#333;">• 宮内庁書陵部所蔵版（Vol.0-72）</p>
-                                <p style="margin:0 0 8px 0;font-size:13px;color:#333;">• 東京芸術大学所蔵版（Vol.0-42）</p>
-                                <p style="margin:0;font-size:13px;color:#333;">• 外部IIIF例（Bodleian Library、Gallica BnF）</p>
+                                <p style="margin:0;font-size:13px;color:#333;">• 東京芸術大学所蔵版（Vol.0-42）</p>
                             </div>
                             ${hasProtocolIssue ? `
                             <div style="background:#ffebee;padding:15px;border-radius:6px;margin:20px 0;border-left:4px solid #f44336;">

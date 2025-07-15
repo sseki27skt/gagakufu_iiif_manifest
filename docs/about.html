@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - 雅楽譜閲覧支援サイト</title>
+    <meta name="description" content="雅楽譜閲覧支援サイトについて - プロジェクト概要、収録資料、使用技術の詳細">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            line-height: 1.7;
+            color: #1e293b;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e40af 0%, #3730a3 50%, #581c87 100%);
+            color: white;
+            padding: 30px 20px;
+            box-shadow: 0 8px 32px rgba(30, 64, 175, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .nav-link {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section {
+            background: white;
+            margin-bottom: 25px;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 4px 25px rgba(30, 64, 175, 0.08);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 35px rgba(30, 64, 175, 0.12);
+        }
+        
+        .section h2 {
+            color: #1e40af;
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e0e7ff;
+            position: relative;
+        }
+        
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+        }
+        
+        .section h3 {
+            color: #475569;
+            font-size: 19px;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+        }
+        
+        .section p {
+            margin-bottom: 18px;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #374151;
+        }
+        
+        .section ul {
+            margin-left: 25px;
+            margin-bottom: 18px;
+        }
+        
+        .section li {
+            margin-bottom: 10px;
+            color: #374151;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 5px solid #0ea5e9;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(14, 165, 233, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .tech-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .tech-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .tech-name {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .tech-desc {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: #e2e8f0;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            box-shadow: 0 -4px 25px rgba(30, 41, 59, 0.15);
+        }
+        
+        .footer a {
+            color: #60a5fa;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: #93c5fd;
+        }
+        
+        /* フローティング戻るボタン */
+        .floating-back-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(100px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .floating-back-btn.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .floating-back-btn:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
+        }
+        
+        .floating-back-btn:active {
+            transform: translateY(-2px);
+        }
+        
+        .floating-back-btn .btn-text {
+            display: none;
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+            margin-right: 10px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .floating-back-btn:hover .btn-text {
+            display: block;
+            opacity: 1;
+        }
+        
+        .floating-back-btn .btn-text::after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 5px solid transparent;
+            border-left-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .floating-back-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 20px;
+            }
+            
+            .floating-back-btn .btn-text {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>About - 雅楽譜閲覧支援サイト</h1>
+        <p>サイト概要・収録資料・著作権について</p>
+        <a href="index.html" class="nav-link">楽曲検索に戻る</a>
+    </div>
+
+    <div class="container">
+        <!-- プロジェクト概要 -->
+        <div class="section">
+            <h2>サイトの目的</h2>
+            <p>
+                このWebサイトは雅楽関連資料の閲覧支援を目的としています。
+                IIIF（International Image Interoperability Framework）技術を活用し、
+                貴重な雅楽譜をデジタル環境で効率的に閲覧・研究できるプラットフォームを提供しています。
+            </p>
+            
+            <p>
+                現在、宮内庁書陵部が所蔵し国書データベースにIIIF画像として公開されている雅楽譜（明治撰定譜）、
+                および東京藝術大学附属図書館が所蔵し国書データベースにIIIF画像として公開されている雅楽譜の閲覧が可能です。
+            </p>
+
+        </div>
+
+        <!-- 収録資料について -->
+        <div class="section">
+            <h2>収録資料について</h2>
+            
+            <h3>宮内庁書陵部所蔵雅楽譜（明治撰定譜）</h3>
+            <p>
+                宮内庁書陵部が所蔵する明治期に撰定された雅楽譜で、国書データベースにてIIIF画像として公開されています。
+                現在73巻のマニフェストが利用可能です。
+            </p>
+
+            <h3>東京藝術大学附属図書館所蔵雅楽譜</h3>
+            <p>
+                東京藝術大学附属図書館が所蔵する雅楽譜で、国書データベースにてIIIF画像として公開されています。
+                現在43巻のマニフェストが利用可能で、唐楽中小曲を対象に321楽曲への個別アクセスが可能です。
+            </p>
+
+        </div>
+
+        <!-- 著作権について -->
+        <div class="section">
+            <h2>著作権について</h2>
+            
+            <h3>宮内庁書陵部所蔵資料</h3>
+            <p>
+                雅楽譜は宮内庁書陵部が所蔵し、国書データベースにIIIF画像として公開されているものです。
+                画像資料に関する権利は所蔵者である宮内庁書陵部が管理しています。
+                転載や翻刻掲載などの利用を希望される場合は、<a href="https://kokusho.nijl.ac.jp/page/usage.html">国書データベースの利用条件</a>及び
+                <a href="https://www.kunaicho.go.jp/kunaicho/shinsei/toshoryo.html">宮内庁図書寮文庫公式サイト</a>をご確認いただき、適切な方法で利用の許諾をとってください。
+            </p>
+
+
+            <h3>東京藝術大学附属図書館所蔵資料</h3>
+            <p>
+                雅楽譜は東京藝術大学附属図書館が所蔵し、国書データベースにIIIF画像として公開されています。
+                画像資料に関する権利は所蔵者である東京藝術大学附属図書館が管理しています。
+                転載や翻刻掲載などの利用を希望される場合は、<a href="https://kokusho.nijl.ac.jp/page/usage.html">国書データベースの利用条件</a>及び
+                <a href="https://www.lib.geidai.ac.jp/">東京藝術大学図書館公式サイト</a>をご確認いただき、適切な方法で利用の許諾をとってください。
+            </p>
+            
+            <!-- <div class="highlight-box">
+                <strong>📝 利用について</strong><br>
+                本サイトは学術・研究目的での利用を想定しています。
+                各資料の利用に関しては、それぞれの所蔵機関の利用条件に従ってください。
+            </div> -->
+        </div>
+
+        <!-- 掲載内容について -->
+        <div class="section">
+            <h2>掲載内容について</h2>
+            <p>
+                当サイトがリンクを提供している<a href="https://kokusho.nijl.ac.jp/biblio/100270332/1?ln=ja">雅楽譜（宮内庁書陵部）</a>及び<a href="https://kokusho.nijl.ac.jp/biblio/100376839/1?ln=ja">雅楽譜（東京藝術大学）</a>の
+                書誌情報は国書データベースをご確認ください。当サイトの掲載内容は予告なく変更及び削除される場合があります。あらかじめご了承ください。
+                当サイトにリンクされた外部サイトの内容について、公開者はその責任を負いません。
+            </p>
+            
+            <div class="highlight-box">
+                <strong>関連リンク</strong><br>
+                ・<a href="https://kokusho.nijl.ac.jp/biblio/100270332/1?ln=ja">宮内庁書陵部所蔵雅楽譜</a>（国書データベース）<br>
+                ・<a href="https://kokusho.nijl.ac.jp/biblio/100376839/1?ln=ja">東京藝術大学所蔵雅楽譜</a>（国書データベース）<br>
+                ・<a href="https://www.digital.archives.go.jp/">国立公文書館デジタルアーカイブ</a>
+            </div>
+        </div>
+
+        <!-- 使い方 -->
+        <div class="section">
+            <h2>使い方</h2>
+            
+            <h3>1. 楽曲検索</h3>
+            <ul>
+                <li>楽曲名のキーワードで検索</li>
+                <li>楽器、調子、資料による絞り込み</li>
+                <li>検索結果のソート（楽曲名順、ページ順など）</li>
+            </ul>
+
+            <h3>2. 楽譜閲覧</h3>
+            <ul>
+                <li>検索結果またはマニフェスト一覧から楽曲を選択</li>
+                <li>Universal Viewerで高解像度画像を表示</li>
+                <li>ズーム・パン操作で詳細確認</li>
+                <li>フルスクリーン表示対応</li>
+            </ul>
+
+            <h3>3. 便利な機能</h3>
+            <ul>
+                <li>旧字・新字両対応の検索(一部)</li>
+                <li>レスポンシブデザイン（スマートフォン対応）</li>
+            </ul>
+        </div>
+
+        <!-- クレジット
+        <div class="section">
+            <h2>クレジット・謝辞</h2>
+            
+            <h3>資料提供</h3>
+            <ul>
+                <li><strong>宮内庁書陵部</strong> - 明治撰定譜等の貴重な雅楽譜コレクション</li>
+                <li><strong>東京藝術大学附属図書館</strong> - 貴重な雅楽譜コレクション</li>
+                <li><strong>国書データベース</strong> - IIIF画像の公開・提供</li>
+                <li><strong>国立公文書館デジタルアーカイブ</strong> - 明治三年御撰定雅楽全譜の提供</li>
+            </ul>
+
+            <h3>技術協力</h3>
+            <ul>
+                <li><strong>IIIF Community</strong> - 国際標準規格の策定・普及</li>
+                <li><strong>Universal Viewer</strong> - オープンソース画像ビューア</li>
+                <li><strong>GitHub</strong> - プロジェクトホスティング</li>
+            </ul>
+
+            <h3>開発・メンテナンス</h3>
+            <p>
+                本サイトは研究・教育目的で開発されており、
+                雅楽文化の保存と普及に貢献することを目指しています。
+            </p>
+        </div> -->
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 雅楽譜閲覧支援サイト | Developed by
+            <a href="https://github.com/sseki27skt" style="color: #60a5fa; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                sseki27skt
+            </a>
+        </p>
+        <p>
+            <a href="index.html">楽曲検索に戻る</a>
+        </p>
+    </div>
+
+    <!-- フローティング戻るボタン -->
+    <a href="index.html" class="floating-back-btn" id="floatingBackBtn">
+        <span class="btn-text">閲覧ページに戻る</span>
+        ←
+    </a>
+
+    <script>
+        // フローティングボタンのスクロール追随機能
+        window.addEventListener('scroll', function() {
+            const floatingBtn = document.getElementById('floatingBackBtn');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // 200px以上スクロールしたら表示
+            if (scrollTop > 200) {
+                floatingBtn.classList.add('visible');
+            } else {
+                floatingBtn.classList.remove('visible');
+            }
+        });
+
+        // スムーズスクロール（必要に応じて）
+        document.getElementById('floatingBackBtn').addEventListener('click', function(e) {
+            // 通常のリンク動作をそのまま使用（ページ遷移）
+        });
+    </script>
+</body>
+</html>
