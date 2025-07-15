@@ -1,6 +1,44 @@
-.history
-.venv
+# VS Code history files
+.history/
+
+# Python cache files
 __pycache__/
-*.py
-manifest_original.json
-.gitignore
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Environment files
+.env
+.venv
+env/
+venv/
+
+# IDE files
+.vscode/
+.idea/
+
+# Development and temporary files
+*.tmp
+*.temp
+*_temp.py
+*_test.py
+*_backup.*
+.DS_Store
+
+# Development HTML/JS files (keep only docs/index.html for GitHub Pages)
+iiif_viewer_*.html
+manuscript_splitter*.html
+manuscript_splitter*.js
+music_metadata_editor.js
+
+# Development JSON files
+*_local.json
+*_sample.json
+*_test.json
+manifest_local.json
+structures_sample*.json
+
+# Temporary development directories
+temp*/
+"form LG temp_*/"
