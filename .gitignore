@@ -26,6 +26,15 @@ venv/
 *_backup.*
 .DS_Store
 
+# Development scripts (this repo is for IIIF hosting only)
+*_splitter.py
+*_detector.py
+*_analyzer.py
+line_ditection.py
+manifest_div.py
+make_collection_index.py
+server.py
+
 # Development HTML/JS files (keep only docs/index.html for GitHub Pages)
 iiif_viewer_*.html
 manuscript_splitter*.html
@@ -38,6 +47,7 @@ music_metadata_editor.js
 *_test.json
 manifest_local.json
 structures_sample*.json
+gagaku_titles_metadata.json
 
 # Temporary development directories
 temp*/
