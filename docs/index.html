@@ -83,7 +83,7 @@
         }
         
         .section {
-            margin-bottom: 25px;
+            margin-bottom: 15px; /* Compacted */
             padding: 15px;
             border: 1px solid #e8e8e8;
             border-radius: 8px;
@@ -92,7 +92,7 @@
         
         .section h3 {
             color: #333;
-            margin-bottom: 12px;
+            margin-bottom: 10px; /* Compacted */
             font-size: 16px;
             display: flex;
             align-items: center;
@@ -600,6 +600,58 @@
             margin-top: 15px;
             color: #1976d2;
         }
+
+        /* Viewer Selection Styles */
+        .viewer-selection {
+            margin-bottom: 0px; /* Reduced margin */
+        }
+
+        .viewer-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid #2196f3; /* Accent color */
+            border-radius: 8px;
+            padding: 8px 35px 8px 15px; /* Reduced vertical padding */
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a2b4a; /* Darker text for prominence */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            min-width: 100%; /* Changed to 100% to fill the sidebar width */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a2b4a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px;
+        }
+
+        .viewer-select:hover {
+            border-color: #1976d2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+        }
+
+        .viewer-select:focus {
+            outline: none;
+            border-color: #1565c0;
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2), 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .viewer-select option {
+            padding: 10px;
+            background: white;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .viewer-select option:checked {
+            background: #2196f3;
+            color: white;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -621,6 +673,16 @@
     
     <div class="main-container">
         <div class="sidebar">
+            <div class="section">
+                <h3>🖥️ ビューアー選択</h3>
+                <div class="viewer-selection">
+                    <select id="viewerSelect" class="viewer-select" onChange="switchViewer()">
+                        <option value="uv">Universal Viewerで閲覧</option>
+                        <option value="mirador">Miradorで閲覧（連続ロール）</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="search-section">
                 <h3>楽曲検索</h3>
                 <div class="search-container">
@@ -701,10 +763,6 @@
         </div>
         
         <div class="viewer-area">
-            <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
-                <button class="btn" id="uvViewerBtn">Universal Viewerで閲覧</button>
-                <button class="btn secondary" id="miradorViewerBtn">Miradorで閲覧（連続ロール）</button>
-            </div>
             <iframe id="viewerIframe" 
                     src="about:blank"
                     allow="fullscreen"></iframe>
@@ -2058,6 +2116,15 @@
             loadManifestList();
         }
         
+        // ビューアー切り替え機能
+        function switchViewer() {
+            const viewerSelect = document.getElementById('viewerSelect');
+            activeViewerType = viewerSelect.value;
+            if (currentManifestUrl) {
+                loadManifest(currentManifestUrl);
+            }
+        }
+
         // 初期化
         document.addEventListener('DOMContentLoaded', function() {
             
@@ -2125,21 +2192,6 @@
             showStatus('マニフェストを選択して雅楽譜の閲覧を開始してください', 'info');
         });
         
-        // ビューアー切り替えボタンのイベントリスナー
-        document.getElementById('uvViewerBtn').addEventListener('click', () => {
-            activeViewerType = 'uv';
-            if (currentManifestUrl) {
-                loadManifest(currentManifestUrl);
-            }
-        });
-
-        document.getElementById('miradorViewerBtn').addEventListener('click', () => {
-            activeViewerType = 'mirador';
-            if (currentManifestUrl) {
-                loadManifest(currentManifestUrl);
-            }
-        });
-
         // エンターキーでカスタムURL読み込み
         document.getElementById('customUrl').addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
