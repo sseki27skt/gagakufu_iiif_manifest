@@ -584,6 +584,7 @@
         
 
 /* --- ここから修正版トグルスイッチのスタイル --- */
+/* --- トグルスイッチのスタイル --- */
 .toggle-container {
     position: relative;
     display: flex;
@@ -604,11 +605,6 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
-.toggle-container:active {
-    transform: translateY(0px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
 .toggle-input {
     display: none;
 }
@@ -623,7 +619,7 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 13px;
     font-weight: 600;
-    color: #475569;
+    color: #475569; /* 非選択時の文字色 */
     transition: color 0.3s ease-in-out;
     z-index: 1;
 }
@@ -649,12 +645,13 @@
     left: 50%;
 }
 
-/* ★★★★★ 修正点 ★★★★★ */
-/* 選択中のラベルの文字色を、最優先で白に設定 */
-#universal-viewer:checked ~ #universal-viewer + .toggle-label,
-#mirador:checked ~ #mirador + .toggle-label {
-    color: white !important;
+/* ★★★ 修正箇所 ★★★ */
+/* 選択中のラベルの文字色を白に変更する正しいセレクタ */
+#universal-viewer:checked + .toggle-label,
+#mirador:checked + .toggle-label {
+    color: white;
 }
+
 /* --- ここまで修正版トグルスイッチのスタイル --- */
 
     </style>
