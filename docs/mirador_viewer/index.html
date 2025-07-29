@@ -1,28 +1,301 @@
+<!-- <!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mirador Viewer Host</title>
+<link rel="stylesheet" href="https://unpkg.com/mirador@^3/dist/mirador.min.css">
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        display: flex; /* 追加: コンテナを中央に配置するためにflexboxを使用 */
+        align-items: center; /* 追加 */
+        justify-content: center; /* 追加 */
+        background-color: #f0f0f0; /* 追加: 背景色で境界を分かりやすく */
+      }
+      #mirador-viewer-container {
+        width: 100%;
+        height: 100%;
+        /* min-height: 200px; /* Optional: Minimum height if it collapses */
+      }
+      /* ロード中のメッセージスタイル */
+      .loading-message {
+        font-family: sans-serif;
+        font-size: 1.2em;
+        color: #555;
+        text-align: center;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mirador-viewer-container">
+      <div class="loading-message">Miradorビューアーをロード中...</div>
+    </div>
+
+    <script type="text/javascript">
+      let currentManifestId = null;
+      let miradorInstance = null;
+      let pendingManifestId = null;
+      let miradorScriptLoaded = false; // Miradorスクリプトのロード状態を追跡
+
+      // Mirador スクリプトを動的にロードし、ロード完了を保証する関数
+      async function loadMiradorViewer(manifestUrl) {
+        const viewerArea = document.querySelector('.viewer-area'); // iframe の親要素を取得
+        if (!viewerArea) {
+            console.error("Viewer area not found!");
+            return;
+        }
+
+        // ★★★ 既存の iframe を完全に削除し、新しい iframe を作成する ★★★
+        let iframe = document.getElementById("viewerIframe");
+        if (iframe) {
+            iframe.remove(); // 既存の iframe を DOM から削除
+            console.log("Existing viewer iframe removed.");
+        }
+
+        iframe = document.createElement('iframe'); // 新しい iframe を作成
+        iframe.id = "viewerIframe"; // ID は維持
+        iframe.src = "about:blank"; // まず空にしておく
+        iframe.allow = "fullscreen"; // 全画面表示を許可
+        // 必要に応じて CSS を直接適用するか、既存の CSS クラスを使用
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "none";
+        
+        viewerArea.appendChild(iframe); // viewer-area に新しい iframe を追加
+        console.log("New viewer iframe created and appended.");
+
+        try {
+            const miradorHostUrl = getMiradorHostUrl(); // 下のヘルパー関数を使用
+            
+            // 新しい iframe がロード完了するまで待つ
+            await new Promise((resolve) => {
+                iframe.onload = () => {
+                    console.log("NEW Mirador host iframe loaded.");
+                    iframe.onload = null; // イベントリスナーを削除
+                    resolve();
+                };
+                iframe.src = miradorHostUrl; // 新しい iframe に Mirador ホスト URL をセット
+            });
+
+            // iframe がロードされたら、postMessage でマニフェストURLを送信
+            console.log("Sending manifest to NEW Mirador iframe:", manifestUrl);
+            iframe.contentWindow.postMessage(
+                {
+                    type: "loadManifest",
+                    manifestUrl: manifestUrl,
+                },
+                "*" // セキュリティのため、'*' ではなく iframe のオリジン (例: "https://sseki27skt.github.io") を指定することを検討
+            );
+
+            showStatus("Miradorビューアーを読み込み中...", "info");
+            showStatus("Miradorビューアーが正常に表示されました", "success");
+        } catch (error) {
+            console.error("Error loading Mirador Viewer:", error);
+            showStatus(
+                `Miradorビューアーの読み込みに失敗しました: ${error.message}`,
+                "error"
+            );
+            // エラー表示をビューアーエリアに直接表示する関数があればそれを使う
+            // 例: showErrorInViewer("Miradorビューアーの読み込み中にエラーが発生しました。コンソールを確認してください。");
+        }
+    }
+
+    // MiradorHostUrl の定義をヘルパー関数として分離（可読性のため）
+    function getMiradorHostUrl() {
+        const GITHUB_PAGES_MIRADOR_HOST_URL = "https://sseki27skt.github.io/gagakufu_iiif_manifest/mirador_viewer/index.html";
+        const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+        const localBaseUrl = `${window.location.protocol}//${window.location.host}`;
+
+        if (isLocal) {
+            return `${localBaseUrl}/mirador_viewer/index.html`;
+        }
+        return GITHUB_PAGES_MIRADOR_HOST_URL;
+    }
+
+      // --- メッセージリスナーをDOMReadyイベントの外に移動 ---
+      // これにより、iframeがロードされた直後からメッセージを受け取れるようにする
+      window.addEventListener("message", function (event) {
+        // Security: Restrict event.origin as appropriate for production
+        // 例: if (event.origin !== "https://sseki27skt.github.io") return;
+        // 現在は開発用なので '*' でも問題ないが、本番では厳格化を検討
+
+        if (event.data && event.data.type === "loadManifest") {
+          const manifestId = event.data.manifestUrl;
+          // メッセージを受け取った時点でMiradorスクリプトがロードされているか不明なため、
+          // initializeMirador に処理を任せる（そこでロードを待つ）
+          initializeMirador(manifestId);
+        }
+      });
+      // --- ここまで移動 ---
+
+      // mirador_viewer/index.html の initializeMirador 関数を以下のように修正
+
+async function initializeMirador(manifestId) {
+    if (!manifestId) {
+        console.warn("Manifest ID is empty. Mirador will not be initialized.");
+        return;
+    }
+
+    // 既に同じマニフェストがロードされており、かつインスタンスも存在する場合は、何もしない
+    // ただし、Universal ViewerからMiradorに切り替える際は、currentManifestIdが異なるため、このチェックはパスします。
+    if (manifestId === currentManifestId && miradorInstance !== null) {
+        console.log('Manifest is already loaded and active in Mirador:', manifestId);
+        // 必要に応じて、既存のインスタンスを強制的にリフレッシュするAPIがあれば呼び出す
+        // 現状Mirador 3には直接のrefresh APIはないため、一旦何もしない
+        return; 
+    }
+
+    console.log("Attempting to initialize Mirador with manifest:", manifestId);
+    pendingManifestId = manifestId; // ロード待機中のマニフェストを保存
+
+    try {
+        await loadMiradorScript(); // Miradorスクリプトのロードが完了するまで待つ
+
+        // ロード完了後、Mirador オブジェクトが利用可能であることを確認
+        if (typeof Mirador === "undefined") {
+            const container = document.getElementById("mirador-viewer-container");
+            if (container) {
+                container.innerHTML = `<div class="loading-message" style="color: red;">
+                                            Miradorビューアーの初期化に失敗しました。<br>
+                                            必要なスクリプトが読み込めませんでした。
+                                          </div>`;
+            }
+            console.error("Mirador global object is still undefined after loadMiradorScript completion. This is critical.");
+            return;
+        }
+
+        // ここから Mirador の初期化ロジック
+        console.log("Mirador global object is now available. Proceeding with initialization.");
+
+        const container = document.getElementById("mirador-viewer-container");
+        if (!container) {
+            console.error("Mirador container not found in DOM!");
+            return;
+        }
+
+        // ★★★ 重要な変更点：既存のDOM要素を確実にクリアし、再利用する ★★★
+        // OpenSeadragonがappendChildを呼び出す前に、コンテナがクリーンであることを保証
+        // また、古いMiradorインスタンスがDOMを参照し続けないようにする
+        if (miradorInstance) {
+            // Mirador 3 に公式な destroy メソッドはないが、
+            // ReactのReactDOM.unmountComponentAtNode() を使うと、
+            // そのDOMノードにマウントされたReactコンポーネントをクリーンアップできる。
+            // これにより、appendChild エラーを回避できる可能性が高い。
+            if (typeof ReactDOM !== 'undefined' && typeof ReactDOM.unmountComponentAtNode === 'function') {
+                ReactDOM.unmountComponentAtNode(container);
+                console.log("ReactDOM.unmountComponentAtNode called for Mirador container.");
+            }
+            container.innerHTML = ''; // 念のため、残余DOMもクリア
+            miradorInstance = null; // 古いインスタンスへの参照を削除
+        }
+        
+        currentManifestId = manifestId; // 新しいマニフェストIDを設定
+        pendingManifestId = null; // 初期化が始まるのでクリア
+
+        const config = {
+            id: "mirador-viewer-container", // ここは常に同じID
+            windows: [
+                {
+                    manifestId: manifestId,
+                    canvasIndex: 0,
+                    thumbnailNavigationPosition: "off",
+                },
+            ],
+            workspace: {
+                type: "single",
+                showZoomControls: true,
+            },
+            window: {
+                sideBarOpenByDefault: false,
+                defaultSideBarPanel: "info",
+                allowClose: false,
+                allowMaximize: true,
+                defaultView: "scroll",
+                allowTopMenuButton: true,
+                views: [{ key: "single" }, { key: "gallery" }, { key: "scroll" }],
+                // osdConfigは一旦コメントアウトしたまま
+                // osdConfig: { /* ... */ },
+            },
+        };
+        miradorInstance = Mirador.viewer(config);
+        console.log("Mirador viewer initialized successfully with manifest:", manifestId);
+    } catch (error) {
+        console.error(
+            "Error during Mirador script load or initialization:",
+            error
+        );
+        const container = document.getElementById("mirador-viewer-container");
+        if (container) {
+            container.innerHTML = `<div class="loading-message" style="color: red;">
+                                            Miradorビューアーの読み込みに失敗しました。<br>
+                                            詳細: ${error.message}<br>
+                                            インターネット接続を確認するか、ブラウザのキャッシュをクリアしてください。
+                                          </div>`;
+        }
+    }
+}
+
+      // Handle initial manifest from URL parameter (for direct access/debugging)
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialManifest = urlParams.get("manifest");
+
+      // ★★★ ページがロードされたら、まず Mirador スクリプトのロードを開始 ★★★
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log(
+          "Mirador host page DOMContentLoaded. Starting Mirador script load."
+        );
+        // ページの初回ロード時、またはリロード時にのみ実行
+        // initialManifest があればそれを待機、なければ Mirador スクリプトのロードだけ開始
+        if (initialManifest) {
+          initializeMirador(initialManifest); // 初期のマニフェストがあれば、ロードと初期化を試みる
+        } else {
+          // 初回ロード時はまだマニフェストがないので、スクリプトのロードだけ開始し、
+          // 後続のpostMessageを待つ
+          loadMiradorScript().catch((err) =>
+            console.error(
+              "Initial Mirador script load failed during DOMContentLoaded:",
+              err
+            )
+          );
+        }
+      });
+    </script>
+  </body>
+</html> -->
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mirador Viewer Host</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mirador/3.6.0/mirador.min.css">
+    <link rel="stylesheet" href="./lib/mirador.min.css">
     <style>
+        /* 既存のスタイル */
         html, body {
             height: 100%;
             width: 100%;
             margin: 0;
             padding: 0;
             overflow: hidden;
-            display: flex; /* 追加: コンテナを中央に配置するためにflexboxを使用 */
-            align-items: center; /* 追加 */
-            justify-content: center; /* 追加 */
-            background-color: #f0f0f0; /* 追加: 背景色で境界を分かりやすく */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
         }
         #mirador-viewer-container {
             width: 100%;
             height: 100%;
-            /* min-height: 200px; /* Optional: Minimum height if it collapses */
         }
-        /* ロード中のメッセージスタイル */
         .loading-message {
             font-family: sans-serif;
             font-size: 1.2em;
@@ -41,49 +314,45 @@
         let currentManifestId = null;
         let miradorInstance = null;
         let pendingManifestId = null;
-        let miradorScriptLoaded = false; // Miradorスクリプトのロード状態を追跡
+        let miradorScriptLoaded = false;
 
-        // Mirador スクリプトを動的にロードし、ロード完了を保証する関数
         function loadMiradorScript() {
             return new Promise((resolve, reject) => {
-                // 既にロード済みならすぐに解決
                 if (miradorScriptLoaded && typeof Mirador !== 'undefined') {
                     resolve();
                     return;
                 }
 
-                // スクリプト要素を作成
                 const script = document.createElement('script');
-                script.src = "https://cdnjs.cloudflare.com/ajax/libs/mirador/3.6.0/mirador.min.js";
-                script.async = true; // 非同期ロード
+                // ★ここをローカルパスに変更★
+                script.src = "./lib/mirador.min.js"; // Mirador本体のJSファイルのパス
+                script.async = true;
 
                 script.onload = () => {
-                    console.log("Mirador CDN script loaded successfully.");
+                    console.log("Mirador local script loaded successfully.");
                     miradorScriptLoaded = true;
-                    if (typeof Mirador === 'undefined') {
-                         console.error("Mirador object still undefined after script onload. Retrying after a short delay.");
-                         // 稀にonload直後にオブジェクトが利用できない場合があるので、少し待ってから解決
-                         setTimeout(() => {
-                             if (typeof Mirador !== 'undefined') {
-                                 resolve();
-                             } else {
-                                 reject(new Error("Mirador object not found after onload and retry."));
-                             }
-                         }, 100); // 100ms 待つ
-                    } else {
-                        resolve();
-                    }
+                    setTimeout(() => { // 短い遅延は維持し、確実性を高める
+                        if (typeof Mirador !== 'undefined') {
+                            resolve();
+                        } else {
+                            reject(new Error("Mirador object not found after script onload and retry (local)."));
+                        }
+                    }, 100);
                 };
 
                 script.onerror = (e) => {
-                    console.error("Failed to load Mirador CDN script.", e);
-                    reject(new Error("Mirador CDN script failed to load."));
+                    console.error("Failed to load Mirador local script.", e);
+                    reject(new Error("Mirador local script failed to load."));
                 };
 
-                // スクリプトをドキュメントの<body>に挿入してロードを開始
                 document.body.appendChild(script);
             });
         }
+
+        // ... (initializeMirador 関数や message listener など、その他のコードはそのまま) ...
+        // ※ initializeMirador 関数内の最初の if (typeof Mirador === 'undefined') { ... } ブロックは
+        //    loadMiradorScript() が await されるので、実質的には到達しにくくなりますが、
+        //    万一のための最終的な防御として残しておくことは可能です。
 
         async function initializeMirador(manifestId) {
             if (!manifestId) {
@@ -97,13 +366,13 @@
             }
 
             console.log('Attempting to initialize Mirador with manifest:', manifestId);
-            pendingManifestId = manifestId; // ロード待機中のマニフェストを保存
+            pendingManifestId = manifestId;
 
             try {
                 // Miradorスクリプトのロードが完了するまで待つ
                 await loadMiradorScript();
 
-                // ロード完了後、Mirador オブジェクトが利用可能であることを確認
+                // ロード完了後、Mirador オブジェクトが利用可能であることを確認 (再確認)
                 if (typeof Mirador === 'undefined') {
                     const container = document.getElementById('mirador-viewer-container');
                     if (container) {
@@ -116,10 +385,9 @@
                     return;
                 }
 
-                // ここから Mirador の初期化ロジック
                 console.log('Mirador global object is now available. Proceeding with initialization.');
                 currentManifestId = manifestId;
-                pendingManifestId = null; // 初期化が始まるのでクリア
+                pendingManifestId = null;
 
                 const container = document.getElementById('mirador-viewer-container');
                 if (container) {
@@ -142,29 +410,17 @@
                         type: 'single',
                         showZoomControls: true
                     },
-                    views: [
-                        {
-                            key: 'single',
-                            behaviors: ['individuals']
-                        },
-                        {
-                            key: 'gallery',
-                            behaviors: ['paged']
-                        },
-                        {
-                            key: 'scroll',
-                            behaviors: ['continuous']
-                        }
-                    ],
                     window: {
                         defaultView: 'scroll',
                         sideBarOpen: false,
                         allowClose: false,
                         allowMaximize: false,
-                        allowTopMenuButton: false,
+                        allowTopMenuButton: true,
                         forceViewer: true,
-                        viewsMenu: true
-                    }
+                        viewsMenu: true,
+                        views: [{ key: "single" }, { key: "gallery" }, { key: "scroll" }],
+
+                    },
                 };
                 miradorInstance = Mirador.viewer(config);
                 console.log('Mirador viewer initialized successfully.');
@@ -176,7 +432,7 @@
                     container.innerHTML = `<div class="loading-message" style="color: red;">
                                             Miradorビューアーの読み込みに失敗しました。<br>
                                             詳細: ${error.message}<br>
-                                            インターネット接続を確認するか、ブラウザのキャッシュをクリアしてください。
+                                            スクリプトのロードパスを確認してください。
                                           </div>`;
                 }
             }
@@ -184,29 +440,20 @@
 
         // Parent page message listener
         window.addEventListener('message', function(event) {
-            // Security: Restrict event.origin as appropriate for production
-            // if (event.origin !== "https://your-main-app-domain.github.io") return;
-
             if (event.data && event.data.type === 'loadManifest') {
                 const manifestId = event.data.manifestUrl;
                 initializeMirador(manifestId);
             }
         });
 
-        // Handle initial manifest from URL parameter (for direct access/debugging)
         const urlParams = new URLSearchParams(window.location.search);
         const initialManifest = urlParams.get('manifest');
 
-        // ★★★ ページがロードされたら、まず Mirador スクリプトのロードを開始 ★★★
         document.addEventListener('DOMContentLoaded', () => {
             console.log("Mirador host page DOMContentLoaded. Starting Mirador script load.");
-            // ページの初回ロード時、またはリロード時にのみ実行
-            // initialManifest があればそれを待機、なければ Mirador スクリプトのロードだけ開始
             if (initialManifest) {
-                initializeMirador(initialManifest); // 初期のマニフェストがあれば、ロードと初期化を試みる
+                initializeMirador(initialManifest);
             } else {
-                // 初回ロード時はまだマニフェストがないので、スクリプトのロードだけ開始し、
-                // 後続のpostMessageを待つ
                 loadMiradorScript().catch(err => console.error("Initial Mirador script load failed:", err));
             }
         });
