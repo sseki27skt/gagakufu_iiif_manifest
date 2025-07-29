@@ -99,7 +99,6 @@
             gap: 8px;
         }
 
-        /* --- ここからトグルスイッチのスタイル --- */
         .toggle-container {
             position: relative;
             display: flex;
@@ -169,7 +168,6 @@
             /* 選択されている方のテキストを白に */
         }
 
-        /* --- ここまでトグルスイッチのスタイル --- */
 
         .manifest-list {
             max-height: 400px;
@@ -596,7 +594,6 @@
         }
 
 
-        /* --- ここから修正版トグルスイッチのスタイル --- */
         /* --- トグルスイッチのスタイル --- */
         .toggle-container {
             position: relative;
@@ -666,7 +663,6 @@
             color: white;
         }
 
-        /* --- ここまで修正版トグルスイッチのスタイル --- */
     </style>
 </head>
 
@@ -1079,54 +1075,54 @@
             iframe.onload = () => { // iframeが完全にロードされた後にコンテンツを書き込む
                 iframe.contentWindow.document.open();
                 iframe.contentWindow.document.write(`
-        <!DOCTYPE html>
-        <html lang="ja">
-        <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>エラー</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-        background: #f5f5f5;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        text-align: center;
-    }
-    .error-content {
-        background: #ffebee;
-        padding: 30px;
-        border-radius: 8px;
-        border: 1px solid #ffcdd2;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        max-width: 500px;
-        color: #c62828;
-    }
-    h3 {
-        margin-top: 0;
-        color: #d32f2f;
-    }
-    p {
-        margin-bottom: 0;
-        line-height: 1.6;
-    }
-</style>
-        </head>
-        <body>
-<div class="error-content">
-    <h3>ビューアー読み込みエラー</h3>
-    <p>${message}</p>
-    <p style="font-size: 12px; margin-top: 15px; color: #7f0000;">
-        もし問題が解決しない場合、ブラウザのキャッシュをクリアするか、別のブラウザでお試しください。
-    </p>
-</div>
-        </body>
-        </html>
-    `);
+                    <!DOCTYPE html>
+                    <html lang="ja">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>エラー</title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                margin: 0;
+                                padding: 20px;
+                                background: #f5f5f5;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                height: 100vh;
+                                text-align: center;
+                            }
+                            .error-content {
+                                background: #ffebee;
+                                padding: 30px;
+                                border-radius: 8px;
+                                border: 1px solid #ffcdd2;
+                                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                                max-width: 500px;
+                                color: #c62828;
+                            }
+                            h3 {
+                                margin-top: 0;
+                                color: #d32f2f;
+                            }
+                            p {
+                                margin-bottom: 0;
+                                line-height: 1.6;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="error-content">
+                            <h3>ビューアー読み込みエラー</h3>
+                            <p>${message}</p>
+                            <p style="font-size: 12px; margin-top: 15px; color: #7f0000;">
+                                もし問題が解決しない場合、ブラウザのキャッシュをクリアするか、別のブラウザでお試しください。
+                            </p>
+                        </div>
+                    </body>
+                    </html>
+                `);
                 iframe.contentWindow.document.close();
             };
         }
@@ -1139,82 +1135,82 @@
 
             const iframe = document.getElementById('viewerIframe'); // IDを汎用的なものに変更
             iframe.src = 'data:text/html;charset=utf-8,' + encodeURIComponent(`
-    <!DOCTYPE html>
-    <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>代替ビューアー</title>
-        <style>
-body { 
-    font-family: Arial, sans-serif; 
-    margin: 0; 
-    padding: 20px; 
-    background: #f5f5f5;
-}
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-.manifest-link {
-    background: #2196f3;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 4px;
-    display: inline-block;
-    margin: 10px 0;
-}
-.manifest-link:hover {
-    background: #1976d2;
-}
-.troubleshoot {
-    background: #fff3cd;
-    padding: 15px;
-    border-radius: 6px;
-    border-left: 4px solid #ffc107;
-    margin-top: 20px;
-}
-        </style>
-    </head>
-    <body>
-        <div class="container">
-<h3>🔧 代替ビューアー</h3>
-<p>Universal Viewerが利用できないため、代替手段を提供します：</p>
-
-<h4>📄 マニフェストファイル：</h4>
-<a href="${manifestUrl}" target="_blank" class="manifest-link">
-    マニフェストをJSONで表示
-</a>
-
-<h4>🌐 外部ビューアーで開く：</h4>
-<a href="https://universalviewer.io/uv.html?manifest=${encodeURIComponent(manifestUrl)}" 
-   target="_blank" class="manifest-link">
-    Universal Viewer (外部)で開く
-</a>
-
-<a href="https://projectmirador.org/embed/?manifest=${encodeURIComponent(manifestUrl)}" 
-   target="_blank" class="manifest-link">
-    Mirador Viewerで開く
-</a>
-
-<div class="troubleshoot">
-    <h4>💡 トラブルシューティング：</h4>
-    <ul>
-        <li>広告ブロッカーを無効にする</li>
-        <li>ブラウザの拡張機能を確認する</li>
-        <li>別のブラウザで試す</li>
-        <li>HTTPSの代わりにHTTPでアクセスする</li>
-    </ul>
-</div>
-        </div>
-    </body>
-    </html>
-`);
+                <!DOCTYPE html>
+                <html lang="ja">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>代替ビューアー</title>
+                    <style>
+                        body { 
+                            font-family: Arial, sans-serif; 
+                            margin: 0; 
+                            padding: 20px; 
+                            background: #f5f5f5;
+                        }
+                        .container {
+                            max-width: 800px;
+                            margin: 0 auto;
+                            background: white;
+                            padding: 20px;
+                            border-radius: 8px;
+                            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                        }
+                        .manifest-link {
+                            background: #2196f3;
+                            color: white;
+                            padding: 10px 20px;
+                            text-decoration: none;
+                            border-radius: 4px;
+                            display: inline-block;
+                            margin: 10px 0;
+                        }
+                        .manifest-link:hover {
+                            background: #1976d2;
+                        }
+                        .troubleshoot {
+                            background: #fff3cd;
+                            padding: 15px;
+                            border-radius: 6px;
+                            border-left: 4px solid #ffc107;
+                            margin-top: 20px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <h3>🔧 代替ビューアー</h3>
+                        <p>Universal Viewerが利用できないため、代替手段を提供します：</p>
+                        
+                        <h4>📄 マニフェストファイル：</h4>
+                        <a href="${manifestUrl}" target="_blank" class="manifest-link">
+                            マニフェストをJSONで表示
+                        </a>
+                        
+                        <h4>🌐 外部ビューアーで開く：</h4>
+                        <a href="https://universalviewer.io/uv.html?manifest=${encodeURIComponent(manifestUrl)}" 
+                           target="_blank" class="manifest-link">
+                            Universal Viewer (外部)で開く
+                        </a>
+                        
+                        <a href="https://projectmirador.org/embed/?manifest=${encodeURIComponent(manifestUrl)}" 
+                           target="_blank" class="manifest-link">
+                            Mirador Viewerで開く
+                        </a>
+                        
+                        <div class="troubleshoot">
+                            <h4>💡 トラブルシューティング：</h4>
+                            <ul>
+                                <li>広告ブロッカーを無効にする</li>
+                                <li>ブラウザの拡張機能を確認する</li>
+                                <li>別のブラウザで試す</li>
+                                <li>HTTPSの代わりにHTTPでアクセスする</li>
+                            </ul>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `);
         }
 
         // マニフェスト一覧でアクティブ状態を更新
@@ -1434,15 +1430,11 @@ body {
                         header.classList.add('collapsed');
                         contentContainer.classList.add('collapsed');
                     }
+                    // アコーディオンメニューでコンテンツの表示/非表示を切り替える
                     header.onclick = () => {
-                        const isCollapsed = header.classList.contains('collapsed');
-                        if (isCollapsed) {
-                            header.classList.remove('collapsed');
-                            contentContainer.classList.remove('collapsed');
-                        } else {
-                            header.classList.add('collapsed');
-                            contentContainer.classList.remove('collapsed');
-                        }
+                        // toggleメソッドで 'collapsed' クラスの付け外しを自動的に行う
+                        header.classList.toggle('collapsed');
+                        contentContainer.classList.toggle('collapsed');
                     };
 
                     let volumeCounter = 0; // 各シリーズごとに巻番号をリセット
@@ -1472,11 +1464,11 @@ body {
                         volumeCounter++; // 次の項目のためにインクリメント
 
                         item.innerHTML = `
-    <div style="line-height: 1.3;">
-        <div style="color: #666; font-size: 10px; margin-bottom: 2px;">${volumeNumberDisplay}</div>
-        <div style="font-weight: 500; color: #333;">${displayTitle}</div>
-    </div>
-`;
+                            <div style="line-height: 1.3;">
+                                <div style="color: #666; font-size: 10px; margin-bottom: 2px;">${volumeNumberDisplay}</div>
+                                <div style="font-weight: 500; color: #333;">${displayTitle}</div>
+                            </div>
+                        `;
                         contentContainer.appendChild(item);
                     });
 
@@ -1493,14 +1485,14 @@ body {
 
                 const listContainer = document.getElementById('manifestList');
                 listContainer.innerHTML = `
-        <div style="padding: 20px; text-align: center; color: #c62828;">
-<h3>読み込みエラー</h3>
-<p>${error.message}</p>
-<p style="font-size: 12px; margin-top: 10px;">
-    コンソールでエラー詳細を確認してください
-</p>
-        </div>
-    `;
+                    <div style="padding: 20px; text-align: center; color: #c62828;">
+                        <h3>読み込みエラー</h3>
+                        <p>${error.message}</p>
+                        <p style="font-size: 12px; margin-top: 10px;">
+                            コンソールでエラー詳細を確認してください
+                        </p>
+                    </div>
+                `;
             }
         }
 
@@ -1542,27 +1534,27 @@ body {
                 const title = await getManifestTitle(manifestUrl);
                 if (title) {
                     itemElement.innerHTML = `
-<div style="line-height: 1.3;">
-    <div style="color: #666; font-size: 10px; margin-bottom: 2px;">Vol.${String(volume).padStart(2, '0')}</div>
-    <div style="font-weight: 500; font-size: 12px; color: #333;">${title}</div>
-</div>
-        `;
+                        <div style="line-height: 1.3;">
+                            <div style="color: #666; font-size: 10px; margin-bottom: 2px;">Vol.${String(volume).padStart(2, '0')}</div>
+                            <div style="font-weight: 500; font-size: 12px; color: #333;">${title}</div>
+                        </div>
+                    `;
                 } else {
                     itemElement.innerHTML = `
-<div style="font-weight: 500; color: #666;">
-    Volume ${String(volume).padStart(2, '0')}
-    <div style="font-size: 10px; color: #999;">(タイトル取得失敗)</div>
-</div>
-        `;
+                        <div style="font-weight: 500; color: #666;">
+                            Volume ${String(volume).padStart(2, '0')}
+                            <div style="font-size: 10px; color: #999;">(タイトル取得失敗)</div>
+                        </div>
+                    `;
                 }
             } catch (error) {
                 console.error(`Failed to load title for ${manifestUrl}:`, error);
                 itemElement.innerHTML = `
-        <div style="font-weight: 500; color: #666;">
-Volume ${String(volume).padStart(2, '0')}
-<div style="font-size: 10px; color: #999;">(タイトル取得失敗)</div>
-        </div>
-    `;
+                    <div style="font-weight: 500; color: #666;">
+                        Volume ${String(volume).padStart(2, '0')}
+                        <div style="font-size: 10px; color: #999;">(タイトル取得失敗)</div>
+                    </div>
+                `;
             }
         }
 
@@ -1576,28 +1568,28 @@ Volume ${String(volume).padStart(2, '0')}
             // GitHub Pages での利用を促すメッセージを表示
             const helpDiv = document.createElement('div');
             helpDiv.style.cssText = `
-    background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
-    border: 1px solid #c8e6c9;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px 0;
-    text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-`;
+                background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+                border: 1px solid #c8e6c9;
+                border-radius: 8px;
+                padding: 16px;
+                margin: 16px 0;
+                text-align: center;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            `;
             helpDiv.innerHTML = `
-    <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: #1b5e20;">
-        🌐 GitHub Pages版で公開中
-    </p>
-    <p style="margin: 0 0 5px 0; font-size: 12px; color: #2e7d32;">
-        • ローカルサーバー不要でアクセス可能
-    </p>
-    <p style="margin: 0 0 5px 0; font-size: 12px; color: #2e7d32;">
-        • 115巻すべてのマニフェストが利用可能
-    </p>
-    <p style="margin: 0; font-size: 12px; color: #2e7d32;">
-        • Universal Viewerで高解像度表示
-    </p>
-`;
+                <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: #1b5e20;">
+                    🌐 GitHub Pages版で公開中
+                </p>
+                <p style="margin: 0 0 5px 0; font-size: 12px; color: #2e7d32;">
+                    • ローカルサーバー不要でアクセス可能
+                </p>
+                <p style="margin: 0 0 5px 0; font-size: 12px; color: #2e7d32;">
+                    • 115巻すべてのマニフェストが利用可能
+                </p>
+                <p style="margin: 0; font-size: 12px; color: #2e7d32;">
+                    • Universal Viewerで高解像度表示
+                </p>
+            `;
             listContainer.appendChild(helpDiv);
         }
 
@@ -1994,31 +1986,31 @@ Volume ${String(volume).padStart(2, '0')}
 
             // 統計情報をHTMLで表示
             const statsHtml = `
-    <div class="statistics-panel">
-        <h4>📊 楽曲統計</h4>
-        <div class="stat-group">
-<h5>楽器別 (${stats.instruments.length}種類)</h5>
-${stats.instruments.map(inst =>
+                <div class="statistics-panel">
+                    <h4>📊 楽曲統計</h4>
+                    <div class="stat-group">
+                        <h5>楽器別 (${stats.instruments.length}種類)</h5>
+                        ${stats.instruments.map(inst =>
                 `<div class="stat-item">
-        <span class="piece-badge instrument">${inst}</span>
-        <span>${instrumentStats[inst]}曲</span>
-    </div>`
+                                <span class="piece-badge instrument">${inst}</span>
+                                <span>${instrumentStats[inst]}曲</span>
+                            </div>`
             ).join('')}
-        </div>
-        <div class="stat-group">
-<h5>調別 (${stats.modes.length}種類)</h5>
-${stats.modes.map(mode =>
+                    </div>
+                    <div class="stat-group">
+                        <h5>調別 (${stats.modes.length}種類)</h5>
+                        ${stats.modes.map(mode =>
                 `<div class="stat-item">
-        <span class="piece-badge mode">${mode}</span>
-        <span>${modeStats[mode]}曲</span>
-    </div>`
+                                <span class="piece-badge mode">${mode}</span>
+                                <span>${modeStats[mode]}曲</span>
+                            </div>`
             ).join('')}
-        </div>
-        <div class="stat-total">
-<strong>総楽曲数: ${stats.total_pieces}曲</strong>
-        </div>
-    </div>
-`;
+                    </div>
+                    <div class="stat-total">
+                        <strong>総楽曲数: ${stats.total_pieces}曲</strong>
+                    </div>
+                </div>
+            `;
 
             const resultsContainer = document.getElementById('searchResults');
             const piecesListContainer = document.getElementById('piecesList');
@@ -2096,16 +2088,16 @@ ${stats.modes.map(mode =>
                 piecesListContainer.innerHTML = '<div class="piece-item">検索条件に一致する楽曲が見つかりません</div>';
             } else {
                 piecesListContainer.innerHTML = pieces.map(piece => `
-        <div class="piece-item" onclick="loadManifest('${piece['@id']}')">
-<div class="piece-title">${piece.metadata.piece_name}</div>
-<div class="piece-meta">
-    <span class="piece-badge instrument">${piece.metadata.instrument}</span>
-    <span class="piece-badge mode">${piece.metadata.mode}</span>
-    <span class="piece-badge collection">${getShortCollectionName(piece.metadata.collection)}</span>
-    <span>ページ ${piece.metadata.page_range}</span>
-</div>
-        </div>
-    `).join('');
+                    <div class="piece-item" onclick="loadManifest('${piece['@id']}')">
+                        <div class="piece-title">${piece.metadata.piece_name}</div>
+                        <div class="piece-meta">
+                            <span class="piece-badge instrument">${piece.metadata.instrument}</span>
+                            <span class="piece-badge mode">${piece.metadata.mode}</span>
+                            <span class="piece-badge collection">${getShortCollectionName(piece.metadata.collection)}</span>
+                            <span>ページ ${piece.metadata.page_range}</span>
+                        </div>
+                    </div>
+                `).join('');
             }
         }
 
@@ -2144,7 +2136,6 @@ ${stats.modes.map(mode =>
             // 全画面表示サポートを有効化
             enableFullscreenSupport();
 
-            // ▼▼▼ ここから新しいトグルスイッチのロジック ▼▼▼
             const toggleInputs = document.querySelectorAll('.toggle-input');
 
             // トグルスイッチの変更を監視するイベントリスナー
@@ -2167,7 +2158,6 @@ ${stats.modes.map(mode =>
             if (initialViewer) {
                 activeViewerType = initialViewer.value;
             }
-            // ▲▲▲ ここまで新しいトグルスイッチのロジック ▲▲▲
 
             // プロトコルの問題を早期検出
             const hasProtocolIssue = detectProtocolIssue();
@@ -2178,49 +2168,49 @@ ${stats.modes.map(mode =>
             iframe.onload = () => { // Ensure content is loaded before displaying message
                 iframe.contentWindow.document.open();
                 iframe.contentWindow.document.write(`
-        <!DOCTYPE html>
-        <html lang="ja">
-        <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>雅楽譜 IIIF ビューアー</title>
-        </head>
-        <body style="margin:0;padding:0;font-family:Arial,sans-serif;">
-<div style="display:flex;align-items:center;justify-content:center;height:100vh;text-align:center;color:#666;background:#f9f9f9;">
-    <div style="padding:40px;max-width:600px;">
-        <h2 style="margin:0 0 20px 0;color:#333;">🎼 雅楽譜 IIIF ビューアー</h2>
-        <p style="margin:0 0 15px 0;font-size:16px;line-height:1.6;">左側のリストからマニフェストを選択してください</p>
-        <div style="background:#e3f2fd;padding:20px;border-radius:8px;margin:20px 0;border-left:4px solid #2196f3;">
-<p style="margin:0 0 10px 0;font-size:14px;color:#1565c0;font-weight:bold;">📚 利用可能なコレクション：</p>
-<p style="margin:0 0 8px 0;font-size:13px;color:#333;">• 宮内庁書陵部所蔵版</p>
-<p style="margin:0;font-size:13px;color:#333;">• 東京芸術大学所蔵版</p>
-        </div>
-        ${hasProtocolIssue ? `
-        <div style="background:#ffebee;padding:15px;border-radius:6px;margin:20px 0;border-left:4px solid #f44336;">
-<p style="margin:0 0 10px 0;font-size:13px;color:#c62828;font-weight:bold;">
-    ⚠️ セキュリティ制限について
-</p>
-<p style="margin:0 0 8px 0;font-size:12px;color:#c62828;">
-    現在HTTPSページからHTTPリソースへのアクセスが制限されています。
-</p>
-<p style="margin:0;font-size:12px;color:#c62828;">
-    ローカルマニフェストを表示するには、HTTPでアクセスしてください。
-</p>
-        </div>
-        ` : ''}
-        <p style="margin:20px 0 0 0;font-size:14px;color:#888;">
-または、カスタムURLを入力して任意のIIIFマニフェストを表示できます
-        </p>
-        <div style="margin-top:30px;padding:15px;background:#fff3cd;border-radius:6px;border-left:4px solid #ffc107;">
-<p style="margin:0;font-size:13px;color:#856404;">
-    💡 ヒント: マニフェストを選択すると、高解像度の雅楽譜画像をズーム・パン操作で詳細に閲覧できます
-</p>
-        </div>
-    </div>
-</div>
-        </body>
-        </html>
-    `);
+                    <!DOCTYPE html>
+                    <html lang="ja">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>雅楽譜 IIIF ビューアー</title>
+                    </head>
+                    <body style="margin:0;padding:0;font-family:Arial,sans-serif;">
+                        <div style="display:flex;align-items:center;justify-content:center;height:100vh;text-align:center;color:#666;background:#f9f9f9;">
+                            <div style="padding:40px;max-width:600px;">
+                                <h2 style="margin:0 0 20px 0;color:#333;">🎼 雅楽譜 IIIF ビューアー</h2>
+                                <p style="margin:0 0 15px 0;font-size:16px;line-height:1.6;">左側のリストからマニフェストを選択してください</p>
+                                <div style="background:#e3f2fd;padding:20px;border-radius:8px;margin:20px 0;border-left:4px solid #2196f3;">
+                                    <p style="margin:0 0 10px 0;font-size:14px;color:#1565c0;font-weight:bold;">📚 利用可能なコレクション：</p>
+                                    <p style="margin:0 0 8px 0;font-size:13px;color:#333;">• 宮内庁書陵部所蔵版</p>
+                                    <p style="margin:0;font-size:13px;color:#333;">• 東京芸術大学所蔵版</p>
+                                </div>
+                                ${hasProtocolIssue ? `
+                                <div style="background:#ffebee;padding:15px;border-radius:6px;margin:20px 0;border-left:4px solid #f44336;">
+                                    <p style="margin:0 0 10px 0;font-size:13px;color:#c62828;font-weight:bold;">
+                                        ⚠️ セキュリティ制限について
+                                    </p>
+                                    <p style="margin:0 0 8px 0;font-size:12px;color:#c62828;">
+                                        現在HTTPSページからHTTPリソースへのアクセスが制限されています。
+                                    </p>
+                                    <p style="margin:0;font-size:12px;color:#c62828;">
+                                        ローカルマニフェストを表示するには、HTTPでアクセスしてください。
+                                    </p>
+                                </div>
+                                ` : ''}
+                                <p style="margin:20px 0 0 0;font-size:14px;color:#888;">
+                                    または、カスタムURLを入力して任意のIIIFマニフェストを表示できます
+                                </p>
+                                <div style="margin-top:30px;padding:15px;background:#fff3cd;border-radius:6px;border-left:4px solid #ffc107;">
+                                    <p style="margin:0;font-size:13px;color:#856404;">
+                                        💡 ヒント: マニフェストを選択すると、高解像度の雅楽譜画像をズーム・パン操作で詳細に閲覧できます
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </body>
+                    </html>
+                `);
                 iframe.contentWindow.document.close();
             };
 
@@ -2241,7 +2231,6 @@ ${stats.modes.map(mode =>
             updateSearchClearButton();
         });
 
-        // ...（元のファイルの残りのJavaScriptコードをここに貼り付けてください）...
     </script>
 </body>
 
