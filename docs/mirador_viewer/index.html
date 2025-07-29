@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mirador Viewer Host</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mirador/3.6.0/mirador.min.css">
     <style>
-        html, body {
+        html,
+        body {
             height: 100%;
             width: 100%;
             margin: 0;
             padding: 0;
             overflow: hidden;
         }
+
         #mirador-viewer-container {
             width: 100%;
             height: 100%;
         }
     </style>
 </head>
+
 <body>
     <div id="mirador-viewer-container"></div>
 
@@ -63,6 +67,7 @@
                 return;
             }
 
+
             const config = {
                 id: 'mirador-viewer-container',
                 windows: [
@@ -76,35 +81,26 @@
                     type: 'single',
                     showZoomControls: true
                 },
-                views: [
-                    {
-                        key: 'single',
-                        behaviors: ['individuals']
-                    },
-                    {
-                        key: 'gallery',
-                        behaviors: ['paged']
-                    },
-                    {
-                        key: 'scroll',
-                        behaviors: ['continuous']
-                    }
-                ],
+                // ★★★ 修正箇所 ★★★
+                // windowオブジェクトの中に、利用可能なビューのリストを定義します。
                 window: {
-                    defaultView: 'scroll',
+                    defaultView: 'scroll', // デフォルトをスクロール表示に
                     sideBarOpen: false,
                     allowClose: false,
                     allowMaximize: false,
-                    allowTopMenuButton: false,
-                    forceViewer: true,
-                    viewsMenu: true
+                    views: [ // このviewsプロパティをwindow内に移動
+                        { key: 'single' },
+                        { key: 'gallery' },
+                        { key: 'scroll' }
+                    ]
                 }
             };
+
             miradorInstance = Mirador.viewer(config);
         }
 
         // Parent page message listener
-        window.addEventListener('message', function(event) {
+        window.addEventListener('message', function (event) {
             // Security: Restrict event.origin as appropriate for production
             // if (event.origin !== "https://your-main-app-domain.github.io") return;
 
@@ -122,4 +118,5 @@
         }
     </script>
 </body>
+
 </html>
