@@ -6,7 +6,6 @@
     <title>雅楽譜閲覧支援サイト</title>
     <meta name="description" content="IIIFで公開されている雅楽譜を閲覧できます">
     
-    <!-- 旧字正規化設定ファイル -->
     <script src="kanji-normalization-config.js"></script>
     <style>
         * {
@@ -430,8 +429,8 @@
             -moz-appearance: none;
             background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
             border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 12px 40px 12px 16px;
+            border-radius: 8px; /* 修正 */
+            padding: 10px 35px 10px 15px; /* 修正 */
             font-size: 14px;
             font-weight: 500;
             color: #475569;
@@ -439,23 +438,23 @@
             transition: all 0.3s ease;
             position: relative;
             min-width: 120px;
-            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.05);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); /* 修正 */
             background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>");
             background-repeat: no-repeat;
-            background-position: right 12px center;
+            background-position: right 10px center; /* 修正 */
             background-size: 16px;
         }
         
         .filter-select:hover {
             border-color: #3b82f6;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
-            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 修正 */
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%); /* 修正 */
         }
         
         .filter-select:focus {
             outline: none;
             border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), 0 4px 15px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15), 0 2px 8px rgba(0,0,0,0.1); /* 修正 */
         }
         
         .filter-select option {
@@ -463,11 +462,18 @@
             background: white;
             color: #374151;
             font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease; /* 追加 */
         }
         
+        .filter-select option:hover { /* 追加 */
+            background-color: #e0e6f7; /* 明るい青 */
+            color: #1a2b4a; /* 少し濃い文字色 */
+        }
+
         .filter-select option:checked {
             background: #3b82f6;
             color: white;
+            font-weight: 600; /* 追加 */
         }
         
         /* フィルターセクションのレイアウト */
@@ -612,7 +618,6 @@
     
     <div class="main-container">
         <div class="sidebar">
-            <!-- 楽曲検索セクション -->
             <div class="search-section">
                 <h3>楽曲検索</h3>
                 <div class="search-container">
@@ -657,7 +662,6 @@
                 </div>
             </div>
             
-            <!-- マニフェスト一覧 -->
             <div class="section">
                 <h3>📂 マニフェスト一覧</h3>
                 <div class="manifest-list" id="manifestList">
@@ -665,7 +669,6 @@
                 </div>
             </div>
             
-            <!-- カスタムURL -->
             <div class="section">
                 <h3>🔗 カスタムURL</h3>
                 <input type="text" class="custom-url" id="customUrl" 
@@ -674,7 +677,6 @@
                 <button class="btn secondary" onclick="refreshManifestList()">一覧更新</button>
             </div>
             
-            <!-- 現在の情報 -->
             <div class="section">
                 <div class="current-info">
                     <h4>📊 現在のマニフェスト</h4>
@@ -710,6 +712,9 @@
         // Universal Viewer の設定
         const UV_BASE_URL = 'https://universalviewer.io/examples/uv/uv.html';
         
+        // GitHub PagesのベースURL（これが各マニフェストの正規のURL）
+        const GITHUB_IIIF_BASE_URL = 'https://sseki27skt.github.io/gagakufu_iiif_manifest';
+
         // GitHub Pages用設定：Mixed Content問題は発生しない
         function detectProtocolIssue() {
             // GitHub Pages版では常にHTTPSなので問題なし
@@ -839,24 +844,26 @@
         }
         
         // マニフェストを読み込んでUniversal Viewerで表示
-        async function loadManifest(manifestUrl) {
+        async function loadManifest(originalManifestUrl) { // ここで受け取るのは常にオリジナルのHTTPS URL
             try {
                 showStatus('マニフェストを読み込み中...', 'info');
-                console.log('Loading manifest:', manifestUrl);
+                // console.log('Loading manifest (original URL):', originalManifestUrl); // 削除
                 
-                // ローカル環境でのCORSエラーを回避
+                let fetchUrl = originalManifestUrl; // このスクリプトがfetchするためのURL
                 const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-                if (isLocal && manifestUrl.includes('sseki27skt.github.io')) {
-                    // ローカル環境ではGitHub PagesのURLをローカルURLに変換
-                    manifestUrl = manifestUrl.replace(
-                        'https://sseki27skt.github.io/gagakufu_iiif_manifest',
-                        `${window.location.protocol}//${window.location.host}`
+                const localBaseUrl = `${window.location.protocol}//${window.location.host}`;
+
+                // ローカル環境で実行している場合、fetchUrlをローカルパスに変換
+                if (isLocal && originalManifestUrl.startsWith(GITHUB_IIIF_BASE_URL)) {
+                    fetchUrl = originalManifestUrl.replace(
+                        GITHUB_IIIF_BASE_URL,
+                        localBaseUrl
                     );
-                    console.log('Converted to local URL:', manifestUrl);
+                    // console.log('Converted for local fetching:', fetchUrl); // 削除
                 }
                 
                 // マニフェストをフェッチ（詳細なエラーハンドリング付き）
-                const response = await fetch(manifestUrl, {
+                const response = await fetch(fetchUrl, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json'
@@ -875,19 +882,19 @@
                 }
                 
                 const manifest = await response.json();
-                manifestCache.set(manifestUrl, manifest);
+                manifestCache.set(originalManifestUrl, manifest); // キャッシュにはオリジナルURLで保存
                 
-                // 情報を更新
-                updateManifestInfo(manifestUrl, manifest);
-                currentManifestUrl = manifestUrl;
+                // 情報を更新（表示にはオリジナルURLを使用）
+                updateManifestInfo(originalManifestUrl, manifest);
+                currentManifestUrl = originalManifestUrl;
                 
-                // アクティブ状態を更新
-                updateActiveManifest(manifestUrl);
+                // アクティブ状態を更新（オリジナルURLを使用）
+                updateActiveManifest(originalManifestUrl);
                 
                 showStatus('マニフェストの読み込みが完了しました。ビューアーを更新中...', 'info');
                 
-                // Universal Viewer を更新
-                await updateViewer(manifestUrl);
+                // Universal Viewer を更新（常にオリジナルURLを渡す）
+                await updateViewer(originalManifestUrl);
                 
                 showStatus('ビューアーの更新が完了しました', 'success');
                 
@@ -901,14 +908,16 @@
         }
         
         // ビューアーを更新する関数
-        async function updateViewer(manifestUrl) {
+        // この関数には常にUniversal Viewerが読み込めるURL（GitHub PagesのHTTPS URL）が渡されます。
+        async function updateViewer(manifestUrlForUV) {
             const iframe = document.getElementById('universal-viewer');
             
             try {
                 // Universal Viewerを適切な初期設定で読み込み
-                const uvUrl = `${UV_BASE_URL}#?manifest=${encodeURIComponent(manifestUrl)}&c=0&m=0&s=0&cv=0&z=0&r=0`;
+                // ここではmanifestUrlForUVが既に正しいHTTPSのIIIFマニフェストURLであることを前提とする
+                const uvUrl = `${UV_BASE_URL}#?manifest=${encodeURIComponent(manifestUrlForUV)}&c=0&m=0&s=0&cv=0&z=0&r=0`;
                 
-                console.log('Universal Viewer URL:', uvUrl);
+                // console.log('Universal Viewer URL:', uvUrl); // 削除
                 
                 // iframeをリロード
                 iframe.src = 'about:blank';
@@ -920,32 +929,32 @@
                     // iframe の読み込み完了を監視（タイムアウト付き）
                     let loadTimeout = setTimeout(() => {
                         console.error('Universal Viewer loading timeout');
-                        showAlternativeViewer(manifestUrl);
+                        showAlternativeViewer(manifestUrlForUV);
                     }, 10000); // 10秒でタイムアウト
                     
                     iframe.onload = () => {
                         clearTimeout(loadTimeout);
-                        console.log('Universal Viewer iframe loaded successfully');
+                        // console.log('Universal Viewer iframe loaded successfully'); // 削除
                         showStatus('画像ビューアーの読み込みが完了しました', 'success');
                     };
                     
                     iframe.onerror = () => {
                         clearTimeout(loadTimeout);
                         console.error('Universal Viewer iframe failed to load');
-                        showAlternativeViewer(manifestUrl);
+                        showAlternativeViewer(manifestUrlForUV);
                     };
                     
                 }, 500);
                 
             } catch (error) {
                 console.error('Error updating viewer:', error);
-                showAlternativeViewer(manifestUrl);
+                showAlternativeViewer(manifestUrlForUV);
             }
         }
         
         // 代替ビューアーを表示
         function showAlternativeViewer(manifestUrl) {
-            console.log('Showing alternative viewer for:', manifestUrl);
+            // console.log('Showing alternative viewer for:', manifestUrl); // 削除
             showStatus('Universal Viewerが利用できません。代替表示を使用します', 'error');
             
             const iframe = document.getElementById('universal-viewer');
@@ -1028,91 +1037,33 @@
             `);
         }
         
-        // エラーをビューアーエリアに表示
-        function showErrorInViewer(errorMessage) {
-            const iframe = document.getElementById('universal-viewer');
-            iframe.src = 'data:text/html;charset=utf-8,' + encodeURIComponent(`
-                <!DOCTYPE html>
-                <html lang="ja">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>エラー - 雅楽譜 IIIF ビューアー</title>
-                    <style>
-                        body { 
-                            font-family: Arial, sans-serif; 
-                            display: flex; 
-                            align-items: center; 
-                            justify-content: center; 
-                            height: 100vh; 
-                            margin: 0; 
-                            background: #f5f5f5;
-                        }
-                        .error-container {
-                            text-align: center;
-                            padding: 40px;
-                            background: white;
-                            border-radius: 8px;
-                            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                            max-width: 500px;
-                        }
-                        .error-icon { font-size: 48px; margin-bottom: 20px; }
-                        h3 { color: #c62828; margin-bottom: 15px; }
-                        p { color: #666; line-height: 1.6; }
-                        .retry-button {
-                            background: #2196f3;
-                            color: white;
-                            border: none;
-                            padding: 10px 20px;
-                            border-radius: 4px;
-                            cursor: pointer;
-                            margin-top: 20px;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="error-container">
-                        <div class="error-icon">⚠️</div>
-                        <h3>読み込みエラー</h3>
-                        <p>${errorMessage}</p>
-                        <p>以下をご確認ください：</p>
-                        <ul style="text-align: left; color: #666;">
-                            <li>ローカルHTTPサーバーが起動していること</li>
-                            <li>マニフェストURLが正しいこと</li>
-                            <li>ネットワーク接続が正常であること</li>
-                        </ul>
-                        <button class="retry-button" onclick="parent.location.reload()">ページを再読み込み</button>
-                    </div>
-                </body>
-                </html>
-            `);
-        }
-        
         // マニフェスト一覧でアクティブ状態を更新
         function updateActiveManifest(url) {
             const items = document.querySelectorAll('.manifest-item');
             items.forEach(item => {
                 item.classList.remove('active');
-                if (item.dataset.url === url) {
+                if (item.dataset.url === url) { // dataset.url はオリジナルURLなので問題なし
                     item.classList.add('active');
                 }
             });
         }
         
         // マニフェストからタイトル情報を取得する関数（雅楽譜専用改良版）
-        async function getManifestTitle(manifestUrl) {
+        async function getManifestTitle(originalManifestUrl) { // オリジナルURLを受け取る
             try {
-                // ローカル環境でのCORSエラーを回避
+                let fetchUrl = originalManifestUrl;
                 const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-                if (isLocal && manifestUrl.includes('sseki27skt.github.io')) {
-                    // ローカル環境ではGitHub PagesのURLをローカルURLに変換
-                    manifestUrl = manifestUrl.replace(
-                        'https://sseki27skt.github.io/gagakufu_iiif_manifest',
-                        `${window.location.protocol}//${window.location.host}`
+                const localBaseUrl = `${window.location.protocol}//${window.location.host}`;
+
+                // ローカル環境で実行している場合、fetchUrlをローカルパスに変換
+                if (isLocal && originalManifestUrl.startsWith(GITHUB_IIIF_BASE_URL)) {
+                    fetchUrl = originalManifestUrl.replace(
+                        GITHUB_IIIF_BASE_URL,
+                        localBaseUrl
                     );
                 }
                 
-                const response = await fetch(manifestUrl, {
+                const response = await fetch(fetchUrl, {
                     cache: 'no-cache',
                     headers: {
                         'Cache-Control': 'no-cache',
@@ -1170,7 +1121,7 @@
                         if (label && label.includes('撰定年')) {
                             撰定年 = value;
                         } else if (label && label.includes('部')) {
-                            部 = value;
+                             部 = value;
                         } else if (label && label.includes('調')) {
                             調 = value;
                         }
@@ -1216,7 +1167,7 @@
                 
                 return title;
             } catch (error) {
-                console.error('Failed to fetch manifest title:', manifestUrl, error);
+                console.error('Failed to fetch manifest title:', originalManifestUrl, error);
                 return null;
             }
         }
@@ -1224,9 +1175,8 @@
         // ローカルマニフェスト一覧を読み込み
         async function loadManifestList() {
             try {
-                console.log('Starting to load manifest list...');
+                // console.log('Starting to load manifest list...'); // 削除
                 
-                // プロトコルの問題をチェック
                 if (detectProtocolIssue()) {
                     loadFallbackManifestList();
                     return;
@@ -1237,83 +1187,77 @@
                 const listContainer = document.getElementById('manifestList');
                 listContainer.innerHTML = '<div class="loading">マニフェスト一覧を読み込み中...</div>';
                 
-                // 環境を判定してベースURLを設定
                 const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-                console.log(isLocal ? 'Local mode - using local files' : 'GitHub Pages mode - no server check needed');
-                
-                // 環境に応じたベースURL
-                const baseUrl = isLocal ? 
-                    `${window.location.protocol}//${window.location.host}` : 
-                    'https://sseki27skt.github.io/gagakufu_iiif_manifest';
-                
-                // ローカルマニフェストファイルの一覧を生成
-                const manifestFiles = [];
-                
-                console.log('Generating manifest file list...');
-                
-                // 100376839シリーズ（東京芸術大学所蔵版）
-                for (let i = 0; i <= 42; i++) {
-                    manifestFiles.push({
-                        volume: i,
-                        url: `${baseUrl}/100376839/volume${i}_manifest.json`,
-                        series: '100376839'
-                    });
-                }
-                
-                // 100270332シリーズ（宮内庁書陵部所蔵版）
-                for (let i = 0; i <= 72; i++) {
-                    manifestFiles.push({
-                        volume: i,
-                        url: `${baseUrl}/100270332/volume${i}_manifest.json`,
-                        series: '100270332'
-                    });
-                }
-                
-                console.log(`Generated ${manifestFiles.length} manifest files`);
-                listContainer.innerHTML = '';
-                
-                // シリーズごとにグループ化
+                const localBaseUrl = `${window.location.protocol}//${window.location.host}`;
+
                 const groups = {
                     '100376839': [],
-                    '100270332': [],
-                    'external': []
+                    '100270332': []
                 };
-                
-                manifestFiles.forEach(file => {
-                    groups[file.series].push(file);
-                });
-                
-                console.log('Grouped manifest files:', groups);
-                
-                // 各グループを表示
+
+                // 各コレクションのmanifest-index.jsonを読み込むヘルパー関数
+                const loadCollectionIndex = async (seriesId, groupArray) => {
+                    let indexFetchUrl = `${GITHUB_IIIF_BASE_URL}/${seriesId}/manifest-index.json`;
+                    // ローカル環境であれば、fetchUrlをローカルパスに変換
+                    if (isLocal) {
+                        indexFetchUrl = indexFetchUrl.replace(
+                            GITHUB_IIIF_BASE_URL,
+                            localBaseUrl
+                        );
+                    }
+
+                    try {
+                        const response = await fetch(indexFetchUrl, { cache: 'no-cache' });
+                        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                        const indexData = await response.json();
+                        // console.log(`Loaded ${seriesId} manifest index:`, indexData); // 削除
+                        indexData.manifests.forEach(manifest => {
+                            // ここでは常にオリジナルのHTTPS URLを格納
+                            groupArray.push({
+                                url: manifest['@id'], // これは常にGitHub PagesのHTTPS URL
+                                label: manifest.label,
+                                series: seriesId
+                            });
+                        });
+                    } catch (error) {
+                        console.error(`Error loading ${seriesId} manifest index:`, error);
+                        const errorDiv = document.createElement('div');
+                        errorDiv.style.cssText = 'padding: 10px; color: red; text-align: center;';
+                        errorDiv.textContent = `${seriesId} のマニフェスト一覧の読み込みに失敗しました: ${error.message}`;
+                        listContainer.appendChild(errorDiv);
+                    }
+                };
+
+                // 並行して両方のコレクションのインデックスをロード
+                await Promise.all([
+                    loadCollectionIndex('100270332', groups['100270332']),
+                    loadCollectionIndex('100376839', groups['100376839'])
+                ]);
+
+                listContainer.innerHTML = ''; // Clear loading message
+
                 for (const [series, files] of Object.entries(groups)) {
                     if (files.length === 0) continue;
-                    
-                    console.log(`Processing series: ${series} with ${files.length} files`);
-                    
+
+                    // console.log(`Processing series: ${series} with ${files.length} files`); // 削除
+
                     const groupTitle = {
-                        '100376839': '📜 東京芸術大学所蔵版（Vol.0-42）',
-                        '100270332': '🎵 宮内庁書陵部所蔵版（Vol.0-72）'
+                        '100376839': '📜 東京芸術大学所蔵版',
+                        '100270332': '🎵 宮内庁書陵部所蔵版'
                     }[series];
-                    
-                    // ローカルファイルを折りたたみ可能なグループで表示
+
                     const groupContainer = document.createElement('div');
-                    
                     const header = document.createElement('div');
                     header.className = 'manifest-header';
                     header.textContent = groupTitle;
-                    
                     const contentContainer = document.createElement('div');
                     contentContainer.className = 'manifest-group-content';
-                    
-                    // 宮内庁版はデフォルトで開く、芸大版は閉じる
+
                     const isDefaultOpen = series === '100270332';
                     if (!isDefaultOpen) {
                         header.classList.add('collapsed');
                         contentContainer.classList.add('collapsed');
                     }
-                    
-                    // クリックで折りたみ切り替え
                     header.onclick = () => {
                         const isCollapsed = header.classList.contains('collapsed');
                         if (isCollapsed) {
@@ -1321,47 +1265,52 @@
                             contentContainer.classList.remove('collapsed');
                         } else {
                             header.classList.add('collapsed');
-                            contentContainer.classList.add('collapsed');
+                            contentContainer.classList.remove('collapsed');
                         }
                     };
                     
-                    console.log(`Displaying all ${files.length} files from ${series}`);
-                    
-                    // タイトル読み込み用の配列
-                    const titleLoadTasks = [];
-                    
-                    for (const file of files) {
+                    // files配列はmanifest-index.jsonの登場順に既にソートされています。
+                    // そのため、ここで改めてソートする必要はありません。
+                    let volumeCounter = 0; // 各シリーズごとに巻番号をリセット
+
+                    files.forEach(file => {
                         const item = document.createElement('div');
                         item.className = 'manifest-item';
-                        item.dataset.url = file.url;
-                        item.onclick = () => loadManifest(file.url);
-                        
-                        // 初期表示：Volume番号のみ
+                        item.dataset.url = file.url; // ここにオリジナルURLが入る
+                        item.onclick = () => loadManifest(file.url); // loadManifestにはオリジナルURLを渡す
+
+                        let displayTitle = file.label || file.url.split('/').pop().replace('_manifest.json', '').replace('volume', 'Vol. ');
+                        // getManifestTitle 関数で行われるタイトルクリーンアップを適用
+                        if (displayTitle) {
+                            displayTitle = displayTitle.replace(/^\s+|\s+$/g, '');
+                            displayTitle = displayTitle.replace(/\s+/g, ' ');
+                            displayTitle = displayTitle.replace(/^雅楽譜[\s\(（]*/g, '');
+                            displayTitle = displayTitle.replace(/^雅樂譜[\s\(（]*/g, '');
+                            displayTitle = displayTitle.replace(/[\)）]*$/g, '');
+                            displayTitle = displayTitle.replace(/^[\(（\s]+/g, '');
+                            displayTitle = displayTitle.replace(/[\s]+$/g, '');
+                            if (displayTitle.length > 30) {
+                                displayTitle = displayTitle.substring(0, 27) + '...';
+                            }
+                        }
+
+                        const volumeNumberDisplay = `Vol.${String(volumeCounter).padStart(2, '0')}`; // Vol.00, Vol.01形式
+                        volumeCounter++; // 次の項目のためにインクリメント
+
                         item.innerHTML = `
                             <div style="line-height: 1.3;">
-                                <div style="font-weight: 500; color: #333;">Volume ${String(file.volume).padStart(2, '0')}</div>
-                                <div style="font-size: 11px; color: #999;">タイトル読み込み中...</div>
+                                <div style="color: #666; font-size: 10px; margin-bottom: 2px;">${volumeNumberDisplay}</div>
+                                <div style="font-weight: 500; color: #333;">${displayTitle}</div>
                             </div>
                         `;
                         contentContainer.appendChild(item);
-                        
-                        // タイトル読み込みタスクを配列に追加
-                        titleLoadTasks.push({
-                            item: item,
-                            url: file.url,
-                            volume: file.volume
-                        });
-                    }
-                    
-                    // タイトルを段階的に読み込み（5個ずつ並列処理）
-                    loadTitlesInBatches(titleLoadTasks, 5);
-                    
+                    });
+
                     groupContainer.appendChild(header);
                     groupContainer.appendChild(contentContainer);
                     listContainer.appendChild(groupContainer);
                 }
                 
-                console.log('Manifest list generation completed');
                 showStatus('マニフェスト一覧の読み込みが完了しました', 'success');
                 
             } catch (error) {
@@ -1382,22 +1331,24 @@
         }
         
         // タイトルを段階的に読み込む関数
+        // この関数はもうmanifest-index.jsonからタイトルを取得するため使用しませんが、
+        // 既存のgetManifestTitle関数が他の場所（楽曲検索など）で使われる可能性を考慮し、残します。
         async function loadTitlesInBatches(tasks, batchSize = 5) {
-            console.log(`Loading titles in batches for ${tasks.length} items`);
+            // console.log(`Loading titles in batches for ${tasks.length} items`); // 削除
             
             for (let i = 0; i < tasks.length; i += batchSize) {
                 const batch = tasks.slice(i, i + batchSize);
                 
-                // バッチ内のタスクを並列実行
                 const promises = batch.map(task => 
-                    loadAndUpdateManifestTitle(task.item, task.url, task.volume)
+                    // ここでgetManifestTitleを呼び出す必要はなくなりましたが、構造上残します
+                    // task.item, task.url, task.volume は使われません
+                    Promise.resolve() // 何もせず解決
                 );
                 
                 try {
                     await Promise.allSettled(promises);
-                    console.log(`Completed batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(tasks.length / batchSize)}`);
+                    // console.log(`Completed batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(tasks.length / batchSize)}`); // 削除
                     
-                    // 少し待ってから次のバッチを処理（サーバー負荷軽減）
                     if (i + batchSize < tasks.length) {
                         await new Promise(resolve => setTimeout(resolve, 200));
                     }
@@ -1406,15 +1357,19 @@
                 }
             }
             
-            console.log('All title loading completed');
+            // console.log('All title loading completed'); // 削除
         }
         
         // マニフェストのタイトルを取得して表示を更新
+        // loadManifestListからは直接呼ばれなくなりましたが、既存のgetManifestTitleが使われるため残します。
         async function loadAndUpdateManifestTitle(itemElement, manifestUrl, volume) {
+            // この関数はmanifest-index.jsonから直接タイトルが取得されるようになったため、
+            // loadManifestListからは直接呼ばれることはありません。
+            // しかし、他の場所から呼ばれる可能性やコードの一貫性を保つために残します。
+            console.warn("loadAndUpdateManifestTitle was called, but should not be directly used for manifest list population anymore."); // 警告は残す
             try {
                 const title = await getManifestTitle(manifestUrl);
                 if (title) {
-                    // タイトルが取得できた場合、表示を更新
                     itemElement.innerHTML = `
                         <div style="line-height: 1.3;">
                             <div style="color: #666; font-size: 10px; margin-bottom: 2px;">Vol.${String(volume).padStart(2, '0')}</div>
@@ -1422,16 +1377,15 @@
                         </div>
                     `;
                 } else {
-                    // タイトルが取得できない場合はVolume番号のみ
                     itemElement.innerHTML = `
                         <div style="font-weight: 500; color: #666;">
                             Volume ${String(volume).padStart(2, '0')}
+                            <div style="font-size: 10px; color: #999;">(タイトル取得失敗)</div>
                         </div>
                     `;
                 }
             } catch (error) {
                 console.error(`Failed to load title for ${manifestUrl}:`, error);
-                // エラーの場合はVolume番号のみ
                 itemElement.innerHTML = `
                     <div style="font-weight: 500; color: #666;">
                         Volume ${String(volume).padStart(2, '0')}
@@ -1443,7 +1397,7 @@
         
         // フォールバック：ヘルプメッセージのみ表示
         function loadFallbackManifestList() {
-            console.log('Loading fallback manifest list (help only)');
+            // console.log('Loading fallback manifest list (help only)'); // 削除
             showStatus('ローカルサーバーにアクセスできません。', 'error');
             
             const listContainer = document.getElementById('manifestList');
@@ -1485,20 +1439,8 @@
                 return;
             }
             
-            // 相対パスの場合は絶対URLに変換
-            // GitHub Pages用のベースURL
-            const baseUrl = 'https://sseki27skt.github.io/gagakufu_iiif_manifest';
-            
-            let manifestUrl = url;
-            if (url.startsWith('./')) {
-                manifestUrl = `${baseUrl}/${url.substring(2)}`;
-            } else if (url.startsWith('/')) {
-                manifestUrl = `${baseUrl}${url}`;
-            } else if (!url.startsWith('http')) {
-                manifestUrl = `${baseUrl}/${url}`;
-            }
-            
-            loadManifest(manifestUrl);
+            // カスタムURLはそのままloadManifestに渡す（loadManifest内で適切なfetchUrlとuvUrlToPassを判断）
+            loadManifest(url);
         }
         
         // マニフェスト一覧を更新
@@ -1515,14 +1457,21 @@
             
             // ローカル開発環境とGitHub Pagesの両方に対応
             const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-            const loadBaseUrl = isLocal ? 
-                `${window.location.protocol}//${window.location.host}` : 
-                'https://sseki27skt.github.io/gagakufu_iiif_manifest';
+            const localBaseUrl = `${window.location.protocol}//${window.location.host}`;
             
-            console.log('Loading pieces data from:', `${loadBaseUrl}/100376839_pieces/pieces-index.json`);
+            let piecesIndexUrl = `${GITHUB_IIIF_BASE_URL}/100376839_pieces/pieces-index.json`;
+
+            if (isLocal) {
+                piecesIndexUrl = piecesIndexUrl.replace(
+                    GITHUB_IIIF_BASE_URL,
+                    localBaseUrl
+                );
+            }
+            
+            // console.log('Loading pieces data from:', piecesIndexUrl); // 削除
             
             try {
-                const response = await fetch(`${loadBaseUrl}/100376839_pieces/pieces-index.json`, {
+                const response = await fetch(piecesIndexUrl, {
                     cache: 'no-cache',
                     headers: {
                         'Cache-Control': 'no-cache',
@@ -1530,20 +1479,19 @@
                     }
                 });
                 
-                console.log('Response status:', response.status);
+                // console.log('Response status:', response.status); // 削除
                 
                 if (!response.ok) throw new Error('Failed to load pieces data');
                 
                 const data = await response.json();
                 
-                // ローカル環境では各piece manifestのURLをローカル用に変換
+                // piecesData内の各pieceの@idもローカル環境用に変換（loadManifestに渡す用）
                 if (isLocal && data.pieces) {
                     data.pieces.forEach(piece => {
-                        if (piece['@id']) {
-                            // GitHub PagesのURLをローカルURLに変換
+                        if (piece['@id'] && piece['@id'].startsWith(GITHUB_IIIF_BASE_URL)) {
                             piece['@id'] = piece['@id'].replace(
-                                'https://sseki27skt.github.io/gagakufu_iiif_manifest',
-                                `${window.location.protocol}//${window.location.host}`
+                                GITHUB_IIIF_BASE_URL,
+                                localBaseUrl
                             );
                         }
                     });
@@ -1551,7 +1499,7 @@
                 
                 piecesData = data;
                 
-                console.log('Pieces data loaded:', data);
+                // console.log('Pieces data loaded:', data); // 削除
                 
                 // フィルタ選択肢を初期化
                 initializeFilters(data.statistics);
@@ -1565,7 +1513,7 @@
         
         // フィルタ選択肢を初期化
         function initializeFilters(statistics) {
-            console.log('Initializing filters with statistics:', statistics);
+            // console.log('Initializing filters with statistics:', statistics); // 削除
             
             const instrumentFilter = document.getElementById('instrumentFilter');
             const modeFilter = document.getElementById('modeFilter');
@@ -1578,49 +1526,68 @@
             
             // 楽器フィルタ
             instrumentFilter.innerHTML = '<option value="">楽器</option>';
-            statistics.instruments.forEach(instrument => {
-                const option = document.createElement('option');
-                option.value = instrument;
-                option.textContent = instrument;
-                instrumentFilter.appendChild(option);
-            });
+            if (statistics.instruments) { // 存在チェックを明示的に行う
+                // console.log('Instruments data:', statistics.instruments); // 削除
+                statistics.instruments.forEach(instrument => {
+                    const option = document.createElement('option');
+                    option.value = instrument;
+                    option.textContent = instrument;
+                    instrumentFilter.appendChild(option);
+                });
+            }
             
             // 調子フィルタ（指定した順序で表示）
             modeFilter.innerHTML = '<option value="">調子</option>';
             const modeOrder = ['壱越調', '平調', '双調', '黄鐘調', '盤渉調', '太食調'];
             
-            // 指定した順序で調を追加
-            modeOrder.forEach(mode => {
-                if (statistics.modes.includes(mode)) {
-                    const option = document.createElement('option');
-                    option.value = mode;
-                    option.textContent = mode;
-                    modeFilter.appendChild(option);
-                }
-            });
-            
-            // 万が一、指定した順序にない調があった場合はその後に追加
-            statistics.modes.forEach(mode => {
-                if (!modeOrder.includes(mode)) {
-                    const option = document.createElement('option');
-                    option.value = mode;
-                    option.textContent = mode;
-                    modeFilter.appendChild(option);
-                }
-            });
-            
-            // 資料フィルタ
-            collectionFilter.innerHTML = '<option value="">資料</option>';
-            if (statistics.collections) {
-                Object.keys(statistics.collections).forEach(collection => {
-                    const option = document.createElement('option');
-                    option.value = collection;
-                    option.textContent = collection;
-                    collectionFilter.appendChild(option);
+            if (statistics.modes) { // 存在チェックを明示的に行う
+                // console.log('Modes data:', statistics.modes); // 削除
+                // 指定した順序で調を追加
+                modeOrder.forEach(mode => {
+                    if (statistics.modes.includes(mode)) {
+                        const option = document.createElement('option');
+                        option.value = mode;
+                        option.textContent = mode;
+                        modeFilter.appendChild(option);
+                    }
+                });
+                
+                // 万が一、指定した順序にない調があった場合はその後に追加
+                statistics.modes.forEach(mode => {
+                    if (!modeOrder.includes(mode)) {
+                        const option = document.createElement('option');
+                        option.value = mode;
+                        option.textContent = mode;
+                        modeFilter.appendChild(option);
+                    }
                 });
             }
             
-            console.log('Filters initialized successfully');
+            // 資料フィルタ
+            collectionFilter.innerHTML = '<option value="">資料</option>'; 
+            // console.log('--- Checking Collection Filter Data ---'); // 削除
+            // console.log('statistics.collections:', statistics.collections); // 削除
+            
+            if (statistics.collections) { // statistics.collectionsがtruthyかどうか確認
+                const collectionKeys = Object.keys(statistics.collections);
+                // console.log('Collection keys found:', collectionKeys); // 削除
+                if (collectionKeys.length > 0) {
+                    // console.log('Adding collection options...'); // 削除
+                    collectionKeys.forEach(collection => { 
+                        // console.log('Adding option for:', collection); // 削除
+                        const option = document.createElement('option');
+                        option.value = collection;
+                        option.textContent = collection;
+                        collectionFilter.appendChild(option); 
+                    });
+                } else {
+                    // console.log('No collection keys found or collections object is empty.'); // 削除
+                }
+            } else {
+                // console.log('statistics.collections is null or undefined.'); // 削除
+            }
+
+            // console.log('Filters initialized successfully'); // 削除
         }
         
         // ========================================
@@ -2005,9 +1972,9 @@
         
         // 初期化
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('IIIF Viewer initializing...');
-            console.log('Current protocol:', window.location.protocol);
-            console.log('Current origin:', window.location.origin);
+            // console.log('IIIF Viewer initializing...'); // 削除
+            // console.log('Current protocol:', window.location.protocol); // 削除
+            // console.log('Current origin:', window.location.origin); // 削除
             
             // 全画面表示サポートを有効化
             enableFullscreenSupport();
@@ -2017,55 +1984,59 @@
             
             // 初期メッセージ
             const iframe = document.getElementById('universal-viewer');
-            iframe.src = 'data:text/html;charset=utf-8,' + encodeURIComponent(`
-                <!DOCTYPE html>
-                <html lang="ja">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>雅楽譜 IIIF ビューアー</title>
-                </head>
-                <body style="margin:0;padding:0;font-family:Arial,sans-serif;">
-                    <div style="display:flex;align-items:center;justify-content:center;height:100vh;text-align:center;color:#666;background:#f9f9f9;">
-                        <div style="padding:40px;max-width:600px;">
-                            <h2 style="margin:0 0 20px 0;color:#333;">🎼 雅楽譜 IIIF ビューアー</h2>
-                            <p style="margin:0 0 15px 0;font-size:16px;line-height:1.6;">左側のリストからマニフェストを選択してください</p>
-                            <div style="background:#e3f2fd;padding:20px;border-radius:8px;margin:20px 0;border-left:4px solid #2196f3;">
-                                <p style="margin:0 0 10px 0;font-size:14px;color:#1565c0;font-weight:bold;">📚 利用可能なコレクション：</p>
-                                <p style="margin:0 0 8px 0;font-size:13px;color:#333;">• 宮内庁書陵部所蔵版（Vol.0-72）</p>
-                                <p style="margin:0;font-size:13px;color:#333;">• 東京芸術大学所蔵版（Vol.0-42）</p>
-                            </div>
-                            ${hasProtocolIssue ? `
-                            <div style="background:#ffebee;padding:15px;border-radius:6px;margin:20px 0;border-left:4px solid #f44336;">
-                                <p style="margin:0 0 10px 0;font-size:13px;color:#c62828;font-weight:bold;">
-                                    ⚠️ セキュリティ制限について
+            iframe.src = 'about:blank'; // Clear initial content
+            iframe.onload = () => { // Ensure content is loaded before displaying message
+                iframe.contentWindow.document.open();
+                iframe.contentWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html lang="ja">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>雅楽譜 IIIF ビューアー</title>
+                    </head>
+                    <body style="margin:0;padding:0;font-family:Arial,sans-serif;">
+                        <div style="display:flex;align-items:center;justify-content:center;height:100vh;text-align:center;color:#666;background:#f9f9f9;">
+                            <div style="padding:40px;max-width:600px;">
+                                <h2 style="margin:0 0 20px 0;color:#333;">🎼 雅楽譜 IIIF ビューアー</h2>
+                                <p style="margin:0 0 15px 0;font-size:16px;line-height:1.6;">左側のリストからマニフェストを選択してください</p>
+                                <div style="background:#e3f2fd;padding:20px;border-radius:8px;margin:20px 0;border-left:4px solid #2196f3;">
+                                    <p style="margin:0 0 10px 0;font-size:14px;color:#1565c0;font-weight:bold;">📚 利用可能なコレクション：</p>
+                                    <p style="margin:0 0 8px 0;font-size:13px;color:#333;">• 宮内庁書陵部所蔵版</p>
+                                    <p style="margin:0;font-size:13px;color:#333;">• 東京芸術大学所蔵版</p>
+                                </div>
+                                ${hasProtocolIssue ? `
+                                <div style="background:#ffebee;padding:15px;border-radius:6px;margin:20px 0;border-left:4px solid #f44336;">
+                                    <p style="margin:0 0 10px 0;font-size:13px;color:#c62828;font-weight:bold;">
+                                        ⚠️ セキュリティ制限について
+                                    </p>
+                                    <p style="margin:0 0 8px 0;font-size:12px;color:#c62828;">
+                                        現在HTTPSページからHTTPリソースへのアクセスが制限されています。
+                                    </p>
+                                    <p style="margin:0;font-size:12px;color:#c62828;">
+                                        ローカルマニフェストを表示するには、HTTPでアクセスしてください。
+                                    </p>
+                                </div>
+                                ` : ''}
+                                <p style="margin:20px 0 0 0;font-size:14px;color:#888;">
+                                    または、カスタムURLを入力して任意のIIIFマニフェストを表示できます
                                 </p>
-                                <p style="margin:0 0 8px 0;font-size:12px;color:#c62828;">
-                                    現在HTTPSページからHTTPリソースへのアクセスが制限されています。
-                                </p>
-                                <p style="margin:0;font-size:12px;color:#c62828;">
-                                    ローカルマニフェストを表示するには、HTTPでアクセスしてください。
-                                </p>
-                            </div>
-                            ` : ''}
-                            <p style="margin:20px 0 0 0;font-size:14px;color:#888;">
-                                または、カスタムURLを入力して任意のIIIFマニフェストを表示できます
-                            </p>
-                            <div style="margin-top:30px;padding:15px;background:#fff3cd;border-radius:6px;border-left:4px solid #ffc107;">
-                                <p style="margin:0;font-size:13px;color:#856404;">
-                                    💡 ヒント: マニフェストを選択すると、高解像度の雅楽譜画像をズーム・パン操作で詳細に閲覧できます
-                                </p>
+                                <div style="margin-top:30px;padding:15px;background:#fff3cd;border-radius:6px;border-left:4px solid #ffc107;">
+                                    <p style="margin:0;font-size:13px;color:#856404;">
+                                        💡 ヒント: マニフェストを選択すると、高解像度の雅楽譜画像をズーム・パン操作で詳細に閲覧できます
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </body>
-                </html>
-            `);
+                    </body>
+                    </html>
+                `);
+                iframe.contentWindow.document.close();
+            };
             
             // マニフェスト一覧を読み込み
             loadManifestList();
             
-            // デフォルトマニフェストの自動読み込みを削除（ユーザーの手動選択を待つ）
             showStatus('マニフェストを選択して雅楽譜の閲覧を開始してください', 'info');
         });
         
