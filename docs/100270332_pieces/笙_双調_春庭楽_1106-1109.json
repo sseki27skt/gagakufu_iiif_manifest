@@ -1,0 +1,195 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://example.com/iiif/笙_双調_春庭楽_1106-1109.json",
+  "@type": "sc:Manifest",
+  "label": "笙 双調 春庭楽",
+  "metadata": [
+    {
+      "label": "Title",
+      "value": "春庭楽"
+    },
+    {
+      "label": "Instrument",
+      "value": "笙"
+    },
+    {
+      "label": "Cho-shi",
+      "value": "双調"
+    },
+    {
+      "label": "Size",
+      "value": "中曲"
+    },
+    {
+      "label": "Hyoshi",
+      "value": "延八拍子"
+    },
+    {
+      "label": "Cycle",
+      "value": "拍子十"
+    },
+    {
+      "label": "Kuwae-hyoshi",
+      "value": "末二拍子加"
+    },
+    {
+      "label": "Compilation Year",
+      "value": "明治9年撰定"
+    },
+    {
+      "label": "Page Range",
+      "value": "1106-1109"
+    },
+    {
+      "label": "DOI",
+      "value": "10.20730/100270332"
+    }
+  ],
+  "sequences": [
+    {
+      "@type": "sc:Sequence",
+      "canvases": [
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/1106",
+          "@type": "sc:Canvas",
+          "label": "1106",
+          "height": 4592,
+          "width": 6048,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/annotation/1106",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-1105.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 4592,
+                "width": 6048,
+                "dc:identifier": "KSRM-560302",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-1105.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/1106"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-1105.tif/full/full/0/default.jpg",
+              "label": "Original (6048 x 4592px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/1107",
+          "@type": "sc:Canvas",
+          "label": "1107",
+          "height": 4592,
+          "width": 6048,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/annotation/1107",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-1106.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 4592,
+                "width": 6048,
+                "dc:identifier": "KSRM-560302",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-1106.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/1107"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-1106.tif/full/full/0/default.jpg",
+              "label": "Original (6048 x 4592px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/1108",
+          "@type": "sc:Canvas",
+          "label": "1108",
+          "height": 4592,
+          "width": 6048,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/annotation/1108",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-1107.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 4592,
+                "width": 6048,
+                "dc:identifier": "KSRM-560302",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-1107.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/1108"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-1107.tif/full/full/0/default.jpg",
+              "label": "Original (6048 x 4592px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/1109",
+          "@type": "sc:Canvas",
+          "label": "1109",
+          "height": 4592,
+          "width": 6048,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/annotation/1109",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-1108.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 4592,
+                "width": 6048,
+                "dc:identifier": "KSRM-560302",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-1108.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/1109"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-1108.tif/full/full/0/default.jpg",
+              "label": "Original (6048 x 4592px)",
+              "format": "image/jpeg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

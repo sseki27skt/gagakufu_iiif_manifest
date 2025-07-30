@@ -1,0 +1,125 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://example.com/iiif/龍笛_壱越調_新羅陵王急_2232-2233.json",
+  "@type": "sc:Manifest",
+  "label": "龍笛 壱越調 新羅陵王急",
+  "metadata": [
+    {
+      "label": "Title",
+      "value": "新羅陵王急"
+    },
+    {
+      "label": "Instrument",
+      "value": "龍笛"
+    },
+    {
+      "label": "Cho-shi",
+      "value": "壱越調"
+    },
+    {
+      "label": "Size",
+      "value": "小曲"
+    },
+    {
+      "label": "Hyoshi",
+      "value": "早四拍子"
+    },
+    {
+      "label": "Cycle",
+      "value": "拍子十六"
+    },
+    {
+      "label": "Kuwae-hyoshi",
+      "value": "末四拍子加"
+    },
+    {
+      "label": "Compilation Year",
+      "value": "明治9年撰定"
+    },
+    {
+      "label": "Page Range",
+      "value": "2232-2233"
+    },
+    {
+      "label": "DOI",
+      "value": "10.20730/100270332"
+    }
+  ],
+  "sequences": [
+    {
+      "@type": "sc:Sequence",
+      "canvases": [
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/2232",
+          "@type": "sc:Canvas",
+          "label": "2232",
+          "height": 4640,
+          "width": 6088,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/annotation/2232",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-2231.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 4640,
+                "width": 6088,
+                "dc:identifier": "KSRM-560302",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-2231.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/2232"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-2231.tif/full/full/0/default.jpg",
+              "label": "Original (6088 x 4640px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/2233",
+          "@type": "sc:Canvas",
+          "label": "2233",
+          "height": 4640,
+          "width": 6088,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/annotation/2233",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-2232.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 4640,
+                "width": 6088,
+                "dc:identifier": "KSRM-560302",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-2232.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/2233"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-2232.tif/full/full/0/default.jpg",
+              "label": "Original (6088 x 4640px)",
+              "format": "image/jpeg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

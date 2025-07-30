@@ -1,0 +1,129 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://example.com/iiif/龍笛_盤渉調_剣気褌脱_2295-2296.json",
+  "@type": "sc:Manifest",
+  "label": "龍笛 盤渉調 剣気褌脱",
+  "metadata": [
+    {
+      "label": "Title",
+      "value": "剣気褌脱"
+    },
+    {
+      "label": "Instrument",
+      "value": "龍笛"
+    },
+    {
+      "label": "Cho-shi",
+      "value": "盤渉調"
+    },
+    {
+      "label": "Size",
+      "value": "小曲"
+    },
+    {
+      "label": "Hyoshi",
+      "value": "早四拍子"
+    },
+    {
+      "label": "Cycle",
+      "value": "拍子十五"
+    },
+    {
+      "label": "Kuwae-hyoshi",
+      "value": "末四拍子加"
+    },
+    {
+      "label": "Kodo",
+      "value": "後度十四"
+    },
+    {
+      "label": "Compilation Year",
+      "value": "明治21年撰定"
+    },
+    {
+      "label": "Page Range",
+      "value": "2295-2296"
+    },
+    {
+      "label": "DOI",
+      "value": "10.20730/100270332"
+    }
+  ],
+  "sequences": [
+    {
+      "@type": "sc:Sequence",
+      "canvases": [
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/2295",
+          "@type": "sc:Canvas",
+          "label": "2295",
+          "height": 4640,
+          "width": 6088,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/annotation/2295",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-2294.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 4640,
+                "width": 6088,
+                "dc:identifier": "KSRM-560302",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-2294.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/2295"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-2294.tif/full/full/0/default.jpg",
+              "label": "Original (6088 x 4640px)",
+              "format": "image/jpeg"
+            }
+          ]
+        },
+        {
+          "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/2296",
+          "@type": "sc:Canvas",
+          "label": "2296",
+          "height": 4640,
+          "width": 6088,
+          "images": [
+            {
+              "@id": "https://kokusho.nijl.ac.jp/biblio/100270332/annotation/2296",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-2295.tif/full/full/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "height": 4640,
+                "width": 6088,
+                "dc:identifier": "KSRM-560302",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-2295.tif",
+                  "profile": "http://iiif.io/api/image/2/level1.json"
+                }
+              },
+              "on": "https://kokusho.nijl.ac.jp/biblio/100270332/canvas/2296"
+            }
+          ],
+          "rendering": [
+            {
+              "id": "https://kokusho.nijl.ac.jp/api/iiif/100270332/v4/KSRM/KSRM-560302/KSRM-560302-2295.tif/full/full/0/default.jpg",
+              "label": "Original (6088 x 4640px)",
+              "format": "image/jpeg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

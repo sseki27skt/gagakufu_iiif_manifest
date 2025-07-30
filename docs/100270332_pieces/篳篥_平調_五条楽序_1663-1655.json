@@ -1,0 +1,46 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://example.com/iiif/篳篥_平調_五条楽序_1663-1655.json",
+  "@type": "sc:Manifest",
+  "label": "篳篥 平調 五条楽序",
+  "metadata": [
+    {
+      "label": "Title",
+      "value": "五条楽序"
+    },
+    {
+      "label": "Instrument",
+      "value": "篳篥"
+    },
+    {
+      "label": "Cho-shi",
+      "value": "平調"
+    },
+    {
+      "label": "Size",
+      "value": "中曲"
+    },
+    {
+      "label": "Cycle",
+      "value": "拍子八"
+    },
+    {
+      "label": "Compilation Year",
+      "value": "明治9年撰定"
+    },
+    {
+      "label": "Page Range",
+      "value": "1663-1655"
+    },
+    {
+      "label": "DOI",
+      "value": "10.20730/100270332"
+    }
+  ],
+  "sequences": [
+    {
+      "@type": "sc:Sequence",
+      "canvases": []
+    }
+  ]
+}
