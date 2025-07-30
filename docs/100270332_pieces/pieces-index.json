@@ -1,4201 +1,4182 @@
 {
   "@context": "http://iiif.io/api/presentation/2/context.json",
   "@type": "sc:Collection",
-  "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/pieces-index.json",
+  "@id": "https://example.com/iiif/pieces-index.json",
   "label": "雅楽譜 楽曲別コレクション (宮内庁書陵部所蔵)",
   "description": "楽曲別に分割されたIIIFマニフェスト集（321曲）",
   "pieces": [
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_調子_1016-1021.json",
+      "@id": "https://example.com/iiif/笙_壱越調_調子_1016-1021.json",
       "@type": "sc:Manifest",
       "label": "調子 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "調子",
+        "title": "調子",
         "page_range": "1016-1021",
         "filename": "笙_壱越調_調子_1016-1021.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_音取_1021-1021.json",
+      "@id": "https://example.com/iiif/笙_壱越調_音取_1021-1021.json",
       "@type": "sc:Manifest",
       "label": "音取 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "1021-1021",
         "filename": "笙_壱越調_音取_1021-1021.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_春鶯囀颯踏_1022-1024.json",
+      "@id": "https://example.com/iiif/笙_壱越調_春鶯囀颯踏_1022-1024.json",
       "@type": "sc:Manifest",
       "label": "春鶯囀颯踏 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "春鶯囀颯踏",
+        "title": "春鶯囀颯踏",
         "page_range": "1022-1024",
         "filename": "笙_壱越調_春鶯囀颯踏_1022-1024.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_春鶯囀入破_1024-1026.json",
+      "@id": "https://example.com/iiif/笙_壱越調_春鶯囀入破_1024-1026.json",
       "@type": "sc:Manifest",
       "label": "春鶯囀入破 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "春鶯囀入破",
+        "title": "春鶯囀入破",
         "page_range": "1024-1026",
         "filename": "笙_壱越調_春鶯囀入破_1024-1026.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_賀殿破_1026-1029.json",
+      "@id": "https://example.com/iiif/笙_壱越調_賀殿破_1026-1029.json",
       "@type": "sc:Manifest",
       "label": "賀殿破 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "賀殿破",
+        "title": "賀殿破",
         "page_range": "1026-1029",
         "filename": "笙_壱越調_賀殿破_1026-1029.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_賀殿急_1029-1030.json",
+      "@id": "https://example.com/iiif/笙_壱越調_賀殿急_1029-1030.json",
       "@type": "sc:Manifest",
       "label": "賀殿急 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "賀殿急",
+        "title": "賀殿急",
         "page_range": "1029-1030",
         "filename": "笙_壱越調_賀殿急_1029-1030.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_迦陵頻破_1030-1032.json",
+      "@id": "https://example.com/iiif/笙_壱越調_迦陵頻破_1030-1032.json",
       "@type": "sc:Manifest",
       "label": "迦陵頻破 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "迦陵頻破",
+        "title": "迦陵頻破",
         "page_range": "1030-1032",
         "filename": "笙_壱越調_迦陵頻破_1030-1032.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_迦陵頻急_1032-1033.json",
+      "@id": "https://example.com/iiif/笙_壱越調_迦陵頻急_1032-1033.json",
       "@type": "sc:Manifest",
       "label": "迦陵頻急 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "迦陵頻急",
+        "title": "迦陵頻急",
         "page_range": "1032-1033",
         "filename": "笙_壱越調_迦陵頻急_1032-1033.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_承和楽_1034-1036.json",
+      "@id": "https://example.com/iiif/笙_壱越調_承和楽_1034-1036.json",
       "@type": "sc:Manifest",
       "label": "承和楽 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "承和楽",
+        "title": "承和楽",
         "page_range": "1034-1036",
         "filename": "笙_壱越調_承和楽_1034-1036.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_北庭楽_1036-1038.json",
+      "@id": "https://example.com/iiif/笙_壱越調_北庭楽_1036-1038.json",
       "@type": "sc:Manifest",
       "label": "北庭楽 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "北庭楽",
+        "title": "北庭楽",
         "page_range": "1036-1038",
         "filename": "笙_壱越調_北庭楽_1036-1038.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_蘭陵王_1038-1040.json",
+      "@id": "https://example.com/iiif/笙_壱越調_蘭陵王_1038-1040.json",
       "@type": "sc:Manifest",
       "label": "蘭陵王 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "蘭陵王",
+        "title": "蘭陵王",
         "page_range": "1038-1040",
         "filename": "笙_壱越調_蘭陵王_1038-1040.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_胡飲酒序_1040-1042.json",
+      "@id": "https://example.com/iiif/笙_壱越調_胡飲酒序_1040-1042.json",
       "@type": "sc:Manifest",
       "label": "胡飲酒序 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "胡飲酒序",
+        "title": "胡飲酒序",
         "page_range": "1040-1042",
         "filename": "笙_壱越調_胡飲酒序_1040-1042.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_胡飲酒破_1042-1043.json",
+      "@id": "https://example.com/iiif/笙_壱越調_胡飲酒破_1042-1043.json",
       "@type": "sc:Manifest",
       "label": "胡飲酒破 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "胡飲酒破",
+        "title": "胡飲酒破",
         "page_range": "1042-1043",
         "filename": "笙_壱越調_胡飲酒破_1042-1043.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_新羅陵王急_1043-1044.json",
+      "@id": "https://example.com/iiif/笙_壱越調_新羅陵王急_1043-1044.json",
       "@type": "sc:Manifest",
       "label": "新羅陵王急 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "新羅陵王急",
+        "title": "新羅陵王急",
         "page_range": "1043-1044",
         "filename": "笙_壱越調_新羅陵王急_1043-1044.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_回盃楽_1046-1048.json",
+      "@id": "https://example.com/iiif/笙_壱越調_回盃楽_1046-1048.json",
       "@type": "sc:Manifest",
       "label": "回盃楽 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "回盃楽",
+        "title": "回盃楽",
         "page_range": "1046-1048",
         "filename": "笙_壱越調_回盃楽_1046-1048.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_十天楽_1048-1050.json",
+      "@id": "https://example.com/iiif/笙_壱越調_十天楽_1048-1050.json",
       "@type": "sc:Manifest",
       "label": "十天楽 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "十天楽",
+        "title": "十天楽",
         "page_range": "1048-1050",
         "filename": "笙_壱越調_十天楽_1048-1050.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_菩薩破_1050-1052.json",
+      "@id": "https://example.com/iiif/笙_壱越調_菩薩破_1050-1052.json",
       "@type": "sc:Manifest",
       "label": "菩薩破 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "菩薩破",
+        "title": "菩薩破",
         "page_range": "1050-1052",
         "filename": "笙_壱越調_菩薩破_1050-1052.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_酒胡子_1052-1053.json",
+      "@id": "https://example.com/iiif/笙_壱越調_酒胡子_1052-1053.json",
       "@type": "sc:Manifest",
       "label": "酒胡子 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "酒胡子",
+        "title": "酒胡子",
         "page_range": "1052-1053",
         "filename": "笙_壱越調_酒胡子_1052-1053.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_武徳楽_1053-1054.json",
+      "@id": "https://example.com/iiif/笙_壱越調_武徳楽_1053-1054.json",
       "@type": "sc:Manifest",
       "label": "武徳楽 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "武徳楽",
+        "title": "武徳楽",
         "page_range": "1053-1054",
         "filename": "笙_壱越調_武徳楽_1053-1054.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_酒清司_1054-1055.json",
+      "@id": "https://example.com/iiif/笙_壱越調_酒清司_1054-1055.json",
       "@type": "sc:Manifest",
       "label": "酒清司 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "酒清司",
+        "title": "酒清司",
         "page_range": "1054-1055",
         "filename": "笙_壱越調_酒清司_1054-1055.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_壱越調_壱団嬌_1055-1056.json",
+      "@id": "https://example.com/iiif/笙_壱越調_壱団嬌_1055-1056.json",
       "@type": "sc:Manifest",
       "label": "壱団嬌 (笙 - 壱越調)",
       "metadata": {
         "instrument": "笙",
         "mode": "壱越調",
-        "piece_name": "壱団嬌",
+        "title": "壱団嬌",
         "page_range": "1055-1056",
         "filename": "笙_壱越調_壱団嬌_1055-1056.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_調子_1143-1148.json",
+      "@id": "https://example.com/iiif/笙_平調_調子_1143-1148.json",
       "@type": "sc:Manifest",
       "label": "調子 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "調子",
+        "title": "調子",
         "page_range": "1143-1148",
         "filename": "笙_平調_調子_1143-1148.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_音取_1148-1149.json",
+      "@id": "https://example.com/iiif/笙_平調_音取_1148-1149.json",
       "@type": "sc:Manifest",
       "label": "音取 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "1148-1149",
         "filename": "笙_平調_音取_1148-1149.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_皇_急_1149-1150.json",
+      "@id": "https://example.com/iiif/笙_平調_皇麞急_1149-1150.json",
       "@type": "sc:Manifest",
-      "label": "皇?急 (笙 - 平調)",
+      "label": "皇麞急 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "皇?急",
+        "title": "皇麞急",
         "page_range": "1149-1150",
-        "filename": "笙_平調_皇_急_1149-1150.json",
+        "filename": "笙_平調_皇麞急_1149-1150.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_五条楽序_1150-1152.json",
+      "@id": "https://example.com/iiif/笙_平調_五条楽序_1150-1152.json",
       "@type": "sc:Manifest",
       "label": "五条楽序 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "五条楽序",
+        "title": "五条楽序",
         "page_range": "1150-1152",
         "filename": "笙_平調_五条楽序_1150-1152.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_五条楽破_1152-1156.json",
+      "@id": "https://example.com/iiif/笙_平調_五条楽破_1152-1156.json",
       "@type": "sc:Manifest",
       "label": "五条楽破 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "五条楽破",
+        "title": "五条楽破",
         "page_range": "1152-1156",
         "filename": "笙_平調_五条楽破_1152-1156.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_五条楽急_1156-1157.json",
+      "@id": "https://example.com/iiif/笙_平調_五条楽急_1156-1157.json",
       "@type": "sc:Manifest",
       "label": "五条楽急 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "五条楽急",
+        "title": "五条楽急",
         "page_range": "1156-1157",
         "filename": "笙_平調_五条楽急_1156-1157.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_万歳楽_1157-1160.json",
+      "@id": "https://example.com/iiif/笙_平調_万歳楽_1157-1160.json",
       "@type": "sc:Manifest",
       "label": "万歳楽 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "万歳楽",
+        "title": "万歳楽",
         "page_range": "1157-1160",
         "filename": "笙_平調_万歳楽_1157-1160.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_甘州_1160-1162.json",
+      "@id": "https://example.com/iiif/笙_平調_甘州_1160-1162.json",
       "@type": "sc:Manifest",
       "label": "甘州 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "甘州",
+        "title": "甘州",
         "page_range": "1160-1162",
         "filename": "笙_平調_甘州_1160-1162.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_三台塩急_1162-1163.json",
+      "@id": "https://example.com/iiif/笙_平調_三台塩急_1162-1163.json",
       "@type": "sc:Manifest",
       "label": "三台塩急 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "三台塩急",
+        "title": "三台塩急",
         "page_range": "1162-1163",
         "filename": "笙_平調_三台塩急_1162-1163.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_春楊柳_1164-1166.json",
+      "@id": "https://example.com/iiif/笙_平調_春楊柳_1164-1166.json",
       "@type": "sc:Manifest",
       "label": "春楊柳 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "春楊柳",
+        "title": "春楊柳",
         "page_range": "1164-1166",
         "filename": "笙_平調_春楊柳_1164-1166.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_林歌_1166-1167.json",
+      "@id": "https://example.com/iiif/笙_平調_林歌_1166-1167.json",
       "@type": "sc:Manifest",
       "label": "林歌 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "林歌",
+        "title": "林歌",
         "page_range": "1166-1167",
         "filename": "笙_平調_林歌_1166-1167.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_老君子_1167-1168.json",
+      "@id": "https://example.com/iiif/笙_平調_老君子_1167-1168.json",
       "@type": "sc:Manifest",
       "label": "老君子 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "老君子",
+        "title": "老君子",
         "page_range": "1167-1168",
         "filename": "笙_平調_老君子_1167-1168.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_陪臚_1169-1170.json",
+      "@id": "https://example.com/iiif/笙_平調_陪臚_1169-1170.json",
       "@type": "sc:Manifest",
       "label": "陪臚 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "陪臚",
+        "title": "陪臚",
         "page_range": "1169-1170",
         "filename": "笙_平調_陪臚_1169-1170.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_鶏徳_1170-1170.json",
+      "@id": "https://example.com/iiif/笙_平調_鶏徳_1170-1170.json",
       "@type": "sc:Manifest",
       "label": "鶏徳 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "鶏徳",
+        "title": "鶏徳",
         "page_range": "1170-1170",
         "filename": "笙_平調_鶏徳_1170-1170.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_慶雲楽_1173-1176.json",
+      "@id": "https://example.com/iiif/笙_平調_慶雲楽_1173-1176.json",
       "@type": "sc:Manifest",
       "label": "慶雲楽 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "慶雲楽",
+        "title": "慶雲楽",
         "page_range": "1173-1176",
         "filename": "笙_平調_慶雲楽_1173-1176.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_裹頭楽_1176-1179.json",
+      "@id": "https://example.com/iiif/笙_平調_裹頭楽_1176-1179.json",
       "@type": "sc:Manifest",
       "label": "裹頭楽 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "裹頭楽",
+        "title": "裹頭楽",
         "page_range": "1176-1179",
         "filename": "笙_平調_裹頭楽_1176-1179.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_相府蓮_1179-1181.json",
+      "@id": "https://example.com/iiif/笙_平調_相府蓮_1179-1181.json",
       "@type": "sc:Manifest",
       "label": "相府蓮 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "相府蓮",
+        "title": "相府蓮",
         "page_range": "1179-1181",
         "filename": "笙_平調_相府蓮_1179-1181.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_勇勝急_1181-1183.json",
+      "@id": "https://example.com/iiif/笙_平調_勇勝急_1181-1183.json",
       "@type": "sc:Manifest",
       "label": "勇勝急 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "勇勝急",
+        "title": "勇勝急",
         "page_range": "1181-1183",
         "filename": "笙_平調_勇勝急_1181-1183.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_扶南_1183-1184.json",
+      "@id": "https://example.com/iiif/笙_平調_扶南_1183-1184.json",
       "@type": "sc:Manifest",
       "label": "扶南 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "扶南",
+        "title": "扶南",
         "page_range": "1183-1184",
         "filename": "笙_平調_扶南_1183-1184.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_夜半楽_1184-1186.json",
+      "@id": "https://example.com/iiif/笙_平調_夜半楽_1184-1186.json",
       "@type": "sc:Manifest",
       "label": "夜半楽 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "夜半楽",
+        "title": "夜半楽",
         "page_range": "1184-1186",
         "filename": "笙_平調_夜半楽_1184-1186.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_小郎子_1186-1187.json",
+      "@id": "https://example.com/iiif/笙_平調_小郎子_1186-1187.json",
       "@type": "sc:Manifest",
       "label": "小郎子 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "小郎子",
+        "title": "小郎子",
         "page_range": "1186-1187",
         "filename": "笙_平調_小郎子_1186-1187.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_王昭君_1187-1188.json",
+      "@id": "https://example.com/iiif/笙_平調_王昭君_1187-1188.json",
       "@type": "sc:Manifest",
       "label": "王昭君 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "王昭君",
+        "title": "王昭君",
         "page_range": "1187-1188",
         "filename": "笙_平調_王昭君_1187-1188.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_平調_越天楽_1188-1189.json",
+      "@id": "https://example.com/iiif/笙_平調_越天楽_1188-1189.json",
       "@type": "sc:Manifest",
       "label": "越天楽 (笙 - 平調)",
       "metadata": {
         "instrument": "笙",
         "mode": "平調",
-        "piece_name": "越天楽",
+        "title": "越天楽",
         "page_range": "1188-1189",
         "filename": "笙_平調_越天楽_1188-1189.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_調子_1101-1105.json",
+      "@id": "https://example.com/iiif/笙_双調_調子_1101-1105.json",
       "@type": "sc:Manifest",
       "label": "調子 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "調子",
+        "title": "調子",
         "page_range": "1101-1105",
         "filename": "笙_双調_調子_1101-1105.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_音取_1106-1106.json",
+      "@id": "https://example.com/iiif/笙_双調_音取_1106-1106.json",
       "@type": "sc:Manifest",
       "label": "音取 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "1106-1106",
         "filename": "笙_双調_音取_1106-1106.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_春庭楽_1106-1109.json",
+      "@id": "https://example.com/iiif/笙_双調_春庭楽_1106-1109.json",
       "@type": "sc:Manifest",
       "label": "春庭楽 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "春庭楽",
+        "title": "春庭楽",
         "page_range": "1106-1109",
         "filename": "笙_双調_春庭楽_1106-1109.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_柳花苑_1109-1111.json",
+      "@id": "https://example.com/iiif/笙_双調_柳花苑_1109-1111.json",
       "@type": "sc:Manifest",
       "label": "柳花苑 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "柳花苑",
+        "title": "柳花苑",
         "page_range": "1109-1111",
         "filename": "笙_双調_柳花苑_1109-1111.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_回盃楽_1111-1113.json",
+      "@id": "https://example.com/iiif/笙_双調_回盃楽_1111-1113.json",
       "@type": "sc:Manifest",
       "label": "回盃楽 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "回盃楽",
+        "title": "回盃楽",
         "page_range": "1111-1113",
         "filename": "笙_双調_回盃楽_1111-1113.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_颯踏_1113-1116.json",
+      "@id": "https://example.com/iiif/笙_双調_颯踏_1113-1116.json",
       "@type": "sc:Manifest",
       "label": "颯踏 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "颯踏",
+        "title": "颯踏",
         "page_range": "1113-1116",
         "filename": "笙_双調_颯踏_1113-1116.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_入破_1116-1118.json",
+      "@id": "https://example.com/iiif/笙_双調_入破_1116-1118.json",
       "@type": "sc:Manifest",
       "label": "入破 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "入破",
+        "title": "入破",
         "page_range": "1116-1118",
         "filename": "笙_双調_入破_1116-1118.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_酒胡子_1118-1119.json",
+      "@id": "https://example.com/iiif/笙_双調_酒胡子_1118-1119.json",
       "@type": "sc:Manifest",
       "label": "酒胡子 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "酒胡子",
+        "title": "酒胡子",
         "page_range": "1118-1119",
         "filename": "笙_双調_酒胡子_1118-1119.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_武徳楽_1119-1120.json",
+      "@id": "https://example.com/iiif/笙_双調_武徳楽_1119-1120.json",
       "@type": "sc:Manifest",
       "label": "武徳楽 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "武徳楽",
+        "title": "武徳楽",
         "page_range": "1119-1120",
         "filename": "笙_双調_武徳楽_1119-1120.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_賀殿破_1122-1125.json",
+      "@id": "https://example.com/iiif/笙_双調_賀殿破_1122-1125.json",
       "@type": "sc:Manifest",
       "label": "賀殿破 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "賀殿破",
+        "title": "賀殿破",
         "page_range": "1122-1125",
         "filename": "笙_双調_賀殿破_1122-1125.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_賀殿急_1125-1126.json",
+      "@id": "https://example.com/iiif/笙_双調_賀殿急_1125-1126.json",
       "@type": "sc:Manifest",
       "label": "賀殿急 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "賀殿急",
+        "title": "賀殿急",
         "page_range": "1125-1126",
         "filename": "笙_双調_賀殿急_1125-1126.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_鳥破_1126-1128.json",
+      "@id": "https://example.com/iiif/笙_双調_鳥破_1126-1128.json",
       "@type": "sc:Manifest",
       "label": "鳥破 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "鳥破",
+        "title": "鳥破",
         "page_range": "1126-1128",
         "filename": "笙_双調_鳥破_1126-1128.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_鳥急_1128-1129.json",
+      "@id": "https://example.com/iiif/笙_双調_鳥急_1128-1129.json",
       "@type": "sc:Manifest",
       "label": "鳥急 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "鳥急",
+        "title": "鳥急",
         "page_range": "1128-1129",
         "filename": "笙_双調_鳥急_1128-1129.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_胡飲酒破_1129-1130.json",
+      "@id": "https://example.com/iiif/笙_双調_胡飲酒破_1129-1130.json",
       "@type": "sc:Manifest",
       "label": "胡飲酒破 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "胡飲酒破",
+        "title": "胡飲酒破",
         "page_range": "1129-1130",
         "filename": "笙_双調_胡飲酒破_1129-1130.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_北庭楽_1130-1132.json",
+      "@id": "https://example.com/iiif/笙_双調_北庭楽_1130-1132.json",
       "@type": "sc:Manifest",
       "label": "北庭楽 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "北庭楽",
+        "title": "北庭楽",
         "page_range": "1130-1132",
         "filename": "笙_双調_北庭楽_1130-1132.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_陵王_1132-1134.json",
+      "@id": "https://example.com/iiif/笙_双調_陵王_1132-1134.json",
       "@type": "sc:Manifest",
       "label": "陵王 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "陵王",
+        "title": "陵王",
         "page_range": "1132-1134",
         "filename": "笙_双調_陵王_1132-1134.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_新羅陵王急_1134-1136.json",
+      "@id": "https://example.com/iiif/笙_双調_新羅陵王急_1134-1136.json",
       "@type": "sc:Manifest",
       "label": "新羅陵王急 (笙 - 双調)",
       "metadata": {
         "instrument": "笙",
         "mode": "双調",
-        "piece_name": "新羅陵王急",
+        "title": "新羅陵王急",
         "page_range": "1134-1136",
         "filename": "笙_双調_新羅陵王急_1134-1136.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_調子_1196-1202.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_調子_1196-1202.json",
       "@type": "sc:Manifest",
       "label": "調子 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "調子",
+        "title": "調子",
         "page_range": "1196-1202",
         "filename": "笙_黄鐘調_調子_1196-1202.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_音取_1202-1202.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_音取_1202-1202.json",
       "@type": "sc:Manifest",
       "label": "音取 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "1202-1202",
         "filename": "笙_黄鐘調_音取_1202-1202.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_喜春楽破_1203-1204.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_喜春楽破_1203-1204.json",
       "@type": "sc:Manifest",
       "label": "喜春楽破 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "喜春楽破",
+        "title": "喜春楽破",
         "page_range": "1203-1204",
         "filename": "笙_黄鐘調_喜春楽破_1203-1204.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_桃李花_1204-1207.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_桃李花_1204-1207.json",
       "@type": "sc:Manifest",
       "label": "桃李花 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "桃李花",
+        "title": "桃李花",
         "page_range": "1204-1207",
         "filename": "笙_黄鐘調_桃李花_1204-1207.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_央宮楽_1207-1210.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_央宮楽_1207-1210.json",
       "@type": "sc:Manifest",
       "label": "央宮楽 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "央宮楽",
+        "title": "央宮楽",
         "page_range": "1207-1210",
         "filename": "笙_黄鐘調_央宮楽_1207-1210.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_海青楽_1210-1211.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_海青楽_1210-1211.json",
       "@type": "sc:Manifest",
       "label": "海青楽 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "海青楽",
+        "title": "海青楽",
         "page_range": "1210-1211",
         "filename": "笙_黄鐘調_海青楽_1210-1211.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_平蛮楽_1212-1214.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_平蛮楽_1212-1214.json",
       "@type": "sc:Manifest",
       "label": "平蛮楽 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "平蛮楽",
+        "title": "平蛮楽",
         "page_range": "1212-1214",
         "filename": "笙_黄鐘調_平蛮楽_1212-1214.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_西王楽破_1214-1215.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_西王楽破_1214-1215.json",
       "@type": "sc:Manifest",
       "label": "西王楽破 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "西王楽破",
+        "title": "西王楽破",
         "page_range": "1214-1215",
         "filename": "笙_黄鐘調_西王楽破_1214-1215.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_拾翠楽_1215-1216.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_拾翠楽_1215-1216.json",
       "@type": "sc:Manifest",
       "label": "拾翠楽 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "拾翠楽",
+        "title": "拾翠楽",
         "page_range": "1215-1216",
         "filename": "笙_黄鐘調_拾翠楽_1215-1216.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_蘇合急_1218-1222.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_蘇合急_1218-1222.json",
       "@type": "sc:Manifest",
       "label": "蘇合急 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "蘇合急",
+        "title": "蘇合急",
         "page_range": "1218-1222",
         "filename": "笙_黄鐘調_蘇合急_1218-1222.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_青海波_1222-1223.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_青海波_1222-1223.json",
       "@type": "sc:Manifest",
       "label": "青海波 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "青海波",
+        "title": "青海波",
         "page_range": "1222-1223",
         "filename": "笙_黄鐘調_青海波_1222-1223.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_鳥急_1223-1224.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_鳥急_1223-1224.json",
       "@type": "sc:Manifest",
       "label": "鳥急 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "鳥急",
+        "title": "鳥急",
         "page_range": "1223-1224",
         "filename": "笙_黄鐘調_鳥急_1223-1224.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_越天楽_1224-1225.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_越天楽_1224-1225.json",
       "@type": "sc:Manifest",
       "label": "越天楽 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "越天楽",
+        "title": "越天楽",
         "page_range": "1224-1225",
         "filename": "笙_黄鐘調_越天楽_1224-1225.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_黄鐘調_千秋楽_1225-1226.json",
+      "@id": "https://example.com/iiif/笙_黄鐘調_千秋楽_1225-1226.json",
       "@type": "sc:Manifest",
       "label": "千秋楽 (笙 - 黄鐘調)",
       "metadata": {
         "instrument": "笙",
         "mode": "黄鐘調",
-        "piece_name": "千秋楽",
+        "title": "千秋楽",
         "page_range": "1225-1226",
         "filename": "笙_黄鐘調_千秋楽_1225-1226.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_調子_1063-1067.json",
+      "@id": "https://example.com/iiif/笙_太食調_調子_1063-1067.json",
       "@type": "sc:Manifest",
       "label": "調子 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "調子",
+        "title": "調子",
         "page_range": "1063-1067",
         "filename": "笙_太食調_調子_1063-1067.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_音取_1067-1067.json",
+      "@id": "https://example.com/iiif/笙_太食調_音取_1067-1067.json",
       "@type": "sc:Manifest",
       "label": "音取 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "1067-1067",
         "filename": "笙_太食調_音取_1067-1067.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_太平楽道行_1067-1069.json",
+      "@id": "https://example.com/iiif/笙_太食調_太平楽道行_1067-1069.json",
       "@type": "sc:Manifest",
       "label": "太平楽道行 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "太平楽道行",
+        "title": "太平楽道行",
         "page_range": "1067-1069",
         "filename": "笙_太食調_太平楽道行_1067-1069.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_太平楽破_1069-1074.json",
+      "@id": "https://example.com/iiif/笙_太食調_太平楽破_1069-1074.json",
       "@type": "sc:Manifest",
       "label": "太平楽破 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "太平楽破",
+        "title": "太平楽破",
         "page_range": "1069-1074",
         "filename": "笙_太食調_太平楽破_1069-1074.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_太平楽急_1074-1075.json",
+      "@id": "https://example.com/iiif/笙_太食調_太平楽急_1074-1075.json",
       "@type": "sc:Manifest",
       "label": "太平楽急 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "太平楽急",
+        "title": "太平楽急",
         "page_range": "1074-1075",
         "filename": "笙_太食調_太平楽急_1074-1075.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_打球楽_1075-1079.json",
+      "@id": "https://example.com/iiif/笙_太食調_打球楽_1075-1079.json",
       "@type": "sc:Manifest",
       "label": "打球楽 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "打球楽",
+        "title": "打球楽",
         "page_range": "1075-1079",
         "filename": "笙_太食調_打球楽_1075-1079.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_傾盃楽急_1079-1080.json",
+      "@id": "https://example.com/iiif/笙_太食調_傾盃楽急_1079-1080.json",
       "@type": "sc:Manifest",
       "label": "傾盃楽急 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "傾盃楽急",
+        "title": "傾盃楽急",
         "page_range": "1079-1080",
         "filename": "笙_太食調_傾盃楽急_1079-1080.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_仙遊霞_1080-1081.json",
+      "@id": "https://example.com/iiif/笙_太食調_仙遊霞_1080-1081.json",
       "@type": "sc:Manifest",
       "label": "仙遊霞 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "仙遊霞",
+        "title": "仙遊霞",
         "page_range": "1080-1081",
         "filename": "笙_太食調_仙遊霞_1080-1081.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_還城樂_1081-1084.json",
+      "@id": "https://example.com/iiif/笙_太食調_還城樂_1081-1084.json",
       "@type": "sc:Manifest",
       "label": "還城樂 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "還城樂",
+        "title": "還城樂",
         "page_range": "1081-1084",
         "filename": "笙_太食調_還城樂_1081-1084.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_抜頭_1084-1085.json",
+      "@id": "https://example.com/iiif/笙_太食調_抜頭_1084-1085.json",
       "@type": "sc:Manifest",
       "label": "抜頭 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "抜頭",
+        "title": "抜頭",
         "page_range": "1084-1085",
         "filename": "笙_太食調_抜頭_1084-1085.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_長慶子_1085-1086.json",
+      "@id": "https://example.com/iiif/笙_太食調_長慶子_1085-1086.json",
       "@type": "sc:Manifest",
       "label": "長慶子 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "長慶子",
+        "title": "長慶子",
         "page_range": "1085-1086",
         "filename": "笙_太食調_長慶子_1085-1086.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_蘇芳菲_1089-1091.json",
+      "@id": "https://example.com/iiif/笙_太食調_蘇芳菲_1089-1091.json",
       "@type": "sc:Manifest",
       "label": "蘇芳菲 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "蘇芳菲",
+        "title": "蘇芳菲",
         "page_range": "1089-1091",
         "filename": "笙_太食調_蘇芳菲_1089-1091.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_輪鼓褌脱_1091-1093.json",
+      "@id": "https://example.com/iiif/笙_太食調_輪鼓褌脱_1091-1093.json",
       "@type": "sc:Manifest",
       "label": "輪鼓褌脱 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "輪鼓褌脱",
+        "title": "輪鼓褌脱",
         "page_range": "1091-1093",
         "filename": "笙_太食調_輪鼓褌脱_1091-1093.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_庶人三台_1093-1094.json",
+      "@id": "https://example.com/iiif/笙_太食調_庶人三台_1093-1094.json",
       "@type": "sc:Manifest",
       "label": "庶人三台 (笙 - 太食調)",
       "metadata": {
         "instrument": "笙",
         "mode": "太食調",
-        "piece_name": "庶人三台",
+        "title": "庶人三台",
         "page_range": "1093-1094",
         "filename": "笙_太食調_庶人三台_1093-1094.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_調子_1234-1241.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_調子_1234-1241.json",
       "@type": "sc:Manifest",
       "label": "調子 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "調子",
+        "title": "調子",
         "page_range": "1234-1241",
         "filename": "笙_盤渉調_調子_1234-1241.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_音取_1241-1241.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_音取_1241-1241.json",
       "@type": "sc:Manifest",
       "label": "音取 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "1241-1241",
         "filename": "笙_盤渉調_音取_1241-1241.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_蘇合香三帖_1241-1246.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_蘇合香三帖_1241-1246.json",
       "@type": "sc:Manifest",
       "label": "蘇合香三帖 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "蘇合香三帖",
+        "title": "蘇合香三帖",
         "page_range": "1241-1246",
         "filename": "笙_盤渉調_蘇合香三帖_1241-1246.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_蘇合香破_1246-1249.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_蘇合香破_1246-1249.json",
       "@type": "sc:Manifest",
       "label": "蘇合香破 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "蘇合香破",
+        "title": "蘇合香破",
         "page_range": "1246-1249",
         "filename": "笙_盤渉調_蘇合香破_1246-1249.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_蘇合香急_1249-1253.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_蘇合香急_1249-1253.json",
       "@type": "sc:Manifest",
       "label": "蘇合香急 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "蘇合香急",
+        "title": "蘇合香急",
         "page_range": "1249-1253",
         "filename": "笙_盤渉調_蘇合香急_1249-1253.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_万秋楽破_1253-1259.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_万秋楽破_1253-1259.json",
       "@type": "sc:Manifest",
       "label": "万秋楽破 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "万秋楽破",
+        "title": "万秋楽破",
         "page_range": "1253-1259",
         "filename": "笙_盤渉調_万秋楽破_1253-1259.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_宗明楽_1259-1262.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_宗明楽_1259-1262.json",
       "@type": "sc:Manifest",
       "label": "宗明楽 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "宗明楽",
+        "title": "宗明楽",
         "page_range": "1259-1262",
         "filename": "笙_盤渉調_宗明楽_1259-1262.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_輪台_1262-1264.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_輪台_1262-1264.json",
       "@type": "sc:Manifest",
       "label": "輪台 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "輪台",
+        "title": "輪台",
         "page_range": "1262-1264",
         "filename": "笙_盤渉調_輪台_1262-1264.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_青海波_1264-1266.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_青海波_1264-1266.json",
       "@type": "sc:Manifest",
       "label": "青海波 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "青海波",
+        "title": "青海波",
         "page_range": "1264-1266",
         "filename": "笙_盤渉調_青海波_1264-1266.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_白柱_1266-1267.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_白柱_1266-1267.json",
       "@type": "sc:Manifest",
       "label": "白柱 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "白柱",
+        "title": "白柱",
         "page_range": "1266-1267",
         "filename": "笙_盤渉調_白柱_1266-1267.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_竹林楽_1267-1268.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_竹林楽_1267-1268.json",
       "@type": "sc:Manifest",
       "label": "竹林楽 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "竹林楽",
+        "title": "竹林楽",
         "page_range": "1267-1268",
         "filename": "笙_盤渉調_竹林楽_1267-1268.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_蘇莫者破_1268-1270.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_蘇莫者破_1268-1270.json",
       "@type": "sc:Manifest",
       "label": "蘇莫者破 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "蘇莫者破",
+        "title": "蘇莫者破",
         "page_range": "1268-1270",
         "filename": "笙_盤渉調_蘇莫者破_1268-1270.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_千秋楽_1270-1271.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_千秋楽_1270-1271.json",
       "@type": "sc:Manifest",
       "label": "千秋楽 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "千秋楽",
+        "title": "千秋楽",
         "page_range": "1270-1271",
         "filename": "笙_盤渉調_千秋楽_1270-1271.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_越天楽_1271-1272.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_越天楽_1271-1272.json",
       "@type": "sc:Manifest",
       "label": "越天楽 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "越天楽",
+        "title": "越天楽",
         "page_range": "1271-1272",
         "filename": "笙_盤渉調_越天楽_1271-1272.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_採桑老_1274-1276.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_採桑老_1274-1276.json",
       "@type": "sc:Manifest",
       "label": "採桑老 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "採桑老",
+        "title": "採桑老",
         "page_range": "1274-1276",
         "filename": "笙_盤渉調_採桑老_1274-1276.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_盤渉調_剣気褌脱_1276-1277.json",
+      "@id": "https://example.com/iiif/笙_盤渉調_剣気褌脱_1276-1277.json",
       "@type": "sc:Manifest",
       "label": "剣気褌脱 (笙 - 盤渉調)",
       "metadata": {
         "instrument": "笙",
         "mode": "盤渉調",
-        "piece_name": "剣気褌脱",
+        "title": "剣気褌脱",
         "page_range": "1276-1277",
         "filename": "笙_盤渉調_剣気褌脱_1276-1277.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_調子_1617-1617.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_調子_1617-1617.json",
       "@type": "sc:Manifest",
       "label": "調子 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "調子",
+        "title": "調子",
         "page_range": "1617-1617",
         "filename": "篳篥_壱越調_調子_1617-1617.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_音取_1617-1618.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_音取_1617-1618.json",
       "@type": "sc:Manifest",
       "label": "音取 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "1617-1618",
         "filename": "篳篥_壱越調_音取_1617-1618.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_春鶯囀颯踏_1619-1621.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_春鶯囀颯踏_1619-1621.json",
       "@type": "sc:Manifest",
       "label": "春鶯囀颯踏 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "春鶯囀颯踏",
+        "title": "春鶯囀颯踏",
         "page_range": "1619-1621",
         "filename": "篳篥_壱越調_春鶯囀颯踏_1619-1621.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_春鶯囀入破_1621-1623.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_春鶯囀入破_1621-1623.json",
       "@type": "sc:Manifest",
       "label": "春鶯囀入破 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "春鶯囀入破",
+        "title": "春鶯囀入破",
         "page_range": "1621-1623",
         "filename": "篳篥_壱越調_春鶯囀入破_1621-1623.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_賀殿破_1623-1626.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_賀殿破_1623-1626.json",
       "@type": "sc:Manifest",
       "label": "賀殿破 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "賀殿破",
+        "title": "賀殿破",
         "page_range": "1623-1626",
         "filename": "篳篥_壱越調_賀殿破_1623-1626.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_賀殿急_1626-1627.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_賀殿急_1626-1627.json",
       "@type": "sc:Manifest",
       "label": "賀殿急 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "賀殿急",
+        "title": "賀殿急",
         "page_range": "1626-1627",
         "filename": "篳篥_壱越調_賀殿急_1626-1627.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_迦陵頻破_1627-1629.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_迦陵頻破_1627-1629.json",
       "@type": "sc:Manifest",
       "label": "迦陵頻破 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "迦陵頻破",
+        "title": "迦陵頻破",
         "page_range": "1627-1629",
         "filename": "篳篥_壱越調_迦陵頻破_1627-1629.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_迦陵頻急_1629-1630.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_迦陵頻急_1629-1630.json",
       "@type": "sc:Manifest",
       "label": "迦陵頻急 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "迦陵頻急",
+        "title": "迦陵頻急",
         "page_range": "1629-1630",
         "filename": "篳篥_壱越調_迦陵頻急_1629-1630.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_承和楽_1631-1633.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_承和楽_1631-1633.json",
       "@type": "sc:Manifest",
       "label": "承和楽 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "承和楽",
+        "title": "承和楽",
         "page_range": "1631-1633",
         "filename": "篳篥_壱越調_承和楽_1631-1633.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_北庭楽_1633-1635.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_北庭楽_1633-1635.json",
       "@type": "sc:Manifest",
       "label": "北庭楽 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "北庭楽",
+        "title": "北庭楽",
         "page_range": "1633-1635",
         "filename": "篳篥_壱越調_北庭楽_1633-1635.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_蘭陵王_1635-1637.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_蘭陵王_1635-1637.json",
       "@type": "sc:Manifest",
       "label": "蘭陵王 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "蘭陵王",
+        "title": "蘭陵王",
         "page_range": "1635-1637",
         "filename": "篳篥_壱越調_蘭陵王_1635-1637.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_胡飲酒序_1637-1638.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_胡飲酒序_1637-1638.json",
       "@type": "sc:Manifest",
       "label": "胡飲酒序 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "胡飲酒序",
+        "title": "胡飲酒序",
         "page_range": "1637-1638",
         "filename": "篳篥_壱越調_胡飲酒序_1637-1638.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_胡飲酒破_1639-1639.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_胡飲酒破_1639-1639.json",
       "@type": "sc:Manifest",
       "label": "胡飲酒破 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "胡飲酒破",
+        "title": "胡飲酒破",
         "page_range": "1639-1639",
         "filename": "篳篥_壱越調_胡飲酒破_1639-1639.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_新羅陵王急_1639-1641.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_新羅陵王急_1639-1641.json",
       "@type": "sc:Manifest",
       "label": "新羅陵王急 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "新羅陵王急",
+        "title": "新羅陵王急",
         "page_range": "1639-1641",
         "filename": "篳篥_壱越調_新羅陵王急_1639-1641.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_回盃楽_1643-1654.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_回盃楽_1643-1644.json",
       "@type": "sc:Manifest",
       "label": "回盃楽 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "回盃楽",
-        "page_range": "1643-1654",
-        "filename": "篳篥_壱越調_回盃楽_1643-1654.json",
+        "title": "回盃楽",
+        "page_range": "1643-1644",
+        "filename": "篳篥_壱越調_回盃楽_1643-1644.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_十天楽_1654-1647.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_十天楽_1644-1647.json",
       "@type": "sc:Manifest",
       "label": "十天楽 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "十天楽",
-        "page_range": "1654-1647",
-        "filename": "篳篥_壱越調_十天楽_1654-1647.json",
+        "title": "十天楽",
+        "page_range": "1644-1647",
+        "filename": "篳篥_壱越調_十天楽_1644-1647.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_菩薩破_1647-1649.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_菩薩破_1647-1649.json",
       "@type": "sc:Manifest",
       "label": "菩薩破 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "菩薩破",
+        "title": "菩薩破",
         "page_range": "1647-1649",
         "filename": "篳篥_壱越調_菩薩破_1647-1649.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_酒胡子_1649-1650.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_酒胡子_1649-1650.json",
       "@type": "sc:Manifest",
       "label": "酒胡子 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "酒胡子",
+        "title": "酒胡子",
         "page_range": "1649-1650",
         "filename": "篳篥_壱越調_酒胡子_1649-1650.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_武徳楽_1650-1651.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_武徳楽_1650-1651.json",
       "@type": "sc:Manifest",
       "label": "武徳楽 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "武徳楽",
+        "title": "武徳楽",
         "page_range": "1650-1651",
         "filename": "篳篥_壱越調_武徳楽_1650-1651.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_酒清司_1651-1652.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_酒清司_1651-1652.json",
       "@type": "sc:Manifest",
       "label": "酒清司 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "酒清司",
+        "title": "酒清司",
         "page_range": "1651-1652",
         "filename": "篳篥_壱越調_酒清司_1651-1652.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_壱越調_壱団嬌_1652-1653.json",
+      "@id": "https://example.com/iiif/篳篥_壱越調_壱団嬌_1652-1653.json",
       "@type": "sc:Manifest",
       "label": "壱団嬌 (篳篥 - 壱越調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "壱越調",
-        "piece_name": "壱団嬌",
+        "title": "壱団嬌",
         "page_range": "1652-1653",
         "filename": "篳篥_壱越調_壱団嬌_1652-1653.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_調子_1660-1660.json",
+      "@id": "https://example.com/iiif/篳篥_平調_調子_1660-1660.json",
       "@type": "sc:Manifest",
       "label": "調子 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "調子",
+        "title": "調子",
         "page_range": "1660-1660",
         "filename": "篳篥_平調_調子_1660-1660.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_音取_1660-1661.json",
+      "@id": "https://example.com/iiif/篳篥_平調_音取_1660-1661.json",
       "@type": "sc:Manifest",
       "label": "音取 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "1660-1661",
         "filename": "篳篥_平調_音取_1660-1661.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_皇_急_1662-1663.json",
+      "@id": "https://example.com/iiif/篳篥_平調_皇麞急_1662-1663.json",
       "@type": "sc:Manifest",
-      "label": "皇?急 (篳篥 - 平調)",
+      "label": "皇麞急 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "皇?急",
+        "title": "皇麞急",
         "page_range": "1662-1663",
-        "filename": "篳篥_平調_皇_急_1662-1663.json",
+        "filename": "篳篥_平調_皇麞急_1662-1663.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_五条楽序_1663-1655.json",
+      "@id": "https://example.com/iiif/篳篥_平調_五条楽序_1663-1665.json",
       "@type": "sc:Manifest",
       "label": "五条楽序 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "五条楽序",
-        "page_range": "1663-1655",
-        "filename": "篳篥_平調_五条楽序_1663-1655.json",
+        "title": "五条楽序",
+        "page_range": "1663-1665",
+        "filename": "篳篥_平調_五条楽序_1663-1665.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_五条楽破_1655-1669.json",
+      "@id": "https://example.com/iiif/篳篥_平調_五条楽破_1665-1669.json",
       "@type": "sc:Manifest",
       "label": "五条楽破 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "五条楽破",
-        "page_range": "1655-1669",
-        "filename": "篳篥_平調_五条楽破_1655-1669.json",
+        "title": "五条楽破",
+        "page_range": "1665-1669",
+        "filename": "篳篥_平調_五条楽破_1665-1669.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_五条楽急_1669-1670.json",
+      "@id": "https://example.com/iiif/篳篥_平調_五条楽急_1669-1670.json",
       "@type": "sc:Manifest",
       "label": "五条楽急 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "五条楽急",
+        "title": "五条楽急",
         "page_range": "1669-1670",
         "filename": "篳篥_平調_五条楽急_1669-1670.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_万歳楽_1670-1673.json",
+      "@id": "https://example.com/iiif/篳篥_平調_万歳楽_1670-1673.json",
       "@type": "sc:Manifest",
       "label": "万歳楽 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "万歳楽",
+        "title": "万歳楽",
         "page_range": "1670-1673",
         "filename": "篳篥_平調_万歳楽_1670-1673.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_甘州_1673-1675.json",
+      "@id": "https://example.com/iiif/篳篥_平調_甘州_1673-1675.json",
       "@type": "sc:Manifest",
       "label": "甘州 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "甘州",
+        "title": "甘州",
         "page_range": "1673-1675",
         "filename": "篳篥_平調_甘州_1673-1675.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_三台塩急_1675-1676.json",
+      "@id": "https://example.com/iiif/篳篥_平調_三台塩急_1675-1676.json",
       "@type": "sc:Manifest",
       "label": "三台塩急 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "三台塩急",
+        "title": "三台塩急",
         "page_range": "1675-1676",
         "filename": "篳篥_平調_三台塩急_1675-1676.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_春楊柳_1676-1679.json",
+      "@id": "https://example.com/iiif/篳篥_平調_春楊柳_1676-1679.json",
       "@type": "sc:Manifest",
       "label": "春楊柳 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "春楊柳",
+        "title": "春楊柳",
         "page_range": "1676-1679",
         "filename": "篳篥_平調_春楊柳_1676-1679.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_林歌_1679-1680.json",
+      "@id": "https://example.com/iiif/篳篥_平調_林歌_1679-1680.json",
       "@type": "sc:Manifest",
       "label": "林歌 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "林歌",
+        "title": "林歌",
         "page_range": "1679-1680",
         "filename": "篳篥_平調_林歌_1679-1680.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_老君子_1680-1681.json",
+      "@id": "https://example.com/iiif/篳篥_平調_老君子_1680-1681.json",
       "@type": "sc:Manifest",
       "label": "老君子 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "老君子",
+        "title": "老君子",
         "page_range": "1680-1681",
         "filename": "篳篥_平調_老君子_1680-1681.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_陪臚_1681-1683.json",
+      "@id": "https://example.com/iiif/篳篥_平調_陪臚_1681-1683.json",
       "@type": "sc:Manifest",
       "label": "陪臚 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "陪臚",
+        "title": "陪臚",
         "page_range": "1681-1683",
         "filename": "篳篥_平調_陪臚_1681-1683.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_鶏徳_1683-1684.json",
+      "@id": "https://example.com/iiif/篳篥_平調_鶏徳_1683-1684.json",
       "@type": "sc:Manifest",
       "label": "鶏徳 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "鶏徳",
+        "title": "鶏徳",
         "page_range": "1683-1684",
         "filename": "篳篥_平調_鶏徳_1683-1684.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_慶雲楽_1686-1689.json",
+      "@id": "https://example.com/iiif/篳篥_平調_慶雲楽_1686-1689.json",
       "@type": "sc:Manifest",
       "label": "慶雲楽 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "慶雲楽",
+        "title": "慶雲楽",
         "page_range": "1686-1689",
         "filename": "篳篥_平調_慶雲楽_1686-1689.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_裹頭楽_1689-1692.json",
+      "@id": "https://example.com/iiif/篳篥_平調_裹頭楽_1689-1692.json",
       "@type": "sc:Manifest",
       "label": "裹頭楽 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "裹頭楽",
+        "title": "裹頭楽",
         "page_range": "1689-1692",
         "filename": "篳篥_平調_裹頭楽_1689-1692.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_相府蓮_1692-1694.json",
+      "@id": "https://example.com/iiif/篳篥_平調_相府蓮_1692-1694.json",
       "@type": "sc:Manifest",
       "label": "相府蓮 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "相府蓮",
+        "title": "相府蓮",
         "page_range": "1692-1694",
         "filename": "篳篥_平調_相府蓮_1692-1694.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_勇勝急_1694-1696.json",
+      "@id": "https://example.com/iiif/篳篥_平調_勇勝急_1694-1696.json",
       "@type": "sc:Manifest",
       "label": "勇勝急 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "勇勝急",
+        "title": "勇勝急",
         "page_range": "1694-1696",
         "filename": "篳篥_平調_勇勝急_1694-1696.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_扶南_1696-1697.json",
+      "@id": "https://example.com/iiif/篳篥_平調_扶南_1696-1697.json",
       "@type": "sc:Manifest",
       "label": "扶南 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "扶南",
+        "title": "扶南",
         "page_range": "1696-1697",
         "filename": "篳篥_平調_扶南_1696-1697.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_夜半楽_1697-1699.json",
+      "@id": "https://example.com/iiif/篳篥_平調_夜半楽_1697-1699.json",
       "@type": "sc:Manifest",
       "label": "夜半楽 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "夜半楽",
+        "title": "夜半楽",
         "page_range": "1697-1699",
         "filename": "篳篥_平調_夜半楽_1697-1699.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_小郎子_1699-1700.json",
+      "@id": "https://example.com/iiif/篳篥_平調_小郎子_1699-1700.json",
       "@type": "sc:Manifest",
       "label": "小郎子 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "小郎子",
+        "title": "小郎子",
         "page_range": "1699-1700",
         "filename": "篳篥_平調_小郎子_1699-1700.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_王昭君_1700-1701.json",
+      "@id": "https://example.com/iiif/篳篥_平調_王昭君_1700-1701.json",
       "@type": "sc:Manifest",
       "label": "王昭君 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "王昭君",
+        "title": "王昭君",
         "page_range": "1700-1701",
         "filename": "篳篥_平調_王昭君_1700-1701.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_平調_越天楽_1701-1702.json",
+      "@id": "https://example.com/iiif/篳篥_平調_越天楽_1701-1702.json",
       "@type": "sc:Manifest",
       "label": "越天楽 (篳篥 - 平調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "平調",
-        "piece_name": "越天楽",
+        "title": "越天楽",
         "page_range": "1701-1702",
         "filename": "篳篥_平調_越天楽_1701-1702.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_調子_1576-1576.json",
+      "@id": "https://example.com/iiif/篳篥_双調_調子_1576-1576.json",
       "@type": "sc:Manifest",
       "label": "調子 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "調子",
+        "title": "調子",
         "page_range": "1576-1576",
         "filename": "篳篥_双調_調子_1576-1576.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_音取_1576-1578.json",
+      "@id": "https://example.com/iiif/篳篥_双調_音取_1576-1578.json",
       "@type": "sc:Manifest",
       "label": "音取 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "1576-1578",
         "filename": "篳篥_双調_音取_1576-1578.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_春庭楽_1578-1580.json",
+      "@id": "https://example.com/iiif/篳篥_双調_春庭楽_1578-1580.json",
       "@type": "sc:Manifest",
       "label": "春庭楽 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "春庭楽",
+        "title": "春庭楽",
         "page_range": "1578-1580",
         "filename": "篳篥_双調_春庭楽_1578-1580.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_柳花苑_1580-1585.json",
+      "@id": "https://example.com/iiif/篳篥_双調_柳花苑_1580-1585.json",
       "@type": "sc:Manifest",
       "label": "柳花苑 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "柳花苑",
+        "title": "柳花苑",
         "page_range": "1580-1585",
         "filename": "篳篥_双調_柳花苑_1580-1585.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_回盃楽_1585-1587.json",
+      "@id": "https://example.com/iiif/篳篥_双調_回盃楽_1585-1587.json",
       "@type": "sc:Manifest",
       "label": "回盃楽 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "回盃楽",
+        "title": "回盃楽",
         "page_range": "1585-1587",
         "filename": "篳篥_双調_回盃楽_1585-1587.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_颯踏_1587-1590.json",
+      "@id": "https://example.com/iiif/篳篥_双調_颯踏_1587-1590.json",
       "@type": "sc:Manifest",
       "label": "颯踏 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "颯踏",
+        "title": "颯踏",
         "page_range": "1587-1590",
         "filename": "篳篥_双調_颯踏_1587-1590.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_入破_1590-1592.json",
+      "@id": "https://example.com/iiif/篳篥_双調_入破_1590-1592.json",
       "@type": "sc:Manifest",
       "label": "入破 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "入破",
+        "title": "入破",
         "page_range": "1590-1592",
         "filename": "篳篥_双調_入破_1590-1592.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_酒胡子_1592-1593.json",
+      "@id": "https://example.com/iiif/篳篥_双調_酒胡子_1592-1593.json",
       "@type": "sc:Manifest",
       "label": "酒胡子 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "酒胡子",
+        "title": "酒胡子",
         "page_range": "1592-1593",
         "filename": "篳篥_双調_酒胡子_1592-1593.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_武徳楽_1593-1593.json",
+      "@id": "https://example.com/iiif/篳篥_双調_武徳楽_1593-1593.json",
       "@type": "sc:Manifest",
       "label": "武徳楽 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "武徳楽",
+        "title": "武徳楽",
         "page_range": "1593-1593",
         "filename": "篳篥_双調_武徳楽_1593-1593.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_賀殿破_1596-1599.json",
+      "@id": "https://example.com/iiif/篳篥_双調_賀殿破_1596-1599.json",
       "@type": "sc:Manifest",
       "label": "賀殿破 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "賀殿破",
+        "title": "賀殿破",
         "page_range": "1596-1599",
         "filename": "篳篥_双調_賀殿破_1596-1599.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_賀殿急_1599-1600.json",
+      "@id": "https://example.com/iiif/篳篥_双調_賀殿急_1599-1600.json",
       "@type": "sc:Manifest",
       "label": "賀殿急 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "賀殿急",
+        "title": "賀殿急",
         "page_range": "1599-1600",
         "filename": "篳篥_双調_賀殿急_1599-1600.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_鳥破_1600-1602.json",
+      "@id": "https://example.com/iiif/篳篥_双調_鳥破_1600-1602.json",
       "@type": "sc:Manifest",
       "label": "鳥破 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "鳥破",
+        "title": "鳥破",
         "page_range": "1600-1602",
         "filename": "篳篥_双調_鳥破_1600-1602.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_鳥急_1602-1603.json",
+      "@id": "https://example.com/iiif/篳篥_双調_鳥急_1602-1603.json",
       "@type": "sc:Manifest",
       "label": "鳥急 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "鳥急",
+        "title": "鳥急",
         "page_range": "1602-1603",
         "filename": "篳篥_双調_鳥急_1602-1603.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_胡飲酒破_1603-1604.json",
+      "@id": "https://example.com/iiif/篳篥_双調_胡飲酒破_1603-1604.json",
       "@type": "sc:Manifest",
       "label": "胡飲酒破 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "胡飲酒破",
+        "title": "胡飲酒破",
         "page_range": "1603-1604",
         "filename": "篳篥_双調_胡飲酒破_1603-1604.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_北庭楽_1604-1606.json",
+      "@id": "https://example.com/iiif/篳篥_双調_北庭楽_1604-1606.json",
       "@type": "sc:Manifest",
       "label": "北庭楽 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "北庭楽",
+        "title": "北庭楽",
         "page_range": "1604-1606",
         "filename": "篳篥_双調_北庭楽_1604-1606.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_陵王_1606-1608.json",
+      "@id": "https://example.com/iiif/篳篥_双調_陵王_1606-1608.json",
       "@type": "sc:Manifest",
       "label": "陵王 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "陵王",
+        "title": "陵王",
         "page_range": "1606-1608",
         "filename": "篳篥_双調_陵王_1606-1608.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_新羅陵王急_1608-1610.json",
+      "@id": "https://example.com/iiif/篳篥_双調_新羅陵王急_1608-1610.json",
       "@type": "sc:Manifest",
       "label": "新羅陵王急 (篳篥 - 双調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "双調",
-        "piece_name": "新羅陵王急",
+        "title": "新羅陵王急",
         "page_range": "1608-1610",
         "filename": "篳篥_双調_新羅陵王急_1608-1610.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_調子_1709-1709.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_調子_1709-1709.json",
       "@type": "sc:Manifest",
       "label": "調子 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "調子",
+        "title": "調子",
         "page_range": "1709-1709",
         "filename": "篳篥_黄鐘調_調子_1709-1709.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_音取_1709-1710.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_音取_1709-1710.json",
       "@type": "sc:Manifest",
       "label": "音取 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "1709-1710",
         "filename": "篳篥_黄鐘調_音取_1709-1710.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_喜春楽破_1710-1712.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_喜春楽破_1710-1712.json",
       "@type": "sc:Manifest",
       "label": "喜春楽破 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "喜春楽破",
+        "title": "喜春楽破",
         "page_range": "1710-1712",
         "filename": "篳篥_黄鐘調_喜春楽破_1710-1712.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_桃李花_1712-1715.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_桃李花_1712-1715.json",
       "@type": "sc:Manifest",
       "label": "桃李花 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "桃李花",
+        "title": "桃李花",
         "page_range": "1712-1715",
         "filename": "篳篥_黄鐘調_桃李花_1712-1715.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_央宮楽_1715-1718.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_央宮楽_1715-1718.json",
       "@type": "sc:Manifest",
       "label": "央宮楽 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "央宮楽",
+        "title": "央宮楽",
         "page_range": "1715-1718",
         "filename": "篳篥_黄鐘調_央宮楽_1715-1718.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_海青楽_1718-1719.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_海青楽_1718-1719.json",
       "@type": "sc:Manifest",
       "label": "海青楽 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "海青楽",
+        "title": "海青楽",
         "page_range": "1718-1719",
         "filename": "篳篥_黄鐘調_海青楽_1718-1719.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_平蛮楽_1719-1722.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_平蛮楽_1719-1722.json",
       "@type": "sc:Manifest",
       "label": "平蛮楽 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "平蛮楽",
+        "title": "平蛮楽",
         "page_range": "1719-1722",
         "filename": "篳篥_黄鐘調_平蛮楽_1719-1722.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_西王楽破_1722-1724.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_西王楽破_1722-1724.json",
       "@type": "sc:Manifest",
       "label": "西王楽破 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "西王楽破",
+        "title": "西王楽破",
         "page_range": "1722-1724",
         "filename": "篳篥_黄鐘調_西王楽破_1722-1724.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_拾翠楽_1724-1725.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_拾翠楽_1724-1725.json",
       "@type": "sc:Manifest",
       "label": "拾翠楽 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "拾翠楽",
+        "title": "拾翠楽",
         "page_range": "1724-1725",
         "filename": "篳篥_黄鐘調_拾翠楽_1724-1725.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_蘇合急_1727-1731.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_蘇合急_1727-1731.json",
       "@type": "sc:Manifest",
       "label": "蘇合急 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "蘇合急",
+        "title": "蘇合急",
         "page_range": "1727-1731",
         "filename": "篳篥_黄鐘調_蘇合急_1727-1731.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_青海波_1731-1732.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_青海波_1731-1732.json",
       "@type": "sc:Manifest",
       "label": "青海波 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "青海波",
+        "title": "青海波",
         "page_range": "1731-1732",
         "filename": "篳篥_黄鐘調_青海波_1731-1732.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_鳥急_1732-1733.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_鳥急_1732-1733.json",
       "@type": "sc:Manifest",
       "label": "鳥急 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "鳥急",
+        "title": "鳥急",
         "page_range": "1732-1733",
         "filename": "篳篥_黄鐘調_鳥急_1732-1733.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_越天楽_1733-1734.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_越天楽_1733-1734.json",
       "@type": "sc:Manifest",
       "label": "越天楽 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "越天楽",
+        "title": "越天楽",
         "page_range": "1733-1734",
         "filename": "篳篥_黄鐘調_越天楽_1733-1734.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_黄鐘調_千秋楽_1734-1735.json",
+      "@id": "https://example.com/iiif/篳篥_黄鐘調_千秋楽_1734-1735.json",
       "@type": "sc:Manifest",
       "label": "千秋楽 (篳篥 - 黄鐘調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "黄鐘調",
-        "piece_name": "千秋楽",
+        "title": "千秋楽",
         "page_range": "1734-1735",
         "filename": "篳篥_黄鐘調_千秋楽_1734-1735.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_調子_1537-1537.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_調子_1537-1537.json",
       "@type": "sc:Manifest",
       "label": "調子 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "調子",
+        "title": "調子",
         "page_range": "1537-1537",
         "filename": "篳篥_太食調_調子_1537-1537.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_音取_1537-1538.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_音取_1537-1538.json",
       "@type": "sc:Manifest",
       "label": "音取 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "1537-1538",
         "filename": "篳篥_太食調_音取_1537-1538.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_太平楽道行_1539-1540.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_太平楽道行_1539-1540.json",
       "@type": "sc:Manifest",
       "label": "太平楽道行 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "太平楽道行",
+        "title": "太平楽道行",
         "page_range": "1539-1540",
         "filename": "篳篥_太食調_太平楽道行_1539-1540.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_太平楽破_1540-1545.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_太平楽破_1540-1545.json",
       "@type": "sc:Manifest",
       "label": "太平楽破 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "太平楽破",
+        "title": "太平楽破",
         "page_range": "1540-1545",
         "filename": "篳篥_太食調_太平楽破_1540-1545.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_太平楽急_1545-1546.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_太平楽急_1545-1546.json",
       "@type": "sc:Manifest",
       "label": "太平楽急 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "太平楽急",
+        "title": "太平楽急",
         "page_range": "1545-1546",
         "filename": "篳篥_太食調_太平楽急_1545-1546.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_打球楽_1546-1550.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_打球楽_1546-1550.json",
       "@type": "sc:Manifest",
       "label": "打球楽 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "打球楽",
+        "title": "打球楽",
         "page_range": "1546-1550",
         "filename": "篳篥_太食調_打球楽_1546-1550.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_傾盃楽急_1550-1551.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_傾盃楽急_1550-1551.json",
       "@type": "sc:Manifest",
       "label": "傾盃楽急 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "傾盃楽急",
+        "title": "傾盃楽急",
         "page_range": "1550-1551",
         "filename": "篳篥_太食調_傾盃楽急_1550-1551.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_仙遊霞_1551-1552.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_仙遊霞_1551-1552.json",
       "@type": "sc:Manifest",
       "label": "仙遊霞 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "仙遊霞",
+        "title": "仙遊霞",
         "page_range": "1551-1552",
         "filename": "篳篥_太食調_仙遊霞_1551-1552.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_還城樂_1553-1557.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_還城樂_1553-1557.json",
       "@type": "sc:Manifest",
       "label": "還城樂 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "還城樂",
+        "title": "還城樂",
         "page_range": "1553-1557",
         "filename": "篳篥_太食調_還城樂_1553-1557.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_抜頭_1558-1560.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_抜頭_1558-1560.json",
       "@type": "sc:Manifest",
       "label": "抜頭 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "抜頭",
+        "title": "抜頭",
         "page_range": "1558-1560",
         "filename": "篳篥_太食調_抜頭_1558-1560.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_長慶子_1560-1561.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_長慶子_1560-1561.json",
       "@type": "sc:Manifest",
       "label": "長慶子 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "長慶子",
+        "title": "長慶子",
         "page_range": "1560-1561",
         "filename": "篳篥_太食調_長慶子_1560-1561.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_蘇芳菲_1563-1565.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_蘇芳菲_1563-1565.json",
       "@type": "sc:Manifest",
       "label": "蘇芳菲 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "蘇芳菲",
+        "title": "蘇芳菲",
         "page_range": "1563-1565",
         "filename": "篳篥_太食調_蘇芳菲_1563-1565.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_輪鼓褌脱_1565-1568.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_輪鼓褌脱_1565-1568.json",
       "@type": "sc:Manifest",
       "label": "輪鼓褌脱 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "輪鼓褌脱",
+        "title": "輪鼓褌脱",
         "page_range": "1565-1568",
         "filename": "篳篥_太食調_輪鼓褌脱_1565-1568.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_太食調_庶人三台_1568-1569.json",
+      "@id": "https://example.com/iiif/篳篥_太食調_庶人三台_1568-1569.json",
       "@type": "sc:Manifest",
       "label": "庶人三台 (篳篥 - 太食調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "太食調",
-        "piece_name": "庶人三台",
+        "title": "庶人三台",
         "page_range": "1568-1569",
         "filename": "篳篥_太食調_庶人三台_1568-1569.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_調子_1743-1743.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_調子_1743-1743.json",
       "@type": "sc:Manifest",
       "label": "調子 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "調子",
+        "title": "調子",
         "page_range": "1743-1743",
         "filename": "篳篥_盤渉調_調子_1743-1743.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_音取_1743-1744.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_音取_1743-1744.json",
       "@type": "sc:Manifest",
       "label": "音取 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "1743-1744",
         "filename": "篳篥_盤渉調_音取_1743-1744.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_蘇合香三帖_1744-1749.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_蘇合香三帖_1744-1749.json",
       "@type": "sc:Manifest",
       "label": "蘇合香三帖 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "蘇合香三帖",
+        "title": "蘇合香三帖",
         "page_range": "1744-1749",
         "filename": "篳篥_盤渉調_蘇合香三帖_1744-1749.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_蘇合香破_1749-1752.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_蘇合香破_1749-1752.json",
       "@type": "sc:Manifest",
       "label": "蘇合香破 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "蘇合香破",
+        "title": "蘇合香破",
         "page_range": "1749-1752",
         "filename": "篳篥_盤渉調_蘇合香破_1749-1752.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_蘇合香急_1752-1756.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_蘇合香急_1752-1756.json",
       "@type": "sc:Manifest",
       "label": "蘇合香急 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "蘇合香急",
+        "title": "蘇合香急",
         "page_range": "1752-1756",
         "filename": "篳篥_盤渉調_蘇合香急_1752-1756.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_万秋楽破_1756-1762.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_万秋楽破_1756-1762.json",
       "@type": "sc:Manifest",
       "label": "万秋楽破 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "万秋楽破",
+        "title": "万秋楽破",
         "page_range": "1756-1762",
         "filename": "篳篥_盤渉調_万秋楽破_1756-1762.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_宗明楽_1762-1765.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_宗明楽_1762-1765.json",
       "@type": "sc:Manifest",
       "label": "宗明楽 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "宗明楽",
+        "title": "宗明楽",
         "page_range": "1762-1765",
         "filename": "篳篥_盤渉調_宗明楽_1762-1765.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_輪台_1766-1767.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_輪台_1766-1767.json",
       "@type": "sc:Manifest",
       "label": "輪台 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "輪台",
+        "title": "輪台",
         "page_range": "1766-1767",
         "filename": "篳篥_盤渉調_輪台_1766-1767.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_青海波_1767-1769.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_青海波_1767-1769.json",
       "@type": "sc:Manifest",
       "label": "青海波 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "青海波",
+        "title": "青海波",
         "page_range": "1767-1769",
         "filename": "篳篥_盤渉調_青海波_1767-1769.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_白柱_1769-1770.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_白柱_1769-1770.json",
       "@type": "sc:Manifest",
       "label": "白柱 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "白柱",
+        "title": "白柱",
         "page_range": "1769-1770",
         "filename": "篳篥_盤渉調_白柱_1769-1770.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_竹林楽_1770-1771.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_竹林楽_1770-1771.json",
       "@type": "sc:Manifest",
       "label": "竹林楽 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "竹林楽",
+        "title": "竹林楽",
         "page_range": "1770-1771",
         "filename": "篳篥_盤渉調_竹林楽_1770-1771.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_蘇莫者破_1772-1775.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_蘇莫者破_1772-1775.json",
       "@type": "sc:Manifest",
       "label": "蘇莫者破 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "蘇莫者破",
+        "title": "蘇莫者破",
         "page_range": "1772-1775",
         "filename": "篳篥_盤渉調_蘇莫者破_1772-1775.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_千秋楽_1775-1776.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_千秋楽_1775-1776.json",
       "@type": "sc:Manifest",
       "label": "千秋楽 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "千秋楽",
+        "title": "千秋楽",
         "page_range": "1775-1776",
         "filename": "篳篥_盤渉調_千秋楽_1775-1776.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_越天楽_1776-1777.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_越天楽_1776-1777.json",
       "@type": "sc:Manifest",
       "label": "越天楽 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "越天楽",
+        "title": "越天楽",
         "page_range": "1776-1777",
         "filename": "篳篥_盤渉調_越天楽_1776-1777.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_採桑老_1779-1781.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_採桑老_1779-1781.json",
       "@type": "sc:Manifest",
       "label": "採桑老 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "採桑老",
+        "title": "採桑老",
         "page_range": "1779-1781",
         "filename": "篳篥_盤渉調_採桑老_1779-1781.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_盤渉調_剣気褌脱_1781-1782.json",
+      "@id": "https://example.com/iiif/篳篥_盤渉調_剣気褌脱_1781-1782.json",
       "@type": "sc:Manifest",
       "label": "剣気褌脱 (篳篥 - 盤渉調)",
       "metadata": {
         "instrument": "篳篥",
         "mode": "盤渉調",
-        "piece_name": "剣気褌脱",
+        "title": "剣気褌脱",
         "page_range": "1781-1782",
         "filename": "篳篥_盤渉調_剣気褌脱_1781-1782.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_音取_2207-2207.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_音取_2207-2207.json",
       "@type": "sc:Manifest",
       "label": "音取 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "2207-2207",
         "filename": "龍笛_壱越調_音取_2207-2207.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_品玄_2207-2208.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_品玄_2207-2208.json",
       "@type": "sc:Manifest",
       "label": "品玄 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "品玄",
+        "title": "品玄",
         "page_range": "2207-2208",
         "filename": "龍笛_壱越調_品玄_2207-2208.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_入調_2208-2210.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_入調_2208-2210.json",
       "@type": "sc:Manifest",
       "label": "入調 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "入調",
+        "title": "入調",
         "page_range": "2208-2210",
         "filename": "龍笛_壱越調_入調_2208-2210.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_春鶯囀颯踏_2211-2213.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_春鶯囀颯踏_2211-2213.json",
       "@type": "sc:Manifest",
       "label": "春鶯囀颯踏 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "春鶯囀颯踏",
+        "title": "春鶯囀颯踏",
         "page_range": "2211-2213",
         "filename": "龍笛_壱越調_春鶯囀颯踏_2211-2213.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_春鶯囀入破_2213-2215.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_春鶯囀入破_2213-2215.json",
       "@type": "sc:Manifest",
       "label": "春鶯囀入破 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "春鶯囀入破",
+        "title": "春鶯囀入破",
         "page_range": "2213-2215",
         "filename": "龍笛_壱越調_春鶯囀入破_2213-2215.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_賀殿破_2215-2218.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_賀殿破_2215-2218.json",
       "@type": "sc:Manifest",
       "label": "賀殿破 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "賀殿破",
+        "title": "賀殿破",
         "page_range": "2215-2218",
         "filename": "龍笛_壱越調_賀殿破_2215-2218.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_賀殿急_2218-2219.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_賀殿急_2218-2219.json",
       "@type": "sc:Manifest",
       "label": "賀殿急 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "賀殿急",
+        "title": "賀殿急",
         "page_range": "2218-2219",
         "filename": "龍笛_壱越調_賀殿急_2218-2219.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_迦陵頻破_2219-2221.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_迦陵頻破_2219-2221.json",
       "@type": "sc:Manifest",
       "label": "迦陵頻破 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "迦陵頻破",
+        "title": "迦陵頻破",
         "page_range": "2219-2221",
         "filename": "龍笛_壱越調_迦陵頻破_2219-2221.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_迦陵頻急_2221-2222.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_迦陵頻急_2221-2222.json",
       "@type": "sc:Manifest",
       "label": "迦陵頻急 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "迦陵頻急",
+        "title": "迦陵頻急",
         "page_range": "2221-2222",
         "filename": "龍笛_壱越調_迦陵頻急_2221-2222.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_承和楽_2223-2225.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_承和楽_2223-2225.json",
       "@type": "sc:Manifest",
       "label": "承和楽 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "承和楽",
+        "title": "承和楽",
         "page_range": "2223-2225",
         "filename": "龍笛_壱越調_承和楽_2223-2225.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_北庭楽_2225-2227.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_北庭楽_2225-2227.json",
       "@type": "sc:Manifest",
       "label": "北庭楽 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "北庭楽",
+        "title": "北庭楽",
         "page_range": "2225-2227",
         "filename": "龍笛_壱越調_北庭楽_2225-2227.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_蘭陵王_2227-2229.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_蘭陵王_2227-2229.json",
       "@type": "sc:Manifest",
       "label": "蘭陵王 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "蘭陵王",
+        "title": "蘭陵王",
         "page_range": "2227-2229",
         "filename": "龍笛_壱越調_蘭陵王_2227-2229.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_胡飲酒序_2229-2231.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_胡飲酒序_2229-2231.json",
       "@type": "sc:Manifest",
       "label": "胡飲酒序 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "胡飲酒序",
+        "title": "胡飲酒序",
         "page_range": "2229-2231",
         "filename": "龍笛_壱越調_胡飲酒序_2229-2231.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_胡飲酒破_2231-2231.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_胡飲酒破_2231-2231.json",
       "@type": "sc:Manifest",
       "label": "胡飲酒破 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "胡飲酒破",
+        "title": "胡飲酒破",
         "page_range": "2231-2231",
         "filename": "龍笛_壱越調_胡飲酒破_2231-2231.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_新羅陵王急_2232-2233.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_新羅陵王急_2232-2233.json",
       "@type": "sc:Manifest",
       "label": "新羅陵王急 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "新羅陵王急",
+        "title": "新羅陵王急",
         "page_range": "2232-2233",
         "filename": "龍笛_壱越調_新羅陵王急_2232-2233.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_回盃楽_2235-2237.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_回盃楽_2235-2237.json",
       "@type": "sc:Manifest",
       "label": "回盃楽 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "回盃楽",
+        "title": "回盃楽",
         "page_range": "2235-2237",
         "filename": "龍笛_壱越調_回盃楽_2235-2237.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_十天楽_2237-2239.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_十天楽_2237-2239.json",
       "@type": "sc:Manifest",
       "label": "十天楽 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "十天楽",
+        "title": "十天楽",
         "page_range": "2237-2239",
         "filename": "龍笛_壱越調_十天楽_2237-2239.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_菩薩破_2239-2241.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_菩薩破_2239-2241.json",
       "@type": "sc:Manifest",
       "label": "菩薩破 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "菩薩破",
+        "title": "菩薩破",
         "page_range": "2239-2241",
         "filename": "龍笛_壱越調_菩薩破_2239-2241.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_酒胡子_2241-2242.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_酒胡子_2241-2242.json",
       "@type": "sc:Manifest",
       "label": "酒胡子 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "酒胡子",
+        "title": "酒胡子",
         "page_range": "2241-2242",
         "filename": "龍笛_壱越調_酒胡子_2241-2242.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_武徳楽_2242-2243.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_武徳楽_2242-2243.json",
       "@type": "sc:Manifest",
       "label": "武徳楽 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "武徳楽",
+        "title": "武徳楽",
         "page_range": "2242-2243",
         "filename": "龍笛_壱越調_武徳楽_2242-2243.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_酒清司_2243-2244.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_酒清司_2243-2244.json",
       "@type": "sc:Manifest",
       "label": "酒清司 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "酒清司",
+        "title": "酒清司",
         "page_range": "2243-2244",
         "filename": "龍笛_壱越調_酒清司_2243-2244.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_壱越調_壱団嬌_2244-2245.json",
+      "@id": "https://example.com/iiif/龍笛_壱越調_壱団嬌_2244-2245.json",
       "@type": "sc:Manifest",
       "label": "壱団嬌 (龍笛 - 壱越調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "壱越調",
-        "piece_name": "壱団嬌",
+        "title": "壱団嬌",
         "page_range": "2244-2245",
         "filename": "龍笛_壱越調_壱団嬌_2244-2245.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_音取_2304-2304.json",
+      "@id": "https://example.com/iiif/龍笛_平調_音取_2304-2304.json",
       "@type": "sc:Manifest",
       "label": "音取 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "2304-2304",
         "filename": "龍笛_平調_音取_2304-2304.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_品玄_2304-2307.json",
+      "@id": "https://example.com/iiif/龍笛_平調_品玄_2304-2307.json",
       "@type": "sc:Manifest",
       "label": "品玄 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "品玄",
+        "title": "品玄",
         "page_range": "2304-2307",
         "filename": "龍笛_平調_品玄_2304-2307.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_臨調子_2307-2308.json",
+      "@id": "https://example.com/iiif/龍笛_平調_臨調子_2307-2308.json",
       "@type": "sc:Manifest",
       "label": "臨調子 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "臨調子",
+        "title": "臨調子",
         "page_range": "2307-2308",
         "filename": "龍笛_平調_臨調子_2307-2308.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_皇_急_2309-2310.json",
+      "@id": "https://example.com/iiif/龍笛_平調_皇麞急_2309-2310.json",
       "@type": "sc:Manifest",
-      "label": "皇?急 (龍笛 - 平調)",
+      "label": "皇麞急 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "皇?急",
+        "title": "皇麞急",
         "page_range": "2309-2310",
-        "filename": "龍笛_平調_皇_急_2309-2310.json",
+        "filename": "龍笛_平調_皇麞急_2309-2310.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_五常楽序_2310-2312.json",
+      "@id": "https://example.com/iiif/龍笛_平調_五常楽序_2310-2312.json",
       "@type": "sc:Manifest",
       "label": "五常楽序 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "五常楽序",
+        "title": "五常楽序",
         "page_range": "2310-2312",
         "filename": "龍笛_平調_五常楽序_2310-2312.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_五常楽破_2313-2317.json",
+      "@id": "https://example.com/iiif/龍笛_平調_五常楽破_2313-2317.json",
       "@type": "sc:Manifest",
       "label": "五常楽破 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "五常楽破",
+        "title": "五常楽破",
         "page_range": "2313-2317",
         "filename": "龍笛_平調_五常楽破_2313-2317.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_五常楽急_2317-2317.json",
+      "@id": "https://example.com/iiif/龍笛_平調_五常楽急_2317-2317.json",
       "@type": "sc:Manifest",
       "label": "五常楽急 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "五常楽急",
+        "title": "五常楽急",
         "page_range": "2317-2317",
         "filename": "龍笛_平調_五常楽急_2317-2317.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_万歳楽_2317-2320.json",
+      "@id": "https://example.com/iiif/龍笛_平調_万歳楽_2317-2320.json",
       "@type": "sc:Manifest",
       "label": "万歳楽 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "万歳楽",
+        "title": "万歳楽",
         "page_range": "2317-2320",
         "filename": "龍笛_平調_万歳楽_2317-2320.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_甘州_2320-2322.json",
+      "@id": "https://example.com/iiif/龍笛_平調_甘州_2320-2322.json",
       "@type": "sc:Manifest",
       "label": "甘州 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "甘州",
+        "title": "甘州",
         "page_range": "2320-2322",
         "filename": "龍笛_平調_甘州_2320-2322.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_三台塩急_2322-2324.json",
+      "@id": "https://example.com/iiif/龍笛_平調_三台塩急_2322-2324.json",
       "@type": "sc:Manifest",
       "label": "三台塩急 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "三台塩急",
+        "title": "三台塩急",
         "page_range": "2322-2324",
         "filename": "龍笛_平調_三台塩急_2322-2324.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_春楊柳_2324-2326.json",
+      "@id": "https://example.com/iiif/龍笛_平調_春楊柳_2324-2326.json",
       "@type": "sc:Manifest",
       "label": "春楊柳 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "春楊柳",
+        "title": "春楊柳",
         "page_range": "2324-2326",
         "filename": "龍笛_平調_春楊柳_2324-2326.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_林歌_2326-2328.json",
+      "@id": "https://example.com/iiif/龍笛_平調_林歌_2326-2328.json",
       "@type": "sc:Manifest",
       "label": "林歌 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "林歌",
+        "title": "林歌",
         "page_range": "2326-2328",
         "filename": "龍笛_平調_林歌_2326-2328.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_老君子_2328-2329.json",
+      "@id": "https://example.com/iiif/龍笛_平調_老君子_2328-2329.json",
       "@type": "sc:Manifest",
       "label": "老君子 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "老君子",
+        "title": "老君子",
         "page_range": "2328-2329",
         "filename": "龍笛_平調_老君子_2328-2329.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_陪臚_2329-2331.json",
+      "@id": "https://example.com/iiif/龍笛_平調_陪臚_2329-2331.json",
       "@type": "sc:Manifest",
       "label": "陪臚 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "陪臚",
+        "title": "陪臚",
         "page_range": "2329-2331",
         "filename": "龍笛_平調_陪臚_2329-2331.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_鶏徳_2331-2332.json",
+      "@id": "https://example.com/iiif/龍笛_平調_鶏徳_2331-2332.json",
       "@type": "sc:Manifest",
       "label": "鶏徳 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "鶏徳",
+        "title": "鶏徳",
         "page_range": "2331-2332",
         "filename": "龍笛_平調_鶏徳_2331-2332.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_慶雲楽_2334-2337.json",
+      "@id": "https://example.com/iiif/龍笛_平調_慶雲楽_2334-2337.json",
       "@type": "sc:Manifest",
       "label": "慶雲楽 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "慶雲楽",
+        "title": "慶雲楽",
         "page_range": "2334-2337",
         "filename": "龍笛_平調_慶雲楽_2334-2337.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_裹頭楽_2337-2340.json",
+      "@id": "https://example.com/iiif/龍笛_平調_裹頭楽_2337-2340.json",
       "@type": "sc:Manifest",
       "label": "裹頭楽 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "裹頭楽",
+        "title": "裹頭楽",
         "page_range": "2337-2340",
         "filename": "龍笛_平調_裹頭楽_2337-2340.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_相府蓮_2340-2342.json",
+      "@id": "https://example.com/iiif/龍笛_平調_相府蓮_2340-2342.json",
       "@type": "sc:Manifest",
       "label": "相府蓮 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "相府蓮",
+        "title": "相府蓮",
         "page_range": "2340-2342",
         "filename": "龍笛_平調_相府蓮_2340-2342.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_勇勝急_2342-2344.json",
+      "@id": "https://example.com/iiif/龍笛_平調_勇勝急_2342-2344.json",
       "@type": "sc:Manifest",
       "label": "勇勝急 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "勇勝急",
+        "title": "勇勝急",
         "page_range": "2342-2344",
         "filename": "龍笛_平調_勇勝急_2342-2344.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_扶南_2344-2345.json",
+      "@id": "https://example.com/iiif/龍笛_平調_扶南_2344-2345.json",
       "@type": "sc:Manifest",
       "label": "扶南 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "扶南",
+        "title": "扶南",
         "page_range": "2344-2345",
         "filename": "龍笛_平調_扶南_2344-2345.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_夜半楽_2345-2347.json",
+      "@id": "https://example.com/iiif/龍笛_平調_夜半楽_2345-2347.json",
       "@type": "sc:Manifest",
       "label": "夜半楽 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "夜半楽",
+        "title": "夜半楽",
         "page_range": "2345-2347",
         "filename": "龍笛_平調_夜半楽_2345-2347.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_小郎子_2347-2348.json",
+      "@id": "https://example.com/iiif/龍笛_平調_小郎子_2347-2348.json",
       "@type": "sc:Manifest",
       "label": "小郎子 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "小郎子",
+        "title": "小郎子",
         "page_range": "2347-2348",
         "filename": "龍笛_平調_小郎子_2347-2348.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_王昭君_2348-2349.json",
+      "@id": "https://example.com/iiif/龍笛_平調_王昭君_2348-2349.json",
       "@type": "sc:Manifest",
       "label": "王昭君 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "王昭君",
+        "title": "王昭君",
         "page_range": "2348-2349",
         "filename": "龍笛_平調_王昭君_2348-2349.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_越天楽_2349-2350.json",
+      "@id": "https://example.com/iiif/龍笛_平調_越天楽_2349-2350.json",
       "@type": "sc:Manifest",
       "label": "越天楽 (龍笛 - 平調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "平調",
-        "piece_name": "越天楽",
+        "title": "越天楽",
         "page_range": "2349-2350",
         "filename": "龍笛_平調_越天楽_2349-2350.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_音取_2162-2162.json",
+      "@id": "https://example.com/iiif/龍笛_双調_音取_2162-2162.json",
       "@type": "sc:Manifest",
       "label": "音取 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "2162-2162",
         "filename": "龍笛_双調_音取_2162-2162.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_品玄_2163-2165.json",
+      "@id": "https://example.com/iiif/龍笛_双調_品玄_2163-2165.json",
       "@type": "sc:Manifest",
       "label": "品玄 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "品玄",
+        "title": "品玄",
         "page_range": "2163-2165",
         "filename": "龍笛_双調_品玄_2163-2165.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_入調_2165-2167.json",
+      "@id": "https://example.com/iiif/龍笛_双調_入調_2165-2167.json",
       "@type": "sc:Manifest",
       "label": "入調 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "入調",
+        "title": "入調",
         "page_range": "2165-2167",
         "filename": "龍笛_双調_入調_2165-2167.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_春庭楽_2167-2170.json",
+      "@id": "https://example.com/iiif/龍笛_双調_春庭楽_2167-2170.json",
       "@type": "sc:Manifest",
       "label": "春庭楽 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "春庭楽",
+        "title": "春庭楽",
         "page_range": "2167-2170",
         "filename": "龍笛_双調_春庭楽_2167-2170.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_柳花苑_2170-2175.json",
+      "@id": "https://example.com/iiif/龍笛_双調_柳花苑_2170-2175.json",
       "@type": "sc:Manifest",
       "label": "柳花苑 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "柳花苑",
+        "title": "柳花苑",
         "page_range": "2170-2175",
         "filename": "龍笛_双調_柳花苑_2170-2175.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_回盃楽_2175-2177.json",
+      "@id": "https://example.com/iiif/龍笛_双調_回盃楽_2175-2177.json",
       "@type": "sc:Manifest",
       "label": "回盃楽 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "回盃楽",
+        "title": "回盃楽",
         "page_range": "2175-2177",
         "filename": "龍笛_双調_回盃楽_2175-2177.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_颯踏_2177-2179.json",
+      "@id": "https://example.com/iiif/龍笛_双調_颯踏_2177-2179.json",
       "@type": "sc:Manifest",
       "label": "颯踏 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "颯踏",
+        "title": "颯踏",
         "page_range": "2177-2179",
         "filename": "龍笛_双調_颯踏_2177-2179.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_入破_2179-2181.json",
+      "@id": "https://example.com/iiif/龍笛_双調_入破_2179-2181.json",
       "@type": "sc:Manifest",
       "label": "入破 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "入破",
+        "title": "入破",
         "page_range": "2179-2181",
         "filename": "龍笛_双調_入破_2179-2181.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_酒胡子_2182-2182.json",
+      "@id": "https://example.com/iiif/龍笛_双調_酒胡子_2182-2182.json",
       "@type": "sc:Manifest",
       "label": "酒胡子 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "酒胡子",
+        "title": "酒胡子",
         "page_range": "2182-2182",
         "filename": "龍笛_双調_酒胡子_2182-2182.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_武徳楽_2182-2183.json",
+      "@id": "https://example.com/iiif/龍笛_双調_武徳楽_2182-2183.json",
       "@type": "sc:Manifest",
       "label": "武徳楽 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "武徳楽",
+        "title": "武徳楽",
         "page_range": "2182-2183",
         "filename": "龍笛_双調_武徳楽_2182-2183.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_賀殿破_2186-2189.json",
+      "@id": "https://example.com/iiif/龍笛_双調_賀殿破_2186-2189.json",
       "@type": "sc:Manifest",
       "label": "賀殿破 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "賀殿破",
+        "title": "賀殿破",
         "page_range": "2186-2189",
         "filename": "龍笛_双調_賀殿破_2186-2189.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_賀殿急_2189-2190.json",
+      "@id": "https://example.com/iiif/龍笛_双調_賀殿急_2189-2190.json",
       "@type": "sc:Manifest",
       "label": "賀殿急 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "賀殿急",
+        "title": "賀殿急",
         "page_range": "2189-2190",
         "filename": "龍笛_双調_賀殿急_2189-2190.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_鳥破_2190-2192.json",
+      "@id": "https://example.com/iiif/龍笛_双調_鳥破_2190-2192.json",
       "@type": "sc:Manifest",
       "label": "鳥破 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "鳥破",
+        "title": "鳥破",
         "page_range": "2190-2192",
         "filename": "龍笛_双調_鳥破_2190-2192.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_鳥急_2192-2193.json",
+      "@id": "https://example.com/iiif/龍笛_双調_鳥急_2192-2193.json",
       "@type": "sc:Manifest",
       "label": "鳥急 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "鳥急",
+        "title": "鳥急",
         "page_range": "2192-2193",
         "filename": "龍笛_双調_鳥急_2192-2193.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_胡飲酒破_2193-2194.json",
+      "@id": "https://example.com/iiif/龍笛_双調_胡飲酒破_2193-2194.json",
       "@type": "sc:Manifest",
       "label": "胡飲酒破 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "胡飲酒破",
+        "title": "胡飲酒破",
         "page_range": "2193-2194",
         "filename": "龍笛_双調_胡飲酒破_2193-2194.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_北庭楽_2194-2196.json",
+      "@id": "https://example.com/iiif/龍笛_双調_北庭楽_2194-2196.json",
       "@type": "sc:Manifest",
       "label": "北庭楽 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "北庭楽",
+        "title": "北庭楽",
         "page_range": "2194-2196",
         "filename": "龍笛_双調_北庭楽_2194-2196.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_陵王_2196-2198.json",
+      "@id": "https://example.com/iiif/龍笛_双調_陵王_2196-2198.json",
       "@type": "sc:Manifest",
       "label": "陵王 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "陵王",
+        "title": "陵王",
         "page_range": "2196-2198",
         "filename": "龍笛_双調_陵王_2196-2198.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_双調_新羅陵王急_2198-2200.json",
+      "@id": "https://example.com/iiif/龍笛_双調_新羅陵王急_2198-2200.json",
       "@type": "sc:Manifest",
       "label": "新羅陵王急 (龍笛 - 双調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "双調",
-        "piece_name": "新羅陵王急",
+        "title": "新羅陵王急",
         "page_range": "2198-2200",
         "filename": "龍笛_双調_新羅陵王急_2198-2200.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_音取_2357-2357.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_音取_2357-2357.json",
       "@type": "sc:Manifest",
       "label": "音取 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "2357-2357",
         "filename": "龍笛_黄鐘調_音取_2357-2357.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_品玄_2357-2360.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_品玄_2357-2360.json",
       "@type": "sc:Manifest",
       "label": "品玄 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "品玄",
+        "title": "品玄",
         "page_range": "2357-2360",
         "filename": "龍笛_黄鐘調_品玄_2357-2360.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_入調_2360-2362.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_入調_2360-2362.json",
       "@type": "sc:Manifest",
       "label": "入調 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "入調",
+        "title": "入調",
         "page_range": "2360-2362",
         "filename": "龍笛_黄鐘調_入調_2360-2362.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_喜春楽破_2362-2364.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_喜春楽破_2362-2364.json",
       "@type": "sc:Manifest",
       "label": "喜春楽破 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "喜春楽破",
+        "title": "喜春楽破",
         "page_range": "2362-2364",
         "filename": "龍笛_黄鐘調_喜春楽破_2362-2364.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_桃李花_2364-2366.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_桃李花_2364-2366.json",
       "@type": "sc:Manifest",
       "label": "桃李花 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "桃李花",
+        "title": "桃李花",
         "page_range": "2364-2366",
         "filename": "龍笛_黄鐘調_桃李花_2364-2366.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_央宮楽_2366-2369.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_央宮楽_2366-2369.json",
       "@type": "sc:Manifest",
       "label": "央宮楽 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "央宮楽",
+        "title": "央宮楽",
         "page_range": "2366-2369",
         "filename": "龍笛_黄鐘調_央宮楽_2366-2369.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_海青楽_2370-2371.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_海青楽_2370-2371.json",
       "@type": "sc:Manifest",
       "label": "海青楽 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "海青楽",
+        "title": "海青楽",
         "page_range": "2370-2371",
         "filename": "龍笛_黄鐘調_海青楽_2370-2371.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_平蛮楽_2371-2373.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_平蛮楽_2371-2373.json",
       "@type": "sc:Manifest",
       "label": "平蛮楽 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "平蛮楽",
+        "title": "平蛮楽",
         "page_range": "2371-2373",
         "filename": "龍笛_黄鐘調_平蛮楽_2371-2373.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_西王楽破_2373-2376.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_西王楽破_2373-2376.json",
       "@type": "sc:Manifest",
       "label": "西王楽破 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "西王楽破",
+        "title": "西王楽破",
         "page_range": "2373-2376",
         "filename": "龍笛_黄鐘調_西王楽破_2373-2376.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_拾翠楽_2376-2376.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_拾翠楽_2376-2376.json",
       "@type": "sc:Manifest",
       "label": "拾翠楽 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "拾翠楽",
+        "title": "拾翠楽",
         "page_range": "2376-2376",
         "filename": "龍笛_黄鐘調_拾翠楽_2376-2376.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_蘇合急_2379-2383.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_蘇合急_2379-2383.json",
       "@type": "sc:Manifest",
       "label": "蘇合急 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "蘇合急",
+        "title": "蘇合急",
         "page_range": "2379-2383",
         "filename": "龍笛_黄鐘調_蘇合急_2379-2383.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_青海波_2383-2384.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_青海波_2383-2384.json",
       "@type": "sc:Manifest",
       "label": "青海波 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "青海波",
+        "title": "青海波",
         "page_range": "2383-2384",
         "filename": "龍笛_黄鐘調_青海波_2383-2384.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_鳥急_2384-2385.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_鳥急_2384-2385.json",
       "@type": "sc:Manifest",
       "label": "鳥急 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "鳥急",
+        "title": "鳥急",
         "page_range": "2384-2385",
         "filename": "龍笛_黄鐘調_鳥急_2384-2385.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_越天楽_2385-2386.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_越天楽_2385-2386.json",
       "@type": "sc:Manifest",
       "label": "越天楽 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "越天楽",
+        "title": "越天楽",
         "page_range": "2385-2386",
         "filename": "龍笛_黄鐘調_越天楽_2385-2386.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_黄鐘調_千秋楽_2386-2387.json",
+      "@id": "https://example.com/iiif/龍笛_黄鐘調_千秋楽_2386-2387.json",
       "@type": "sc:Manifest",
       "label": "千秋楽 (龍笛 - 黄鐘調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "黄鐘調",
-        "piece_name": "千秋楽",
+        "title": "千秋楽",
         "page_range": "2386-2387",
         "filename": "龍笛_黄鐘調_千秋楽_2386-2387.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_音取_2116-2116.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_音取_2116-2116.json",
       "@type": "sc:Manifest",
       "label": "音取 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "2116-2116",
         "filename": "龍笛_太食調_音取_2116-2116.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_品玄_2117-2119.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_品玄_2117-2119.json",
       "@type": "sc:Manifest",
       "label": "品玄 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "品玄",
+        "title": "品玄",
         "page_range": "2117-2119",
         "filename": "龍笛_太食調_品玄_2117-2119.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_上調子_2119-2123.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_上調子_2119-2123.json",
       "@type": "sc:Manifest",
       "label": "上調子 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "上調子",
+        "title": "上調子",
         "page_range": "2119-2123",
         "filename": "龍笛_太食調_上調子_2119-2123.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_太平楽道行_2123-2124.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_太平楽道行_2123-2124.json",
       "@type": "sc:Manifest",
       "label": "太平楽道行 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "太平楽道行",
+        "title": "太平楽道行",
         "page_range": "2123-2124",
         "filename": "龍笛_太食調_太平楽道行_2123-2124.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_太平楽破_2125-2130.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_太平楽破_2125-2130.json",
       "@type": "sc:Manifest",
       "label": "太平楽破 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "太平楽破",
+        "title": "太平楽破",
         "page_range": "2125-2130",
         "filename": "龍笛_太食調_太平楽破_2125-2130.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_太平楽急_2130-2131.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_太平楽急_2130-2131.json",
       "@type": "sc:Manifest",
       "label": "太平楽急 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "太平楽急",
+        "title": "太平楽急",
         "page_range": "2130-2131",
         "filename": "龍笛_太食調_太平楽急_2130-2131.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_打球楽_2131-2134.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_打球楽_2131-2134.json",
       "@type": "sc:Manifest",
       "label": "打球楽 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "打球楽",
+        "title": "打球楽",
         "page_range": "2131-2134",
         "filename": "龍笛_太食調_打球楽_2131-2134.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_傾盃楽急_2134-2135.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_傾盃楽急_2134-2135.json",
       "@type": "sc:Manifest",
       "label": "傾盃楽急 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "傾盃楽急",
+        "title": "傾盃楽急",
         "page_range": "2134-2135",
         "filename": "龍笛_太食調_傾盃楽急_2134-2135.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_仙遊霞_2136-2137.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_仙遊霞_2136-2137.json",
       "@type": "sc:Manifest",
       "label": "仙遊霞 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "仙遊霞",
+        "title": "仙遊霞",
         "page_range": "2136-2137",
         "filename": "龍笛_太食調_仙遊霞_2136-2137.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_還城樂_2137-2142.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_還城樂_2137-2142.json",
       "@type": "sc:Manifest",
       "label": "還城樂 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "還城樂",
+        "title": "還城樂",
         "page_range": "2137-2142",
         "filename": "龍笛_太食調_還城樂_2137-2142.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_抜頭_2142-2144.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_抜頭_2142-2144.json",
       "@type": "sc:Manifest",
       "label": "抜頭 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "抜頭",
+        "title": "抜頭",
         "page_range": "2142-2144",
         "filename": "龍笛_太食調_抜頭_2142-2144.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_長慶子_2144-2145.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_長慶子_2144-2145.json",
       "@type": "sc:Manifest",
       "label": "長慶子 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "長慶子",
+        "title": "長慶子",
         "page_range": "2144-2145",
         "filename": "龍笛_太食調_長慶子_2144-2145.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_蘇芳菲_2148-2150.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_蘇芳菲_2148-2150.json",
       "@type": "sc:Manifest",
       "label": "蘇芳菲 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "蘇芳菲",
+        "title": "蘇芳菲",
         "page_range": "2148-2150",
         "filename": "龍笛_太食調_蘇芳菲_2148-2150.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_輪鼓褌脱_2150-2153.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_輪鼓褌脱_2150-2153.json",
       "@type": "sc:Manifest",
       "label": "輪鼓褌脱 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "輪鼓褌脱",
+        "title": "輪鼓褌脱",
         "page_range": "2150-2153",
         "filename": "龍笛_太食調_輪鼓褌脱_2150-2153.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_太食調_庶人三台_2153-2154.json",
+      "@id": "https://example.com/iiif/龍笛_太食調_庶人三台_2153-2154.json",
       "@type": "sc:Manifest",
       "label": "庶人三台 (龍笛 - 太食調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "太食調",
-        "piece_name": "庶人三台",
+        "title": "庶人三台",
         "page_range": "2153-2154",
         "filename": "龍笛_太食調_庶人三台_2153-2154.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_音取_2252-2252.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_音取_2252-2252.json",
       "@type": "sc:Manifest",
       "label": "音取 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "音取",
+        "title": "音取",
         "page_range": "2252-2252",
         "filename": "龍笛_盤渉調_音取_2252-2252.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_品玄_2252-2255.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_品玄_2252-2255.json",
       "@type": "sc:Manifest",
       "label": "品玄 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "品玄",
+        "title": "品玄",
         "page_range": "2252-2255",
         "filename": "龍笛_盤渉調_品玄_2252-2255.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_入調_2255-2258.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_入調_2255-2258.json",
       "@type": "sc:Manifest",
       "label": "入調 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "入調",
+        "title": "入調",
         "page_range": "2255-2258",
         "filename": "龍笛_盤渉調_入調_2255-2258.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_蘇合香三帖_2258-2263.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_蘇合香三帖_2258-2263.json",
       "@type": "sc:Manifest",
       "label": "蘇合香三帖 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "蘇合香三帖",
+        "title": "蘇合香三帖",
         "page_range": "2258-2263",
         "filename": "龍笛_盤渉調_蘇合香三帖_2258-2263.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_蘇合香破_2263-2266.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_蘇合香破_2263-2266.json",
       "@type": "sc:Manifest",
       "label": "蘇合香破 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "蘇合香破",
+        "title": "蘇合香破",
         "page_range": "2263-2266",
         "filename": "龍笛_盤渉調_蘇合香破_2263-2266.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_蘇合香急_2266-2270.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_蘇合香急_2266-2270.json",
       "@type": "sc:Manifest",
       "label": "蘇合香急 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "蘇合香急",
+        "title": "蘇合香急",
         "page_range": "2266-2270",
         "filename": "龍笛_盤渉調_蘇合香急_2266-2270.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_万秋楽破_2270-2276.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_万秋楽破_2270-2276.json",
       "@type": "sc:Manifest",
       "label": "万秋楽破 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "万秋楽破",
+        "title": "万秋楽破",
         "page_range": "2270-2276",
         "filename": "龍笛_盤渉調_万秋楽破_2270-2276.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_宗明楽_2276-2279.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_宗明楽_2276-2279.json",
       "@type": "sc:Manifest",
       "label": "宗明楽 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "宗明楽",
+        "title": "宗明楽",
         "page_range": "2276-2279",
         "filename": "龍笛_盤渉調_宗明楽_2276-2279.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_輪台_2280-2281.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_輪台_2280-2281.json",
       "@type": "sc:Manifest",
       "label": "輪台 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "輪台",
+        "title": "輪台",
         "page_range": "2280-2281",
         "filename": "龍笛_盤渉調_輪台_2280-2281.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_青海波_2281-2283.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_青海波_2281-2283.json",
       "@type": "sc:Manifest",
       "label": "青海波 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "青海波",
+        "title": "青海波",
         "page_range": "2281-2283",
         "filename": "龍笛_盤渉調_青海波_2281-2283.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_白柱_2283-2284.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_白柱_2283-2284.json",
       "@type": "sc:Manifest",
       "label": "白柱 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "白柱",
+        "title": "白柱",
         "page_range": "2283-2284",
         "filename": "龍笛_盤渉調_白柱_2283-2284.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_竹林楽_2284-2285.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_竹林楽_2284-2285.json",
       "@type": "sc:Manifest",
       "label": "竹林楽 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "竹林楽",
+        "title": "竹林楽",
         "page_range": "2284-2285",
         "filename": "龍笛_盤渉調_竹林楽_2284-2285.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_蘇莫者破_2286-2289.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_蘇莫者破_2286-2289.json",
       "@type": "sc:Manifest",
       "label": "蘇莫者破 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "蘇莫者破",
+        "title": "蘇莫者破",
         "page_range": "2286-2289",
         "filename": "龍笛_盤渉調_蘇莫者破_2286-2289.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_千秋楽_2289-2290.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_千秋楽_2289-2290.json",
       "@type": "sc:Manifest",
       "label": "千秋楽 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "千秋楽",
+        "title": "千秋楽",
         "page_range": "2289-2290",
         "filename": "龍笛_盤渉調_千秋楽_2289-2290.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_越天楽_2290-2291.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_越天楽_2290-2291.json",
       "@type": "sc:Manifest",
       "label": "越天楽 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "越天楽",
+        "title": "越天楽",
         "page_range": "2290-2291",
         "filename": "龍笛_盤渉調_越天楽_2290-2291.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_採桑老_2293-2295.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_採桑老_2293-2295.json",
       "@type": "sc:Manifest",
       "label": "採桑老 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "採桑老",
+        "title": "採桑老",
         "page_range": "2293-2295",
         "filename": "龍笛_盤渉調_採桑老_2293-2295.json",
         "collection": "宮内庁書陵部所蔵"
       }
     },
     {
-      "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_盤渉調_剣気褌脱_2295-2296.json",
+      "@id": "https://example.com/iiif/龍笛_盤渉調_剣気褌脱_2295-2296.json",
       "@type": "sc:Manifest",
       "label": "剣気褌脱 (龍笛 - 盤渉調)",
       "metadata": {
         "instrument": "龍笛",
         "mode": "盤渉調",
-        "piece_name": "剣気褌脱",
+        "title": "剣気褌脱",
         "page_range": "2295-2296",
         "filename": "龍笛_盤渉調_剣気褌脱_2295-2296.json",
         "collection": "宮内庁書陵部所蔵"
       }
     }
-  ],
-    "statistics": {
-    "total_pieces": 321,
-    "instruments": [
-      "龍笛",
-      "篳篥",
-      "笙"
-    ],
-    "modes": [
-      "平調",
-      "双調",
-      "太食調",
-      "黄鐘調",
-      "壱越調",
-      "盤渉調"
-    ],
-    "collections": {
-      "宮内庁書陵部所蔵": 321
-    }
-  }
+  ]
 }
