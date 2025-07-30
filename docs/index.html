@@ -1,1080 +1,1191 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>雅楽譜閲覧支援サイト</title>
-    <meta name="description" content="IIIFで公開されている雅楽譜を閲覧できます">
+    <meta
+      name="description"
+      content="IIIFで公開されている雅楽譜を閲覧できます"
+    />
 
     <script src="kanji-normalization-config.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #1e40af 0%, #3730a3 50%, #581c87 100%);
-            color: white;
-            padding: 15px 20px;
-            box-shadow: 0 8px 32px rgba(30, 64, 175, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .header h1 {
-            font-size: 24px;
-            margin-bottom: 5px;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-
-        .header h1:hover {
-            opacity: 0.8;
-            transform: translateY(-1px);
-        }
-
-        .header p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .main-container {
-            display: flex;
-            flex: 1;
-            min-height: 0;
-        }
-
-        .sidebar {
-            width: 350px;
-            background: white;
-            border-right: 1px solid #e0e0e0;
-            padding: 20px;
-            overflow-y: auto;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
-        }
-
-        .viewer-area {
-            flex: 1;
-            background: white;
-            position: relative;
-            min-height: 0;
-            height: 100%;
-        }
-
-        .section {
-            margin-bottom: 15px;
-            padding: 15px;
-            border: 1px solid #e8e8e8;
-            border-radius: 8px;
-            background: #fafafa;
-        }
-
-        .section h3 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .toggle-container {
-            position: relative;
-            display: flex;
-            width: 100%;
-            /* サイドバーの幅に合わせる */
-            background-color: #e9ecef;
-            /* 背景色を少し調整 */
-            border-radius: 25px;
-            overflow: hidden;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            margin-top: 5px;
-            /* ヘッダーとの間に少し余白 */
-        }
-
-        .toggle-input {
-            display: none;
-            /* ラジオボタン自体は非表示に */
-        }
-
-        .toggle-label {
-            flex: 1;
-            text-align: center;
-            padding: 10px 0;
-            font-family: sans-serif;
-            font-size: 13px;
-            /* テキストサイズを調整 */
-            font-weight: 600;
-            /* 少し太字に */
-            color: #495057;
-            /* 非選択時のテキスト色 */
-            transition: color 0.3s ease-in-out;
-            z-index: 1;
-            /* スイッチより手前に表示 */
-        }
-
-        .toggle-switch {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
-            /* グラデーションでリッチに */
-            border-radius: 25px;
-            transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            /* 動きに弾みをつける */
-            z-index: 0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        /* 選択状態に応じてスイッチとラベルのスタイルを変更 */
-        #universal-viewer:checked~.toggle-switch {
-            left: 0;
-        }
-
-        #mirador:checked~.toggle-switch {
-            left: 50%;
-        }
-
-        #universal-viewer:checked~#universal-viewer+.toggle-label,
-        #mirador:checked~#mirador+.toggle-label {
-            color: white;
-            /* 選択されている方のテキストを白に */
-        }
-
-
-        .manifest-list {
-            max-height: 400px;
-            overflow-y: auto;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background: white;
-        }
-
-        .manifest-item {
-            padding: 10px 12px;
-            border-bottom: 1px solid #f0f0f0;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            font-size: 13px;
-            min-height: 40px;
-            display: flex;
-            align-items: center;
-        }
-
-        .manifest-item:hover {
-            background-color: #f8f9ff;
-        }
-
-        .manifest-item.active {
-            background-color: #e3f2fd;
-            border-left: 3px solid #2196f3;
-        }
-
-        .manifest-item:last-child {
-            border-bottom: none;
-        }
-
-        .manifest-header {
-            padding: 8px 12px;
-            background: #f0f0f0;
-            font-weight: bold;
-            font-size: 12px;
-            color: #666;
-            border-bottom: 1px solid #ddd;
-            cursor: pointer;
-            user-select: none;
-            position: relative;
-        }
-
-        .manifest-header:hover {
-            background: #e8e8e8;
-        }
-
-        .manifest-header::before {
-            content: '▼';
-            display: inline-block;
-            margin-right: 8px;
-            transition: transform 0.2s;
-            font-size: 10px;
-        }
-
-        .manifest-header.collapsed::before {
-            transform: rotate(-90deg);
-        }
-
-        .manifest-group-content {
-            max-height: 300px;
-            overflow-y: auto;
-            transition: max-height 0.3s ease;
-        }
-
-        .manifest-group-content.collapsed {
-            max-height: 0;
-            overflow: hidden;
-        }
-
-        .custom-url {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        .btn {
-            background: #2196f3;
-            color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.2s;
-        }
-
-        .btn:hover {
-            background: #1976d2;
-        }
-
-        .btn.secondary {
-            background: #757575;
-            margin-left: 8px;
-        }
-
-        .btn.secondary:hover {
-            background: #616161;
-        }
-
-        .status {
-            padding: 10px;
-            border-radius: 4px;
-            margin-top: 10px;
-            font-size: 14px;
-        }
-
-        .status.success {
-            background: #e8f5e8;
-            color: #2e7d32;
-            border: 1px solid #c8e6c9;
-        }
-
-        .status.error {
-            background: #ffebee;
-            color: #c62828;
-            border: 1px solid #ffcdd2;
-        }
-
-        .status.info {
-            background: #e3f2fd;
-            color: #1565c0;
-            border: 1px solid #bbdefb;
-        }
-
-        .current-info {
-            background: white;
-            border: 1px solid #2196f3;
-            border-radius: 8px;
-            padding: 15px;
-        }
-
-        .current-info h4 {
-            color: #1976d2;
-            margin-bottom: 10px;
-        }
-
-        .info-item {
-            margin-bottom: 8px;
-            font-size: 13px;
-        }
-
-        .info-label {
-            font-weight: 600;
-            color: #666;
-        }
-
-        .info-value {
-            color: #333;
-            word-break: break-all;
-        }
-
-        #viewerIframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #666;
-            font-size: 16px;
-        }
-
-        .error-display {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #c62828;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .error-display h3 {
-            margin-bottom: 10px;
-        }
-
-        .search-section {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        .search-section h3 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 10px 40px 10px 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: #2196f3;
-            box-shadow: 0 0 5px rgba(33, 150, 243, 0.3);
-        }
-
-        .search-container {
-            position: relative;
-            margin-bottom: 10px;
-        }
-
-        .search-clear {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            color: #6c757d;
-            width: 20px;
-            height: 20px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.2s ease;
-        }
-
-        .search-clear.visible {
-            display: flex;
-        }
-
-        .search-clear:hover {
-            color: #495057;
-            background-color: #f8f9fa;
-        }
-
-        .search-actions {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-
-        .btn-small {
-            padding: 6px 12px;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 4px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-small:hover {
-            background: #f8f9fa;
-            border-color: #2196f3;
-        }
-
-        .search-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .sort-select {
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 6px 30px 6px 10px;
-            font-size: 12px;
-            font-weight: 500;
-            color: #475569;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 100px;
-            background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>");
-            background-repeat: no-repeat;
-            background-position: right 8px center;
-            background-size: 12px;
-        }
-
-        .sort-select:hover {
-            border-color: #3b82f6;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
-        }
-
-        .sort-select:focus {
-            outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
-        }
-
-        .filter-select {
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 10px 35px 10px 15px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #475569;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            min-width: 120px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>");
-            background-repeat: no-repeat;
-            background-position: right 10px center;
-            background-size: 16px;
-        }
-
-        .filter-select:hover {
-            border-color: #3b82f6;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
-        }
-
-        .filter-select:focus {
-            outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .filter-select option {
-            padding: 10px;
-            background: white;
-            color: #374151;
-            font-weight: 500;
-        }
-
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto",
+          "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        background: linear-gradient(
+          135deg,
+          #1e40af 0%,
+          #3730a3 50%,
+          #581c87 100%
+        );
+        color: white;
+        padding: 15px 20px;
+        box-shadow: 0 8px 32px rgba(30, 64, 175, 0.15);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 50%
+        );
+        pointer-events: none;
+      }
+
+      .header h1 {
+        font-size: 24px;
+        margin-bottom: 5px;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      .header h1:hover {
+        opacity: 0.8;
+        transform: translateY(-1px);
+      }
+
+      .header p {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      .main-container {
+        display: flex;
+        flex: 1;
+        min-height: 0;
+      }
+
+      .sidebar {
+        width: 350px;
+        background: white;
+        border-right: 1px solid #e0e0e0;
+        padding: 20px;
+        overflow-y: auto;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .viewer-area {
+        flex: 1;
+        background: white;
+        position: relative;
+        min-height: 0;
+        height: 100%;
+      }
+
+      .section {
+        margin-bottom: 15px;
+        padding: 15px;
+        border: 1px solid #e8e8e8;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+
+      .section h3 {
+        color: #333;
+        margin-bottom: 10px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .toggle-container {
+        position: relative;
+        display: flex;
+        width: 100%;
+        /* サイドバーの幅に合わせる */
+        background-color: #e9ecef;
+        /* 背景色を少し調整 */
+        border-radius: 25px;
+        overflow: hidden;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-top: 5px;
+        /* ヘッダーとの間に少し余白 */
+      }
+
+      .toggle-input {
+        display: none;
+        /* ラジオボタン自体は非表示に */
+      }
+
+      .toggle-label {
+        flex: 1;
+        text-align: center;
+        padding: 10px 0;
+        font-family: sans-serif;
+        font-size: 13px;
+        /* テキストサイズを調整 */
+        font-weight: 600;
+        /* 少し太字に */
+        color: #495057;
+        /* 非選択時のテキスト色 */
+        transition: color 0.3s ease-in-out;
+        z-index: 1;
+        /* スイッチより手前に表示 */
+      }
+
+      .toggle-switch {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+        /* グラデーションでリッチに */
+        border-radius: 25px;
+        transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* 動きに弾みをつける */
+        z-index: 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      /* 選択状態に応じてスイッチとラベルのスタイルを変更 */
+      #universal-viewer:checked ~ .toggle-switch {
+        left: 0;
+      }
+
+      #mirador:checked ~ .toggle-switch {
+        left: 50%;
+      }
+
+      #universal-viewer:checked ~ #universal-viewer + .toggle-label,
+      #mirador:checked ~ #mirador + .toggle-label {
+        color: white;
+        /* 選択されている方のテキストを白に */
+      }
+
+      .manifest-list {
+        max-height: 400px;
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background: white;
+      }
+
+      .manifest-item {
+        padding: 10px 12px;
+        border-bottom: 1px solid #f0f0f0;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        font-size: 13px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+      }
+
+      .manifest-item:hover {
+        background-color: #f8f9ff;
+      }
+
+      .manifest-item.active {
+        background-color: #e3f2fd;
+        border-left: 3px solid #2196f3;
+      }
+
+      .manifest-item:last-child {
+        border-bottom: none;
+      }
+
+      .manifest-header {
+        padding: 8px 12px;
+        background: #f0f0f0;
+        font-weight: bold;
+        font-size: 12px;
+        color: #666;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+      }
+
+      .manifest-header:hover {
+        background: #e8e8e8;
+      }
+
+      .manifest-header::before {
+        content: "▼";
+        display: inline-block;
+        margin-right: 8px;
+        transition: transform 0.2s;
+        font-size: 10px;
+      }
+
+      .manifest-header.collapsed::before {
+        transform: rotate(-90deg);
+      }
+
+      .manifest-group-content {
+        max-height: 300px;
+        overflow-y: auto;
+        transition: max-height 0.3s ease;
+      }
+
+      .manifest-group-content.collapsed {
+        max-height: 0;
+        overflow: hidden;
+      }
+
+      .custom-url {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .btn {
+        background: #2196f3;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.2s;
+      }
+
+      .btn:hover {
+        background: #1976d2;
+      }
+
+      .btn.secondary {
+        background: #757575;
+        margin-left: 8px;
+      }
+
+      .btn.secondary:hover {
+        background: #616161;
+      }
+
+      .status {
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 10px;
+        font-size: 14px;
+      }
+
+      .status.success {
+        background: #e8f5e8;
+        color: #2e7d32;
+        border: 1px solid #c8e6c9;
+      }
+
+      .status.error {
+        background: #ffebee;
+        color: #c62828;
+        border: 1px solid #ffcdd2;
+      }
+
+      .status.info {
+        background: #e3f2fd;
+        color: #1565c0;
+        border: 1px solid #bbdefb;
+      }
+
+      .current-info {
+        background: white;
+        border: 1px solid #2196f3;
+        border-radius: 8px;
+        padding: 15px;
+      }
+
+      .current-info h4 {
+        color: #1976d2;
+        margin-bottom: 10px;
+      }
+
+      .info-item {
+        margin-bottom: 8px;
+        font-size: 13px;
+      }
+
+      .info-label {
+        font-weight: 600;
+        color: #666;
+      }
+
+      .info-value {
+        color: #333;
+        word-break: break-all;
+      }
+
+      #viewerIframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: #666;
+        font-size: 16px;
+      }
+
+      .error-display {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: #c62828;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .error-display h3 {
+        margin-bottom: 10px;
+      }
+
+      .search-section {
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+      }
+
+      .search-section h3 {
+        color: #333;
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 10px 40px 10px 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: #2196f3;
+        box-shadow: 0 0 5px rgba(33, 150, 243, 0.3);
+      }
+
+      .search-container {
+        position: relative;
+        margin-bottom: 10px;
+      }
+
+      .search-clear {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        color: #6c757d;
+        width: 20px;
+        height: 20px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+      }
+
+      .search-clear.visible {
+        display: flex;
+      }
+
+      .search-clear:hover {
+        color: #495057;
+        background-color: #f8f9fa;
+      }
+
+      .search-actions {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+
+      .btn-small {
+        padding: 6px 12px;
+        border: 1px solid #ddd;
+        background: white;
+        border-radius: 4px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .btn-small:hover {
+        background: #f8f9fa;
+        border-color: #2196f3;
+      }
+
+      .search-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .sort-select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 6px 30px 6px 10px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #475569;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 100px;
+        background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>");
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+        background-size: 12px;
+      }
+
+      .sort-select:hover {
+        border-color: #3b82f6;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+      }
+
+      .sort-select:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+      }
+
+      .filter-select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 10px 35px 10px 15px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #475569;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        min-width: 120px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 16px;
+      }
+
+      .filter-select:hover {
+        border-color: #3b82f6;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+      }
+
+      .filter-select:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15),
+          0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .filter-select option {
+        padding: 10px;
+        background: white;
+        color: #374151;
+        font-weight: 500;
+      }
+
+      .filters {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 20px 0;
+      }
+
+      @media (min-width: 400px) {
         .filters {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin: 20px 0;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 12px;
         }
+      }
 
-        @media (min-width: 400px) {
-            .filters {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-        }
+      .piece-item {
+        padding: 12px;
+        border: 1px solid #e9ecef;
+        border-radius: 6px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        background: white;
+      }
 
-        .piece-item {
-            padding: 12px;
-            border: 1px solid #e9ecef;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            background: white;
-        }
+      .piece-item:hover {
+        border-color: #2196f3;
+        background: #f8f9ff;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
 
-        .piece-item:hover {
-            border-color: #2196f3;
-            background: #f8f9ff;
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
+      .piece-item:active {
+        transform: translateY(0);
+      }
 
-        .piece-item:active {
-            transform: translateY(0);
-        }
+      .piece-title {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 4px;
+        font-size: 14px;
+      }
 
-        .piece-title {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 4px;
-            font-size: 14px;
-        }
+      .piece-meta {
+        font-size: 12px;
+        color: #666;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
 
-        .piece-meta {
-            font-size: 12px;
-            color: #666;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
+      .piece-badge {
+        background: #e3f2fd;
+        color: #1976d2;
+        padding: 2px 6px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 500;
+      }
 
-        .piece-badge {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 2px 6px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 500;
-        }
+      .piece-badge.instrument {
+        background: #f3e5f5;
+        color: #7b1fa2;
+      }
 
-        .piece-badge.instrument {
-            background: #f3e5f5;
-            color: #7b1fa2;
-        }
+      .piece-badge.mode {
+        background: #e8f5e8;
+        color: #388e3c;
+      }
 
-        .piece-badge.mode {
-            background: #e8f5e8;
-            color: #388e3c;
-        }
+      .piece-badge.collection {
+        background: #fff3e0;
+        color: #f57c00;
+      }
 
-        .piece-badge.collection {
-            background: #fff3e0;
-            color: #f57c00;
-        }
+      /* --- トグルスイッチのスタイル --- */
+      .toggle-container {
+        position: relative;
+        display: flex;
+        width: 100%;
+        background-color: #f1f5f9;
+        border-radius: 25px;
+        overflow: hidden;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
 
+      .toggle-container:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
 
-        /* --- トグルスイッチのスタイル --- */
-        .toggle-container {
-            position: relative;
-            display: flex;
-            width: 100%;
-            background-color: #f1f5f9;
-            border-radius: 25px;
-            overflow: hidden;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+      .toggle-input {
+        display: none;
+      }
 
-        .toggle-container:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
+      .toggle-label {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: #475569;
+        /* 非選択時の文字色 */
+        transition: color 0.3s ease-in-out;
+        z-index: 1;
+      }
 
-        .toggle-input {
-            display: none;
-        }
+      .toggle-switch {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+        border-radius: 25px;
+        transition: left 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 0;
+        box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
+      }
 
-        .toggle-label {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            color: #475569;
-            /* 非選択時の文字色 */
-            transition: color 0.3s ease-in-out;
-            z-index: 1;
-        }
+      #universal-viewer:checked ~ .toggle-switch {
+        left: 0;
+      }
 
-        .toggle-switch {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
-            border-radius: 25px;
-            transition: left 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            z-index: 0;
-            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
-        }
+      #mirador:checked ~ .toggle-switch {
+        left: 50%;
+      }
 
-        #universal-viewer:checked~.toggle-switch {
-            left: 0;
-        }
-
-        #mirador:checked~.toggle-switch {
-            left: 50%;
-        }
-
-        /* ★★★ 修正箇所 ★★★ */
-        /* 選択中のラベルの文字色を白に変更する正しいセレクタ */
-        #universal-viewer:checked+.toggle-label,
-        #mirador:checked+.toggle-label {
-            color: white;
-        }
-
+      /* ★★★ 修正箇所 ★★★ */
+      /* 選択中のラベルの文字色を白に変更する正しいセレクタ */
+      #universal-viewer:checked + .toggle-label,
+      #mirador:checked + .toggle-label {
+        color: white;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="header">
-        <div style="position: absolute; top: 15px; right: 20px; display: flex; gap: 15px; align-items: center;">
-            <a href="about.html" onclick="event.stopPropagation();"
-                style="color: white; text-decoration: none; font-size: 14px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 8px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); font-weight: 500; transition: all 0.3s ease;">
-                About
-            </a>
-            <a href="https://github.com/sseki27skt" target="_blank"
-                style="color: white; text-decoration: none; font-size: 12px; opacity: 0.9; display: flex; align-items: center; gap: 4px;">
-                <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
-                    <path
-                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-                </svg>
-                sseki27skt
-            </a>
-        </div>
-        <h1 style="cursor: pointer;" onclick="goToHome()">雅楽譜 IIIFビューワー</h1>
-        <p>IIIFで公開されている雅楽譜の閲覧を支援</p>
+      <div
+        style="
+          position: absolute;
+          top: 15px;
+          right: 20px;
+          display: flex;
+          gap: 15px;
+          align-items: center;
+        "
+      >
+        <a
+          href="about.html"
+          onclick="event.stopPropagation();"
+          style="
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 500;
+            transition: all 0.3s ease;
+          "
+        >
+          About
+        </a>
+        <a
+          href="https://github.com/sseki27skt"
+          target="_blank"
+          style="
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+          "
+        >
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+            />
+          </svg>
+          sseki27skt
+        </a>
+      </div>
+      <h1 style="cursor: pointer" onclick="goToHome()">
+        雅楽譜 IIIFビューワー
+      </h1>
+      <p>IIIFで公開されている雅楽譜の閲覧を支援</p>
     </div>
 
     <div class="main-container">
-        <div class="sidebar">
-            <div class="section">
-                <h3>🖥️ ビューアー選択</h3>
-                <div class="toggle-container">
-                    <input type="radio" id="universal-viewer" name="viewer-toggle" class="toggle-input" value="uv"
-                        checked>
-                    <label for="universal-viewer" class="toggle-label">Universal Viewer</label>
-                    <input type="radio" id="mirador" name="viewer-toggle" class="toggle-input" value="mirador">
-                    <label for="mirador" class="toggle-label">Mirador</label>
-                    <div class="toggle-switch"></div>
-                </div>
+      <div class="sidebar">
+        <div class="section">
+          <h3>🖥️ ビューアー選択</h3>
+          <div class="toggle-container">
+            <input
+              type="radio"
+              id="universal-viewer"
+              name="viewer-toggle"
+              class="toggle-input"
+              value="uv"
+              checked
+            />
+            <label for="universal-viewer" class="toggle-label"
+              >Universal Viewer</label
+            >
+            <input
+              type="radio"
+              id="mirador"
+              name="viewer-toggle"
+              class="toggle-input"
+              value="mirador"
+            />
+            <label for="mirador" class="toggle-label">Mirador</label>
+            <div class="toggle-switch"></div>
+          </div>
+        </div>
+        <div class="search-section" id="search-section">
+          <h3>楽曲検索</h3>
+          <div class="search-container">
+            <input
+              type="text"
+              id="searchInput"
+              class="search-input"
+              placeholder="楽曲名を検索..."
+              onInput="searchPieces()"
+            />
+            <button
+              class="search-clear"
+              id="searchClear"
+              onclick="clearSearch()"
+            >
+              ×
+            </button>
+          </div>
+
+          <div class="filters">
+            <select
+              id="instrumentFilter"
+              class="filter-select"
+              onChange="searchPieces()"
+            >
+              <option value="">楽器</option>
+            </select>
+
+            <select
+              id="modeFilter"
+              class="filter-select"
+              onChange="searchPieces()"
+            >
+              <option value="">調子</option>
+            </select>
+
+            <select
+              id="collectionFilter"
+              class="filter-select"
+              onChange="searchPieces()"
+            >
+              <option value="">資料</option>
+            </select>
+          </div>
+
+          <div class="search-actions">
+            <button class="btn-small" onclick="clearSearchResults()">
+              検索結果をクリア
+            </button>
+          </div>
+
+          <div id="searchResults" class="search-results" style="display: none">
+            <div class="search-header">
+              <div class="search-stats" id="searchStats"></div>
+              <div class="sort-controls">
+                <select
+                  id="sortBy"
+                  class="sort-select"
+                  onChange="sortSearchResults()"
+                >
+                  <option value="page_range">ページ順</option>
+                  <option value="piece_name">楽曲名順</option>
+                  <option value="instrument">楽器順</option>
+                  <option value="mode">調順</option>
+                  <option value="collection">資料順</option>
+                </select>
+              </div>
             </div>
-            <div class="search-section">
-                <h3>楽曲検索</h3>
-                <div class="search-container">
-                    <input type="text" id="searchInput" class="search-input" placeholder="楽曲名を検索..."
-                        onInput="searchPieces()">
-                    <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
-                </div>
-
-                <div class="filters">
-                    <select id="instrumentFilter" class="filter-select" onChange="searchPieces()">
-                        <option value="">楽器</option>
-                    </select>
-
-                    <select id="modeFilter" class="filter-select" onChange="searchPieces()">
-                        <option value="">調子</option>
-                    </select>
-
-                    <select id="collectionFilter" class="filter-select" onChange="searchPieces()">
-                        <option value="">資料</option>
-                    </select>
-                </div>
-
-                <div class="search-actions">
-                    <button class="btn-small" onclick="clearSearchResults()">検索結果をクリア</button>
-                </div>
-
-                <div id="searchResults" class="search-results" style="display: none;">
-                    <div class="search-header">
-                        <div class="search-stats" id="searchStats"></div>
-                        <div class="sort-controls">
-                            <select id="sortBy" class="sort-select" onChange="sortSearchResults()">
-                                <option value="page_range">ページ順</option>
-                                <option value="piece_name">楽曲名順</option>
-                                <option value="instrument">楽器順</option>
-                                <option value="mode">調順</option>
-                                <option value="collection">資料順</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="piecesList"></div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h3>📂 マニフェスト一覧</h3>
-                <div class="manifest-list" id="manifestList">
-                    <div class="loading">マニフェスト一覧を読み込み中...</div>
-                </div>
-            </div>
-
-
-            <div class="section">
-                <div class="current-info">
-                    <h4>📊 現在のマニフェスト</h4>
-                    <div class="info-item">
-                        <span class="info-label">URL:</span><br>
-                        <span class="info-value" id="currentUrl">未選択</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">タイトル:</span><br>
-                        <span class="info-value" id="currentTitle">-</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">ページ数:</span><br>
-                        <span class="info-value" id="currentPages">-</span>
-                    </div>
-                </div>
-                <div id="statusDisplay"></div>
-            </div>
+            <div id="piecesList"></div>
+          </div>
         </div>
 
-        <div class="viewer-area">
-            <iframe id="viewerIframe" src="about:blank" allow="fullscreen"></iframe>
+        <div class="section">
+          <h3>📂 マニフェスト一覧</h3>
+          <div class="manifest-list" id="manifestList">
+            <div class="loading">マニフェスト一覧を読み込み中...</div>
+          </div>
         </div>
+
+        <div class="section">
+          <div class="current-info">
+            <h4>📊 現在のマニフェスト</h4>
+            <div class="info-item">
+              <span class="info-label">URL:</span><br />
+              <span class="info-value" id="currentUrl">未選択</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">タイトル:</span><br />
+              <span class="info-value" id="currentTitle">-</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">ページ数:</span><br />
+              <span class="info-value" id="currentPages">-</span>
+            </div>
+          </div>
+          <div id="statusDisplay"></div>
+        </div>
+      </div>
+
+      <div class="viewer-area">
+        <iframe id="viewerIframe" src="about:blank" allow="fullscreen"></iframe>
+      </div>
     </div>
 
     <script>
+      // グローバル変数
+      let currentManifestUrl = null;
+      let manifestCache = new Map();
 
-        // グローバル変数
-        let currentManifestUrl = null;
-        let manifestCache = new Map();
+      // Universal Viewer の設定
+      const UV_BASE_URL = "https://universalviewer.io/examples/uv/uv.html";
+      // const MIRADOR_BASE_URL = 'https://projectmirador.org/embed/'; // MiradorのURLを追加
+      const MIRADOR_BASE_URL = "mirador_viewer/index.html";
 
-        // Universal Viewer の設定
-        const UV_BASE_URL = 'https://universalviewer.io/examples/uv/uv.html';
-        // const MIRADOR_BASE_URL = 'https://projectmirador.org/embed/'; // MiradorのURLを追加
-        const MIRADOR_BASE_URL = 'mirador_viewer/index.html';
+      // GitHub PagesのベースURL（これが各マニフェストの正規のURL）
+      const GITHUB_IIIF_BASE_URL =
+        "https://sseki27skt.github.io/gagakufu_iiif_manifest";
 
+      // 現在アクティブなビューアーのタイプを追跡
+      let activeViewerType = "uv"; // 初期値はUniversal Viewer
 
-        // GitHub PagesのベースURL（これが各マニフェストの正規のURL）
-        const GITHUB_IIIF_BASE_URL = 'https://sseki27skt.github.io/gagakufu_iiif_manifest';
+      // GitHub Pages用設定：Mixed Content問題は発生しない
+      function detectProtocolIssue() {
+        // GitHub Pages版では常にHTTPSなので問題なし
+        return false;
+      }
 
-        // 現在アクティブなビューアーのタイプを追跡
-        let activeViewerType = 'uv'; // 初期値はUniversal Viewer
+      // 全画面表示サポート関数
+      function enableFullscreenSupport() {
+        const iframe = document.getElementById("viewerIframe"); // IDを汎用的なものに変更
 
-        // GitHub Pages用設定：Mixed Content問題は発生しない
-        function detectProtocolIssue() {
-            // GitHub Pages版では常にHTTPSなので問題なし
-            return false;
+        // PostMessage APIでiframe内からの全画面要求を監視
+        window.addEventListener("message", function (event) {
+          // セキュリティのため、Universal Viewerからのメッセージのみ処理
+          if (
+            event.origin !== "https://universalviewer.io" &&
+            event.origin !== "https://projectmirador.org"
+          ) {
+            // Miradorも追加
+            return;
+          }
+
+          // 全画面表示要求の処理
+          if (event.data && event.data.type === "requestFullscreen") {
+            requestFullscreen(iframe);
+          }
+
+          // 全画面終了要求の処理
+          if (event.data && event.data.type === "exitFullscreen") {
+            exitFullscreen();
+          }
+        });
+
+        // 全画面変更イベントの監視
+        document.addEventListener("fullscreenchange", handleFullscreenChange);
+        document.addEventListener(
+          "webkitfullscreenchange",
+          handleFullscreenChange
+        );
+        document.addEventListener(
+          "mozfullscreenchange",
+          handleFullscreenChange
+        );
+        document.addEventListener("MSFullscreenChange", handleFullscreenChange);
+      }
+
+      // 全画面表示を要求
+      function requestFullscreen(element) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.msRequestFullscreen) {
+          element.msRequestFullscreen();
         }
+      }
 
-        // 全画面表示サポート関数
-        function enableFullscreenSupport() {
-            const iframe = document.getElementById('viewerIframe'); // IDを汎用的なものに変更
+      // 全画面表示を終了
+      function exitFullscreen() {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      }
 
-            // PostMessage APIでiframe内からの全画面要求を監視
-            window.addEventListener('message', function (event) {
-                // セキュリティのため、Universal Viewerからのメッセージのみ処理
-                if (event.origin !== 'https://universalviewer.io' && event.origin !== 'https://projectmirador.org') { // Miradorも追加
-                    return;
-                }
+      // 全画面状態変更の処理
+      function handleFullscreenChange() {
+        const iframe = document.getElementById("viewerIframe"); // IDを汎用的なものに変更
+        const isFullscreen = !!(
+          document.fullscreenElement ||
+          document.webkitFullscreenElement ||
+          document.mozFullScreenElement ||
+          document.msFullscreenElement
+        );
 
-                // 全画面表示要求の処理
-                if (event.data && event.data.type === 'requestFullscreen') {
-                    requestFullscreen(iframe);
-                }
+        if (isFullscreen) {
+          console.log("Entered fullscreen mode");
+          // 全画面モード時の追加スタイル
+          iframe.style.position = "fixed";
+          iframe.style.top = "0";
+          iframe.style.left = "0";
+          iframe.style.zIndex = "9999";
+        } else {
+          console.log("Exited fullscreen mode");
+          // 通常モードに戻す
+          iframe.style.position = "";
+          iframe.style.top = "";
+          iframe.style.left = "";
+          iframe.style.zIndex = "";
+        }
+      }
 
-                // 全画面終了要求の処理
-                if (event.data && event.data.type === 'exitFullscreen') {
-                    exitFullscreen();
-                }
+      // ステータス表示
+      function showStatus(message, type = "info") {
+        const statusDiv = document.getElementById("statusDisplay");
+        statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+
+        // 5秒後に自動で消去（エラー以外）
+        if (type !== "error") {
+          setTimeout(() => {
+            statusDiv.innerHTML = "";
+          }, 5000);
+        }
+      }
+
+      // マニフェスト情報を更新
+      function updateManifestInfo(url, manifest) {
+        document.getElementById("currentUrl").textContent = url;
+
+        try {
+          const title =
+            manifest.label ||
+            manifest.metadata?.find((m) => m.label === "Title")?.value ||
+            "不明";
+          const pageCount = manifest.sequences?.[0]?.canvases?.length || 0;
+
+          document.getElementById("currentTitle").textContent = title;
+          document.getElementById(
+            "currentPages"
+          ).textContent = `${pageCount} ページ`;
+        } catch (error) {
+          document.getElementById("currentTitle").textContent = "エラー";
+          document.getElementById("currentPages").textContent = "-";
+        }
+      }
+
+      // ホームページに遷移する関数（ページリロード方式）
+      function goToHome() {
+        // ページを完全にリロードして初期状態に戻す
+        // これにより以下が確実にリセットされる：
+        // - Universal Viewerの状態
+        // - マニフェストの選択状態
+        // - 検索・フィルタの状態
+        // - その他のアプリケーション状態
+        window.location.reload();
+      }
+
+      // Universal Viewerを読み込む関数
+      async function loadUniversalViewer(manifestUrlForUV) {
+        const iframe = document.getElementById("viewerIframe"); // IDを汎用的なものに変更
+
+        try {
+          const uvUrl = `${UV_BASE_URL}#?manifest=${encodeURIComponent(
+            manifestUrlForUV
+          )}&c=0&m=0&s=0&cv=0&z=0&r=0`;
+
+          console.log("Universal Viewer URL:", uvUrl);
+
+          iframe.src = "about:blank";
+          setTimeout(() => {
+            iframe.src = uvUrl;
+
+            let loadTimeout = setTimeout(() => {
+              console.error("Universal Viewer loading timeout");
+              showAlternativeViewer(manifestUrlForUV);
+            }, 10000);
+
+            iframe.onload = () => {
+              clearTimeout(loadTimeout);
+              console.log("Universal Viewer iframe loaded successfully");
+            };
+
+            iframe.onerror = () => {
+              clearTimeout(loadTimeout);
+              console.error("Universal Viewer iframe failed to load");
+              showAlternativeViewer(manifestUrlForUV);
+            };
+          }, 500);
+        } catch (error) {
+          console.error("Error updating Universal Viewer:", error);
+          showAlternativeViewer(manifestUrlForUV);
+        }
+      }
+
+      // Miradorを読み込む関数
+      async function loadMiradorViewer(manifestUrlForUV) {
+        const iframe = document.getElementById("viewerIframe"); // IDを汎用的なものに変更
+
+        try {
+          // Miradorのembedパラメータで連続ロール（scroll）ビューを指定
+          const miradorUrl = `${MIRADOR_BASE_URL}?manifest=${encodeURIComponent(
+            manifestUrlForUV
+          )}&canvasIndex=0&view=scroll`;
+
+          console.log("Mirador Viewer URL (continuous scroll):", miradorUrl);
+
+          iframe.src = "about:blank";
+          setTimeout(() => {
+            iframe.src = miradorUrl;
+
+            let loadTimeout = setTimeout(() => {
+              console.error("Mirador Viewer loading timeout");
+              showAlternativeViewer(manifestUrlForUV);
+            }, 10000);
+
+            iframe.onload = () => {
+              clearTimeout(loadTimeout);
+              console.log("Mirador Viewer iframe loaded successfully");
+            };
+
+            iframe.onerror = () => {
+              clearTimeout(loadTimeout);
+              console.error("Mirador Viewer iframe failed to load");
+              showAlternativeViewer(manifestUrlForUV);
+            };
+          }, 500);
+        } catch (error) {
+          console.error("Error updating Mirador Viewer:", error);
+          showAlternativeViewer(manifestUrlForUV);
+        }
+      }
+
+      // マニフェストを読み込んでビューアーで表示
+      async function loadManifest(originalManifestUrl) {
+        // ここで受け取るのは常にオリジナルのHTTPS URL
+        try {
+          showStatus("マニフェストを読み込み中...", "info");
+          console.log("Loading manifest (original URL):", originalManifestUrl);
+
+          let fetchUrl = originalManifestUrl; // このスクリプトがfetchするためのURL
+          const isLocal =
+            window.location.hostname === "localhost" ||
+            window.location.hostname === "127.0.0.1";
+          const localBaseUrl = `${window.location.protocol}//${window.location.host}`;
+
+          // ローカル環境で実行している場合、fetchUrlをローカルパスに変換
+          if (isLocal && originalManifestUrl.startsWith(GITHUB_IIIF_BASE_URL)) {
+            fetchUrl = originalManifestUrl.replace(
+              GITHUB_IIIF_BASE_URL,
+              localBaseUrl
+            );
+            console.log("Converted for local fetching:", fetchUrl);
+          }
+
+          // キャッシュから取得を試みる
+          let manifest;
+          if (manifestCache.has(originalManifestUrl)) {
+            manifest = manifestCache.get(originalManifestUrl);
+            console.log("Manifest loaded from cache:", originalManifestUrl);
+          } else {
+            // マニフェストをフェッチ（詳細なエラーハンドリング付き）
+            const response = await fetch(fetchUrl, {
+              method: "GET",
+              headers: {
+                Accept: "application/json",
+              },
+              cache: "no-cache",
+            }).catch((fetchError) => {
+              console.error("Fetch error details:", fetchError);
+              if (fetchError.message.includes("ERR_BLOCKED_BY_CLIENT")) {
+                throw new Error(
+                  "リクエストがブロックされました。広告ブロッカーやセキュリティ拡張機能を無効にしてください。"
+                );
+              }
+              throw new Error(`ネットワークエラー: ${fetchError.message}`);
             });
 
-            // 全画面変更イベントの監視
-            document.addEventListener('fullscreenchange', handleFullscreenChange);
-            document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-            document.addEventListener('mozfullscreenchange', handleFullscreenChange);
-            document.addEventListener('MSFullscreenChange', handleFullscreenChange);
-        }
-
-        // 全画面表示を要求
-        function requestFullscreen(element) {
-            if (element.requestFullscreen) {
-                element.requestFullscreen();
-            } else if (element.webkitRequestFullscreen) {
-                element.webkitRequestFullscreen();
-            } else if (element.mozRequestFullScreen) {
-                element.mozRequestFullScreen();
-            } else if (element.msRequestFullscreen) {
-                element.msRequestFullscreen();
+            if (!response.ok) {
+              throw new Error(
+                `HTTP ${response.status}: ${response.statusText}`
+              );
             }
+
+            manifest = await response.json();
+            manifestCache.set(originalManifestUrl, manifest); // キャッシュにはオリジナルURLで保存
+          }
+
+          // 情報を更新（表示にはオリジナルURLを使用）
+          updateManifestInfo(originalManifestUrl, manifest);
+          currentManifestUrl = originalManifestUrl; // 現在のマニフェストURLを保存
+
+          // アクティブ状態を更新（オリジナルURLを使用）
+          updateActiveManifest(originalManifestUrl);
+
+          // アクティブなビューアーでマニフェストをロード
+          if (activeViewerType === "uv") {
+            await loadUniversalViewer(originalManifestUrl);
+          } else if (activeViewerType === "mirador") {
+            await loadMiradorViewer(originalManifestUrl);
+          }
+          showStatus("ビューアーの更新が完了しました", "success");
+        } catch (error) {
+          console.error("Manifest loading error:", error);
+          showStatus(`エラー: ${error.message}`, "error");
+
+          // エラー表示をビューアーエリアに
+          showErrorInViewer(error.message);
         }
+      }
 
-        // 全画面表示を終了
-        function exitFullscreen() {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
-        }
-
-        // 全画面状態変更の処理
-        function handleFullscreenChange() {
-            const iframe = document.getElementById('viewerIframe'); // IDを汎用的なものに変更
-            const isFullscreen = !!(document.fullscreenElement ||
-                document.webkitFullscreenElement ||
-                document.mozFullScreenElement ||
-                document.msFullscreenElement);
-
-            if (isFullscreen) {
-                console.log('Entered fullscreen mode');
-                // 全画面モード時の追加スタイル
-                iframe.style.position = 'fixed';
-                iframe.style.top = '0';
-                iframe.style.left = '0';
-                iframe.style.zIndex = '9999';
-            } else {
-                console.log('Exited fullscreen mode');
-                // 通常モードに戻す
-                iframe.style.position = '';
-                iframe.style.top = '';
-                iframe.style.left = '';
-                iframe.style.zIndex = '';
-            }
-        }
-
-        // ステータス表示
-        function showStatus(message, type = 'info') {
-            const statusDiv = document.getElementById('statusDisplay');
-            statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
-
-            // 5秒後に自動で消去（エラー以外）
-            if (type !== 'error') {
-                setTimeout(() => {
-                    statusDiv.innerHTML = '';
-                }, 5000);
-            }
-        }
-
-        // マニフェスト情報を更新
-        function updateManifestInfo(url, manifest) {
-            document.getElementById('currentUrl').textContent = url;
-
-            try {
-                const title = manifest.label ||
-                    manifest.metadata?.find(m => m.label === 'Title')?.value ||
-                    '不明';
-                const pageCount = manifest.sequences?.[0]?.canvases?.length || 0;
-
-                document.getElementById('currentTitle').textContent = title;
-                document.getElementById('currentPages').textContent = `${pageCount} ページ`;
-            } catch (error) {
-                document.getElementById('currentTitle').textContent = 'エラー';
-                document.getElementById('currentPages').textContent = '-';
-            }
-        }
-
-        // ホームページに遷移する関数（ページリロード方式）
-        function goToHome() {
-            // ページを完全にリロードして初期状態に戻す
-            // これにより以下が確実にリセットされる：
-            // - Universal Viewerの状態
-            // - マニフェストの選択状態
-            // - 検索・フィルタの状態
-            // - その他のアプリケーション状態
-            window.location.reload();
-        }
-
-        // Universal Viewerを読み込む関数
-        async function loadUniversalViewer(manifestUrlForUV) {
-            const iframe = document.getElementById('viewerIframe'); // IDを汎用的なものに変更
-
-            try {
-                const uvUrl = `${UV_BASE_URL}#?manifest=${encodeURIComponent(manifestUrlForUV)}&c=0&m=0&s=0&cv=0&z=0&r=0`;
-
-                console.log('Universal Viewer URL:', uvUrl);
-
-                iframe.src = 'about:blank';
-                setTimeout(() => {
-                    iframe.src = uvUrl;
-
-                    let loadTimeout = setTimeout(() => {
-                        console.error('Universal Viewer loading timeout');
-                        showAlternativeViewer(manifestUrlForUV);
-                    }, 10000);
-
-                    iframe.onload = () => {
-                        clearTimeout(loadTimeout);
-                        console.log('Universal Viewer iframe loaded successfully');
-                    };
-
-                    iframe.onerror = () => {
-                        clearTimeout(loadTimeout);
-                        console.error('Universal Viewer iframe failed to load');
-                        showAlternativeViewer(manifestUrlForUV);
-                    };
-
-                }, 500);
-
-            } catch (error) {
-                console.error('Error updating Universal Viewer:', error);
-                showAlternativeViewer(manifestUrlForUV);
-            }
-        }
-
-        // Miradorを読み込む関数
-        async function loadMiradorViewer(manifestUrlForUV) {
-            const iframe = document.getElementById('viewerIframe'); // IDを汎用的なものに変更
-
-            try {
-                // Miradorのembedパラメータで連続ロール（scroll）ビューを指定
-                const miradorUrl = `${MIRADOR_BASE_URL}?manifest=${encodeURIComponent(manifestUrlForUV)}&canvasIndex=0&view=scroll`;
-
-                console.log('Mirador Viewer URL (continuous scroll):', miradorUrl);
-
-                iframe.src = 'about:blank';
-                setTimeout(() => {
-                    iframe.src = miradorUrl;
-
-                    let loadTimeout = setTimeout(() => {
-                        console.error('Mirador Viewer loading timeout');
-                        showAlternativeViewer(manifestUrlForUV);
-                    }, 10000);
-
-                    iframe.onload = () => {
-                        clearTimeout(loadTimeout);
-                        console.log('Mirador Viewer iframe loaded successfully');
-                    };
-
-                    iframe.onerror = () => {
-                        clearTimeout(loadTimeout);
-                        console.error('Mirador Viewer iframe failed to load');
-                        showAlternativeViewer(manifestUrlForUV);
-                    };
-
-                }, 500);
-
-            } catch (error) {
-                console.error('Error updating Mirador Viewer:', error);
-                showAlternativeViewer(manifestUrlForUV);
-            }
-        }
-
-        // マニフェストを読み込んでビューアーで表示
-        async function loadManifest(originalManifestUrl) { // ここで受け取るのは常にオリジナルのHTTPS URL
-            try {
-                showStatus('マニフェストを読み込み中...', 'info');
-                console.log('Loading manifest (original URL):', originalManifestUrl);
-
-                let fetchUrl = originalManifestUrl; // このスクリプトがfetchするためのURL
-                const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-                const localBaseUrl = `${window.location.protocol}//${window.location.host}`;
-
-                // ローカル環境で実行している場合、fetchUrlをローカルパスに変換
-                if (isLocal && originalManifestUrl.startsWith(GITHUB_IIIF_BASE_URL)) {
-                    fetchUrl = originalManifestUrl.replace(
-                        GITHUB_IIIF_BASE_URL,
-                        localBaseUrl
-                    );
-                    console.log('Converted for local fetching:', fetchUrl);
-                }
-
-                // キャッシュから取得を試みる
-                let manifest;
-                if (manifestCache.has(originalManifestUrl)) {
-                    manifest = manifestCache.get(originalManifestUrl);
-                    console.log('Manifest loaded from cache:', originalManifestUrl);
-                } else {
-                    // マニフェストをフェッチ（詳細なエラーハンドリング付き）
-                    const response = await fetch(fetchUrl, {
-                        method: 'GET',
-                        headers: {
-                            'Accept': 'application/json'
-                        },
-                        cache: 'no-cache'
-                    }).catch(fetchError => {
-                        console.error('Fetch error details:', fetchError);
-                        if (fetchError.message.includes('ERR_BLOCKED_BY_CLIENT')) {
-                            throw new Error('リクエストがブロックされました。広告ブロッカーやセキュリティ拡張機能を無効にしてください。');
-                        }
-                        throw new Error(`ネットワークエラー: ${fetchError.message}`);
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                    }
-
-                    manifest = await response.json();
-                    manifestCache.set(originalManifestUrl, manifest); // キャッシュにはオリジナルURLで保存
-                }
-
-                // 情報を更新（表示にはオリジナルURLを使用）
-                updateManifestInfo(originalManifestUrl, manifest);
-                currentManifestUrl = originalManifestUrl; // 現在のマニフェストURLを保存
-
-                // アクティブ状態を更新（オリジナルURLを使用）
-                updateActiveManifest(originalManifestUrl);
-
-                // アクティブなビューアーでマニフェストをロード
-                if (activeViewerType === 'uv') {
-                    await loadUniversalViewer(originalManifestUrl);
-                } else if (activeViewerType === 'mirador') {
-                    await loadMiradorViewer(originalManifestUrl);
-                }
-                showStatus('ビューアーの更新が完了しました', 'success');
-
-            } catch (error) {
-                console.error('Manifest loading error:', error);
-                showStatus(`エラー: ${error.message}`, 'error');
-
-                // エラー表示をビューアーエリアに
-                showErrorInViewer(error.message);
-            }
-        }
-
-        // ビューアーエリアにエラーメッセージを表示する関数
-        function showErrorInViewer(message) {
-            const iframe = document.getElementById('viewerIframe');
-            iframe.src = 'about:blank'; // 現在のiframe内容をクリア
-            iframe.onload = () => { // iframeが完全にロードされた後にコンテンツを書き込む
-                iframe.contentWindow.document.open();
-                iframe.contentWindow.document.write(`
+      // ビューアーエリアにエラーメッセージを表示する関数
+      function showErrorInViewer(message) {
+        const iframe = document.getElementById("viewerIframe");
+        iframe.src = "about:blank"; // 現在のiframe内容をクリア
+        iframe.onload = () => {
+          // iframeが完全にロードされた後にコンテンツを書き込む
+          iframe.contentWindow.document.open();
+          iframe.contentWindow.document.write(`
                     <!DOCTYPE html>
                     <html lang="ja">
                     <head>
@@ -1123,18 +1234,22 @@
                     </body>
                     </html>
                 `);
-                iframe.contentWindow.document.close();
-            };
-        }
+          iframe.contentWindow.document.close();
+        };
+      }
 
+      // 代替ビューアーを表示
+      function showAlternativeViewer(manifestUrl) {
+        console.log("Showing alternative viewer for:", manifestUrl);
+        showStatus(
+          "Universal Viewerが利用できません。代替表示を使用します",
+          "error"
+        );
 
-        // 代替ビューアーを表示
-        function showAlternativeViewer(manifestUrl) {
-            console.log('Showing alternative viewer for:', manifestUrl);
-            showStatus('Universal Viewerが利用できません。代替表示を使用します', 'error');
-
-            const iframe = document.getElementById('viewerIframe'); // IDを汎用的なものに変更
-            iframe.src = 'data:text/html;charset=utf-8,' + encodeURIComponent(`
+        const iframe = document.getElementById("viewerIframe"); // IDを汎用的なものに変更
+        iframe.src =
+          "data:text/html;charset=utf-8," +
+          encodeURIComponent(`
                 <!DOCTYPE html>
                 <html lang="ja">
                 <head>
@@ -1188,12 +1303,16 @@
                         </a>
                         
                         <h4>🌐 外部ビューアーで開く：</h4>
-                        <a href="https://universalviewer.io/uv.html?manifest=${encodeURIComponent(manifestUrl)}" 
+                        <a href="https://universalviewer.io/uv.html?manifest=${encodeURIComponent(
+                          manifestUrl
+                        )}" 
                            target="_blank" class="manifest-link">
                             Universal Viewer (外部)で開く
                         </a>
                         
-                        <a href="https://projectmirador.org/embed/?manifest=${encodeURIComponent(manifestUrl)}" 
+                        <a href="https://projectmirador.org/embed/?manifest=${encodeURIComponent(
+                          manifestUrl
+                        )}" 
                            target="_blank" class="manifest-link">
                             Mirador Viewerで開く
                         </a>
@@ -1211,280 +1330,329 @@
                 </body>
                 </html>
             `);
-        }
+      }
 
-        // マニフェスト一覧でアクティブ状態を更新
-        function updateActiveManifest(url) {
-            const items = document.querySelectorAll('.manifest-item');
-            items.forEach(item => {
-                item.classList.remove('active');
-                if (item.dataset.url === url) { // dataset.url はオリジナルURLなので問題なし
-                    item.classList.add('active');
-                }
-            });
-        }
+      // マニフェスト一覧でアクティブ状態を更新
+      function updateActiveManifest(url) {
+        const items = document.querySelectorAll(".manifest-item");
+        items.forEach((item) => {
+          item.classList.remove("active");
+          if (item.dataset.url === url) {
+            // dataset.url はオリジナルURLなので問題なし
+            item.classList.add("active");
+          }
+        });
+      }
 
-        // マニフェストからタイトル情報を取得する関数（雅楽譜専用改良版）
-        async function getManifestTitle(originalManifestUrl) { // オリジナルURLを受け取る
-            try {
-                let fetchUrl = originalManifestUrl;
-                const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-                const localBaseUrl = `${window.location.protocol}//${window.location.host}`;
+      // マニフェストからタイトル情報を取得する関数（雅楽譜専用改良版）
+      async function getManifestTitle(originalManifestUrl) {
+        // オリジナルURLを受け取る
+        try {
+          let fetchUrl = originalManifestUrl;
+          const isLocal =
+            window.location.hostname === "localhost" ||
+            window.location.hostname === "127.0.0.1";
+          const localBaseUrl = `${window.location.protocol}//${window.location.host}`;
 
-                // ローカル環境で実行している場合、fetchUrlをローカルパスに変換
-                if (isLocal && originalManifestUrl.startsWith(GITHUB_IIIF_BASE_URL)) {
-                    fetchUrl = originalManifestUrl.replace(
-                        GITHUB_IIIF_BASE_URL,
-                        localBaseUrl
-                    );
-                }
+          // ローカル環境で実行している場合、fetchUrlをローカルパスに変換
+          if (isLocal && originalManifestUrl.startsWith(GITHUB_IIIF_BASE_URL)) {
+            fetchUrl = originalManifestUrl.replace(
+              GITHUB_IIIF_BASE_URL,
+              localBaseUrl
+            );
+          }
 
-                const response = await fetch(fetchUrl, {
-                    cache: 'no-cache',
-                    headers: {
-                        'Cache-Control': 'no-cache',
-                        'Pragma': 'no-cache'
-                    }
-                });
-                if (!response.ok) return null;
+          const response = await fetch(fetchUrl, {
+            cache: "no-cache",
+            headers: {
+              "Cache-Control": "no-cache",
+              Pragma: "no-cache",
+            },
+          });
+          if (!response.ok) return null;
 
-                const manifest = await response.json();
+          const manifest = await response.json();
 
-                // タイトルを様々な方法で取得を試行
-                let title = null;
+          // タイトルを様々な方法で取得を試行
+          let title = null;
 
-                // 1. label フィールドから取得
-                if (manifest.label) {
-                    if (typeof manifest.label === 'string') {
-                        title = manifest.label;
-                    } else if (manifest.label['@value']) {
-                        title = manifest.label['@value'];
-                    } else if (manifest.label.ja) {
-                        title = Array.isArray(manifest.label.ja) ? manifest.label.ja[0] : manifest.label.ja;
-                    } else if (manifest.label.en) {
-                        title = Array.isArray(manifest.label.en) ? manifest.label.en[0] : manifest.label.en;
-                    } else if (Array.isArray(manifest.label)) {
-                        title = manifest.label[0];
-                    }
-                }
-
-                // 2. metadata から「Title」または「タイトル」フィールドを取得
-                if (!title && manifest.metadata) {
-                    for (const meta of manifest.metadata) {
-                        const label = typeof meta.label === 'string' ? meta.label : meta.label?.ja?.[0] || meta.label?.en?.[0] || ''; // オブジェクト対応
-                        if (label && (label.includes('Title') || label.includes('タイトル') || label.includes('title'))) {
-                            if (typeof meta.value === 'string') {
-                                title = meta.value;
-                            } else if (meta.value && meta.value['@value']) {
-                                title = meta.value['@value'];
-                            } else if (meta.value && meta.value.ja) {
-                                title = Array.isArray(meta.value.ja) ? meta.value.ja[0] : meta.value.ja;
-                            }
-                            break;
-                        }
-                    }
-                }
-
-                // 3. metadata から雅楽譜特有の情報を取得
-                if (!title && manifest.metadata) {
-                    let 撰定年 = '';
-                    let 部 = '';
-                    let 調 = '';
-
-                    for (const meta of manifest.metadata) {
-                        const label = typeof meta.label === 'string' ? meta.label : meta.label?.ja?.[0] || meta.label?.en?.[0] || '';
-                        const value = typeof meta.value === 'string' ? meta.value : meta.value?.['@value'] || meta.value?.ja?.[0] || ''; // オブジェクト対応
-
-                        if (label && label.includes('撰定年')) {
-                            撰定年 = value;
-                        } else if (label && label.includes('部')) {
-                            部 = value;
-                        } else if (label && label.includes('調')) {
-                            調 = value;
-                        }
-                    }
-
-                    // 情報を組み合わせてタイトルを生成
-                    if (撰定年 || 部 || 調) {
-                        const parts = [];
-                        if (撰定年) parts.push(撰定年);
-                        if (調) parts.push(調);
-                        if (部) parts.push(部);
-                        title = parts.join(' ');
-                    }
-                }
-
-                // 4. sequences[0].label から取得
-                if (!title && manifest.sequences && manifest.sequences[0] && manifest.sequences[0].label) {
-                    title = manifest.sequences[0].label;
-                }
-
-                // 5. description から取得
-                if (!title && manifest.description) {
-                    title = Array.isArray(manifest.description) ? manifest.description[0] : manifest.description;
-                }
-
-                // タイトルのクリーンアップ
-                if (title) {
-                    title = title.replace(/^\s+|\s+$/g, ''); // 前後の空白を削除
-                    title = title.replace(/\s+/g, ' '); // 連続する空白を単一スペースに
-
-                    // 雅楽譜関連の不要な文字列を除去
-                    title = title.replace(/^雅楽譜[\s\(（]*/g, ''); // 先頭の「雅楽譜」と続く空白・括弧を除去
-                    title = title.replace(/^雅樂譜[\s\(（]*/g, ''); // 先頭の「雅樂譜」（旧字体）と続く空白・括弧を除去
-                    title = title.replace(/[\)）]*$/g, ''); // 末尾の括弧を除去
-                    title = title.replace(/^[\(（\s]+/g, ''); // 先頭の残った括弧や空白を除去
-                    title = title.replace(/[\s]+$/g, ''); // 末尾の空白を再度除去
-
-                    // 長すぎるタイトルを短縮
-                    if (title.length > 30) {
-                        title = title.substring(0, 27) + '...';
-                    }
-                }
-
-                return title;
-            } catch (error) {
-                console.error('Failed to fetch manifest title:', originalManifestUrl, error);
-                return null;
+          // 1. label フィールドから取得
+          if (manifest.label) {
+            if (typeof manifest.label === "string") {
+              title = manifest.label;
+            } else if (manifest.label["@value"]) {
+              title = manifest.label["@value"];
+            } else if (manifest.label.ja) {
+              title = Array.isArray(manifest.label.ja)
+                ? manifest.label.ja[0]
+                : manifest.label.ja;
+            } else if (manifest.label.en) {
+              title = Array.isArray(manifest.label.en)
+                ? manifest.label.en[0]
+                : manifest.label.en;
+            } else if (Array.isArray(manifest.label)) {
+              title = manifest.label[0];
             }
-        }
+          }
 
-        // ローカルマニフェスト一覧を読み込み
-        async function loadManifestList() {
-            try {
-                if (detectProtocolIssue()) {
-                    loadFallbackManifestList();
-                    return;
+          // 2. metadata から「Title」または「タイトル」フィールドを取得
+          if (!title && manifest.metadata) {
+            for (const meta of manifest.metadata) {
+              const label =
+                typeof meta.label === "string"
+                  ? meta.label
+                  : meta.label?.ja?.[0] || meta.label?.en?.[0] || ""; // オブジェクト対応
+              if (
+                label &&
+                (label.includes("Title") ||
+                  label.includes("タイトル") ||
+                  label.includes("title"))
+              ) {
+                if (typeof meta.value === "string") {
+                  title = meta.value;
+                } else if (meta.value && meta.value["@value"]) {
+                  title = meta.value["@value"];
+                } else if (meta.value && meta.value.ja) {
+                  title = Array.isArray(meta.value.ja)
+                    ? meta.value.ja[0]
+                    : meta.value.ja;
                 }
+                break;
+              }
+            }
+          }
 
-                showStatus('マニフェスト一覧を読み込み中...', 'info');
+          // 3. metadata から雅楽譜特有の情報を取得
+          if (!title && manifest.metadata) {
+            let 撰定年 = "";
+            let 部 = "";
+            let 調 = "";
 
-                const listContainer = document.getElementById('manifestList');
-                listContainer.innerHTML = '<div class="loading">マニフェスト一覧を読み込み中...</div>';
+            for (const meta of manifest.metadata) {
+              const label =
+                typeof meta.label === "string"
+                  ? meta.label
+                  : meta.label?.ja?.[0] || meta.label?.en?.[0] || "";
+              const value =
+                typeof meta.value === "string"
+                  ? meta.value
+                  : meta.value?.["@value"] || meta.value?.ja?.[0] || ""; // オブジェクト対応
 
-                const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-                const localBaseUrl = `${window.location.protocol}//${window.location.host}`;
+              if (label && label.includes("撰定年")) {
+                撰定年 = value;
+              } else if (label && label.includes("部")) {
+                部 = value;
+              } else if (label && label.includes("調")) {
+                調 = value;
+              }
+            }
 
-                const groups = {
-                    '100376839': [],
-                    '100270332': []
-                };
+            // 情報を組み合わせてタイトルを生成
+            if (撰定年 || 部 || 調) {
+              const parts = [];
+              if (撰定年) parts.push(撰定年);
+              if (調) parts.push(調);
+              if (部) parts.push(部);
+              title = parts.join(" ");
+            }
+          }
 
-                // 各コレクションのmanifest-index.jsonを読み込むヘルパー関数
-                const loadCollectionIndex = async (seriesId, groupArray) => {
-                    let indexFetchUrl = `${GITHUB_IIIF_BASE_URL}/${seriesId}/manifest-index.json`;
-                    // ローカル環境であれば、fetchUrlをローカルパスに変換
-                    if (isLocal) {
-                        indexFetchUrl = indexFetchUrl.replace(
-                            GITHUB_IIIF_BASE_URL,
-                            localBaseUrl
-                        );
-                    }
+          // 4. sequences[0].label から取得
+          if (
+            !title &&
+            manifest.sequences &&
+            manifest.sequences[0] &&
+            manifest.sequences[0].label
+          ) {
+            title = manifest.sequences[0].label;
+          }
 
-                    try {
-                        const response = await fetch(indexFetchUrl, { cache: 'no-cache' });
-                        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                        const indexData = await response.json();
-                        indexData.manifests.forEach(manifest => {
-                            // ここでは常にオリジナルのHTTPS URLを格納
-                            groupArray.push({
-                                url: manifest['@id'], // これは常にGitHub PagesのHTTPS URL
-                                label: manifest.label,
-                                series: seriesId
-                            });
-                        });
-                    } catch (error) {
-                        console.error(`Error loading ${seriesId} manifest index:`, error);
-                        const errorDiv = document.createElement('div');
-                        errorDiv.style.cssText = 'padding: 10px; color: red; text-align: center;';
-                        errorDiv.textContent = `${seriesId} のマニフェスト一覧の読み込みに失敗しました: ${error.message}`;
-                        listContainer.appendChild(errorDiv);
-                    }
-                };
+          // 5. description から取得
+          if (!title && manifest.description) {
+            title = Array.isArray(manifest.description)
+              ? manifest.description[0]
+              : manifest.description;
+          }
 
-                // 並行して両方のコレクションのインデックスをロード
-                await Promise.all([
-                    loadCollectionIndex('100270332', groups['100270332']),
-                    loadCollectionIndex('100376839', groups['100376839'])
-                ]);
+          // タイトルのクリーンアップ
+          if (title) {
+            title = title.replace(/^\s+|\s+$/g, ""); // 前後の空白を削除
+            title = title.replace(/\s+/g, " "); // 連続する空白を単一スペースに
 
-                listContainer.innerHTML = ''; // Clear loading message
+            // 雅楽譜関連の不要な文字列を除去
+            title = title.replace(/^雅楽譜[\s\(（]*/g, ""); // 先頭の「雅楽譜」と続く空白・括弧を除去
+            title = title.replace(/^雅樂譜[\s\(（]*/g, ""); // 先頭の「雅樂譜」（旧字体）と続く空白・括弧を除去
+            title = title.replace(/[\)）]*$/g, ""); // 末尾の括弧を除去
+            title = title.replace(/^[\(（\s]+/g, ""); // 先頭の残った括弧や空白を除去
+            title = title.replace(/[\s]+$/g, ""); // 末尾の空白を再度除去
 
-                for (const [series, files] of Object.entries(groups)) {
-                    if (files.length === 0) continue;
+            // 長すぎるタイトルを短縮
+            if (title.length > 30) {
+              title = title.substring(0, 27) + "...";
+            }
+          }
 
-                    const groupTitle = {
-                        '100376839': '📜 東京芸術大学所蔵版',
-                        '100270332': '🎵 宮内庁書陵部所蔵版'
-                    }[series];
+          return title;
+        } catch (error) {
+          console.error(
+            "Failed to fetch manifest title:",
+            originalManifestUrl,
+            error
+          );
+          return null;
+        }
+      }
 
-                    const groupContainer = document.createElement('div');
-                    const header = document.createElement('div');
-                    header.className = 'manifest-header';
-                    header.textContent = groupTitle;
-                    const contentContainer = document.createElement('div');
-                    contentContainer.className = 'manifest-group-content';
+      // ローカルマニフェスト一覧を読み込み
+      async function loadManifestList() {
+        try {
+          if (detectProtocolIssue()) {
+            loadFallbackManifestList();
+            return;
+          }
 
-                    const isDefaultOpen = series === '100270332';
-                    if (!isDefaultOpen) {
-                        header.classList.add('collapsed');
-                        contentContainer.classList.add('collapsed');
-                    }
-                    // アコーディオンメニューでコンテンツの表示/非表示を切り替える
-                    header.onclick = () => {
-                        // toggleメソッドで 'collapsed' クラスの付け外しを自動的に行う
-                        header.classList.toggle('collapsed');
-                        contentContainer.classList.toggle('collapsed');
-                    };
+          showStatus("マニフェスト一覧を読み込み中...", "info");
 
-                    let volumeCounter = 0; // 各シリーズごとに巻番号をリセット
+          const listContainer = document.getElementById("manifestList");
+          listContainer.innerHTML =
+            '<div class="loading">マニフェスト一覧を読み込み中...</div>';
 
-                    files.forEach(file => {
-                        const item = document.createElement('div');
-                        item.className = 'manifest-item';
-                        item.dataset.url = file.url; // ここにオリジナルURLが入る
-                        item.onclick = () => loadManifest(file.url); // loadManifestにはオリジナルURLを渡す
+          const isLocal =
+            window.location.hostname === "localhost" ||
+            window.location.hostname === "127.0.0.1";
+          const localBaseUrl = `${window.location.protocol}//${window.location.host}`;
 
-                        let displayTitle = file.label || file.url.split('/').pop().replace('_manifest.json', '').replace('volume', 'Vol. ');
-                        // getManifestTitle 関数で行われるタイトルクリーンアップを適用
-                        if (displayTitle) {
-                            displayTitle = displayTitle.replace(/^\s+|\s+$/g, '');
-                            displayTitle = displayTitle.replace(/\s+/g, ' ');
-                            displayTitle = displayTitle.replace(/^雅楽譜[\s\(（]*/g, '');
-                            displayTitle = displayTitle.replace(/^雅樂譜[\s\(（]*/g, '');
-                            displayTitle = displayTitle.replace(/[\)）]*$/g, '');
-                            displayTitle = displayTitle.replace(/^[\(（\s]+/g, '');
-                            displayTitle = displayTitle.replace(/[\s]+$/g, '');
-                            if (displayTitle.length > 30) {
-                                displayTitle = displayTitle.substring(0, 27) + '...';
-                            }
-                        }
+          const groups = {
+            100376839: [],
+            100270332: [],
+          };
 
-                        const volumeNumberDisplay = `Vol.${String(volumeCounter).padStart(2, '0')}`; // Vol.00, Vol.01形式
-                        volumeCounter++; // 次の項目のためにインクリメント
+          // 各コレクションのmanifest-index.jsonを読み込むヘルパー関数
+          const loadCollectionIndex = async (seriesId, groupArray) => {
+            let indexFetchUrl = `${GITHUB_IIIF_BASE_URL}/${seriesId}/manifest-index.json`;
+            // ローカル環境であれば、fetchUrlをローカルパスに変換
+            if (isLocal) {
+              indexFetchUrl = indexFetchUrl.replace(
+                GITHUB_IIIF_BASE_URL,
+                localBaseUrl
+              );
+            }
 
-                        item.innerHTML = `
+            try {
+              const response = await fetch(indexFetchUrl, {
+                cache: "no-cache",
+              });
+              if (!response.ok) throw new Error(`HTTP ${response.status}`);
+              const indexData = await response.json();
+              indexData.manifests.forEach((manifest) => {
+                // ここでは常にオリジナルのHTTPS URLを格納
+                groupArray.push({
+                  url: manifest["@id"], // これは常にGitHub PagesのHTTPS URL
+                  label: manifest.label,
+                  series: seriesId,
+                });
+              });
+            } catch (error) {
+              console.error(`Error loading ${seriesId} manifest index:`, error);
+              const errorDiv = document.createElement("div");
+              errorDiv.style.cssText =
+                "padding: 10px; color: red; text-align: center;";
+              errorDiv.textContent = `${seriesId} のマニフェスト一覧の読み込みに失敗しました: ${error.message}`;
+              listContainer.appendChild(errorDiv);
+            }
+          };
+
+          // 並行して両方のコレクションのインデックスをロード
+          await Promise.all([
+            loadCollectionIndex("100270332", groups["100270332"]),
+            loadCollectionIndex("100376839", groups["100376839"]),
+          ]);
+
+          listContainer.innerHTML = ""; // Clear loading message
+
+          for (const [series, files] of Object.entries(groups)) {
+            if (files.length === 0) continue;
+
+            const groupTitle = {
+              100376839: "📜 東京芸術大学所蔵版",
+              100270332: "🎵 宮内庁書陵部所蔵版",
+            }[series];
+
+            const groupContainer = document.createElement("div");
+            const header = document.createElement("div");
+            header.className = "manifest-header";
+            header.textContent = groupTitle;
+            const contentContainer = document.createElement("div");
+            contentContainer.className = "manifest-group-content";
+
+            const isDefaultOpen = series === "100270332";
+            if (!isDefaultOpen) {
+              header.classList.add("collapsed");
+              contentContainer.classList.add("collapsed");
+            }
+            // アコーディオンメニューでコンテンツの表示/非表示を切り替える
+            header.onclick = () => {
+              // toggleメソッドで 'collapsed' クラスの付け外しを自動的に行う
+              header.classList.toggle("collapsed");
+              contentContainer.classList.toggle("collapsed");
+            };
+
+            let volumeCounter = 0; // 各シリーズごとに巻番号をリセット
+
+            files.forEach((file) => {
+              const item = document.createElement("div");
+              item.className = "manifest-item";
+              item.dataset.url = file.url; // ここにオリジナルURLが入る
+              item.onclick = () => loadManifest(file.url); // loadManifestにはオリジナルURLを渡す
+
+              let displayTitle =
+                file.label ||
+                file.url
+                  .split("/")
+                  .pop()
+                  .replace("_manifest.json", "")
+                  .replace("volume", "Vol. ");
+              // getManifestTitle 関数で行われるタイトルクリーンアップを適用
+              if (displayTitle) {
+                displayTitle = displayTitle.replace(/^\s+|\s+$/g, "");
+                displayTitle = displayTitle.replace(/\s+/g, " ");
+                displayTitle = displayTitle.replace(/^雅楽譜[\s\(（]*/g, "");
+                displayTitle = displayTitle.replace(/^雅樂譜[\s\(（]*/g, "");
+                displayTitle = displayTitle.replace(/[\)）]*$/g, "");
+                displayTitle = displayTitle.replace(/^[\(（\s]+/g, "");
+                displayTitle = displayTitle.replace(/[\s]+$/g, "");
+                if (displayTitle.length > 30) {
+                  displayTitle = displayTitle.substring(0, 27) + "...";
+                }
+              }
+
+              const volumeNumberDisplay = `Vol.${String(volumeCounter).padStart(
+                2,
+                "0"
+              )}`; // Vol.00, Vol.01形式
+              volumeCounter++; // 次の項目のためにインクリメント
+
+              item.innerHTML = `
                             <div style="line-height: 1.3;">
                                 <div style="color: #666; font-size: 10px; margin-bottom: 2px;">${volumeNumberDisplay}</div>
                                 <div style="font-weight: 500; color: #333;">${displayTitle}</div>
                             </div>
                         `;
-                        contentContainer.appendChild(item);
-                    });
+              contentContainer.appendChild(item);
+            });
 
-                    groupContainer.appendChild(header);
-                    groupContainer.appendChild(contentContainer);
-                    listContainer.appendChild(groupContainer);
-                }
+            groupContainer.appendChild(header);
+            groupContainer.appendChild(contentContainer);
+            listContainer.appendChild(groupContainer);
+          }
 
-                showStatus('マニフェスト一覧の読み込みが完了しました', 'success');
+          showStatus("マニフェスト一覧の読み込みが完了しました", "success");
+        } catch (error) {
+          console.error("Error loading manifest list:", error);
+          showStatus(`一覧読み込みエラー: ${error.message}`, "error");
 
-            } catch (error) {
-                console.error('Error loading manifest list:', error);
-                showStatus(`一覧読み込みエラー: ${error.message}`, 'error');
-
-                const listContainer = document.getElementById('manifestList');
-                listContainer.innerHTML = `
+          const listContainer = document.getElementById("manifestList");
+          listContainer.innerHTML = `
                     <div style="padding: 20px; text-align: center; color: #c62828;">
                         <h3>読み込みエラー</h3>
                         <p>${error.message}</p>
@@ -1493,81 +1661,88 @@
                         </p>
                     </div>
                 `;
-            }
         }
+      }
 
-        // タイトルを段階的に読み込む関数
-        // この関数はもうmanifest-index.jsonからタイトルを取得するため使用しませんが、
-        // 既存のgetManifestTitle関数が他の場所（楽曲検索など）で使われる可能性を考慮し、残します。
-        async function loadTitlesInBatches(tasks, batchSize = 5) {
+      // タイトルを段階的に読み込む関数
+      // この関数はもうmanifest-index.jsonからタイトルを取得するため使用しませんが、
+      // 既存のgetManifestTitle関数が他の場所（楽曲検索など）で使われる可能性を考慮し、残します。
+      async function loadTitlesInBatches(tasks, batchSize = 5) {
+        for (let i = 0; i < tasks.length; i += batchSize) {
+          const batch = tasks.slice(i, i + batchSize);
 
-            for (let i = 0; i < tasks.length; i += batchSize) {
-                const batch = tasks.slice(i, i + batchSize);
+          const promises = batch.map(
+            (task) =>
+              // ここでgetManifestTitleを呼び出す必要はなくなりましたが、構造上残します
+              // task.item, task.url, task.volume は使われません
+              Promise.resolve() // 何もせず解決
+          );
 
-                const promises = batch.map(task =>
-                    // ここでgetManifestTitleを呼び出す必要はなくなりましたが、構造上残します
-                    // task.item, task.url, task.volume は使われません 
-                    Promise.resolve() // 何もせず解決
-                );
+          try {
+            await Promise.allSettled(promises);
 
-                try {
-                    await Promise.allSettled(promises);
-
-                    if (i + batchSize < tasks.length) {
-                        await new Promise(resolve => setTimeout(resolve, 200));
-                    }
-                } catch (error) {
-                    console.error('Error in batch processing:', error);
-                }
+            if (i + batchSize < tasks.length) {
+              await new Promise((resolve) => setTimeout(resolve, 200));
             }
-
+          } catch (error) {
+            console.error("Error in batch processing:", error);
+          }
         }
+      }
 
-        // マニフェストのタイトルを取得して表示を更新
-        // loadManifestListからは直接呼ばれなくなりましたが、既存のgetManifestTitleが使われるため残します。
-        async function loadAndUpdateManifestTitle(itemElement, manifestUrl, volume) {
-            // この関数はmanifest-index.jsonから直接タイトルが取得されるようになったため、
-            // loadManifestListからは直接呼ばれることはありません。
-            // しかし、他の場所から呼ばれる可能性やコードの一貫性を保つために残します。
-            console.warn("loadAndUpdateManifestTitle was called, but should not be directly used for manifest list population anymore."); // 警告は残す
-            try {
-                const title = await getManifestTitle(manifestUrl);
-                if (title) {
-                    itemElement.innerHTML = `
+      // マニフェストのタイトルを取得して表示を更新
+      // loadManifestListからは直接呼ばれなくなりましたが、既存のgetManifestTitleが使われるため残します。
+      async function loadAndUpdateManifestTitle(
+        itemElement,
+        manifestUrl,
+        volume
+      ) {
+        // この関数はmanifest-index.jsonから直接タイトルが取得されるようになったため、
+        // loadManifestListからは直接呼ばれることはありません。
+        // しかし、他の場所から呼ばれる可能性やコードの一貫性を保つために残します。
+        console.warn(
+          "loadAndUpdateManifestTitle was called, but should not be directly used for manifest list population anymore."
+        ); // 警告は残す
+        try {
+          const title = await getManifestTitle(manifestUrl);
+          if (title) {
+            itemElement.innerHTML = `
                         <div style="line-height: 1.3;">
-                            <div style="color: #666; font-size: 10px; margin-bottom: 2px;">Vol.${String(volume).padStart(2, '0')}</div>
+                            <div style="color: #666; font-size: 10px; margin-bottom: 2px;">Vol.${String(
+                              volume
+                            ).padStart(2, "0")}</div>
                             <div style="font-weight: 500; font-size: 12px; color: #333;">${title}</div>
                         </div>
                     `;
-                } else {
-                    itemElement.innerHTML = `
+          } else {
+            itemElement.innerHTML = `
                         <div style="font-weight: 500; color: #666;">
-                            Volume ${String(volume).padStart(2, '0')}
+                            Volume ${String(volume).padStart(2, "0")}
                             <div style="font-size: 10px; color: #999;">(タイトル取得失敗)</div>
                         </div>
                     `;
-                }
-            } catch (error) {
-                console.error(`Failed to load title for ${manifestUrl}:`, error);
-                itemElement.innerHTML = `
+          }
+        } catch (error) {
+          console.error(`Failed to load title for ${manifestUrl}:`, error);
+          itemElement.innerHTML = `
                     <div style="font-weight: 500; color: #666;">
-                        Volume ${String(volume).padStart(2, '0')}
+                        Volume ${String(volume).padStart(2, "0")}
                         <div style="font-size: 10px; color: #999;">(タイトル取得失敗)</div>
                     </div>
                 `;
-            }
         }
+      }
 
-        // フォールバック：ヘルプメッセージのみ表示
-        function loadFallbackManifestList() {
-            showStatus('ローカルサーバーにアクセスできません。', 'error');
+      // フォールバック：ヘルプメッセージのみ表示
+      function loadFallbackManifestList() {
+        showStatus("ローカルサーバーにアクセスできません。", "error");
 
-            const listContainer = document.getElementById('manifestList');
-            listContainer.innerHTML = '';
+        const listContainer = document.getElementById("manifestList");
+        listContainer.innerHTML = "";
 
-            // GitHub Pages での利用を促すメッセージを表示
-            const helpDiv = document.createElement('div');
-            helpDiv.style.cssText = `
+        // GitHub Pages での利用を促すメッセージを表示
+        const helpDiv = document.createElement("div");
+        helpDiv.style.cssText = `
                 background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
                 border: 1px solid #c8e6c9;
                 border-radius: 8px;
@@ -1576,7 +1751,7 @@
                 text-align: center;
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             `;
-            helpDiv.innerHTML = `
+        helpDiv.innerHTML = `
                 <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: #1b5e20;">
                     🌐 GitHub Pages版で公開中
                 </p>
@@ -1590,421 +1765,458 @@
                     • Universal Viewerで高解像度表示
                 </p>
             `;
-            listContainer.appendChild(helpDiv);
+        listContainer.appendChild(helpDiv);
+      }
+
+      // カスタムマニフェストを読み込み
+      function loadCustomManifest() {
+        const url = document.getElementById("customUrl").value.trim();
+        if (!url) {
+          showStatus("URLを入力してください", "error");
+          return;
         }
 
-        // カスタムマニフェストを読み込み
-        function loadCustomManifest() {
-            const url = document.getElementById('customUrl').value.trim();
-            if (!url) {
-                showStatus('URLを入力してください', 'error');
-                return;
-            }
+        // カスタムURLはそのままloadManifestに渡す（loadManifest内で適切なfetchUrlとuvUrlToPassを判断）
+        loadManifest(url);
+      }
 
-            // カスタムURLはそのままloadManifestに渡す（loadManifest内で適切なfetchUrlとuvUrlToPassを判断）
-            loadManifest(url);
-        }
+      // マニフェスト一覧を更新
+      function refreshManifestList() {
+        loadManifestList();
+      }
 
-        // マニフェスト一覧を更新
-        function refreshManifestList() {
-            loadManifestList();
-        }
+      // === 楽曲検索機能 ===
+      let piecesData = null;
 
-        // === 楽曲検索機能 ===
-        let piecesData = null;
-
-        // 楽曲データを読み込み
+// 楽曲データを読み込み
         async function loadPiecesData() {
             if (piecesData) return piecesData;
 
-            // ローカル開発環境とGitHub Pagesの両方に対応
             const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
             const localBaseUrl = `${window.location.protocol}//${window.location.host}`;
 
-            let piecesIndexUrl = `${GITHUB_IIIF_BASE_URL}/100376839_pieces/pieces-index.json`;
-
-            if (isLocal) {
-                piecesIndexUrl = piecesIndexUrl.replace(
-                    GITHUB_IIIF_BASE_URL,
-                    localBaseUrl
-                );
-            }
+            const urls = [
+                `${GITHUB_IIIF_BASE_URL}/100376839_pieces/pieces-index.json`,
+                `${GITHUB_IIIF_BASE_URL}/100270332_pieces/pieces-index.json`
+            ];
 
             try {
-                const response = await fetch(piecesIndexUrl, {
-                    cache: 'no-cache',
-                    headers: {
-                        'Cache-Control': 'no-cache',
-                        'Pragma': 'no-cache'
+                const responses = await Promise.all(urls.map(url => {
+                    let fetchUrl = isLocal ? url.replace(GITHUB_IIIF_BASE_URL, localBaseUrl) : url;
+                    return fetch(fetchUrl, {
+                        cache: 'no-cache',
+                        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                    });
+                }));
+
+                for (const response of responses) {
+                    if (!response.ok) {
+                        throw new Error(`Failed to load data: ${response.status} ${response.statusText}`);
+                    }
+                }
+
+                const datasets = await Promise.all(responses.map(res => res.json()));
+
+                // データを結合する
+                const combinedData = {
+                    pieces: [],
+                    statistics: {
+                        total_pieces: 0,
+                        instruments: new Set(),
+                        modes: new Set(),
+                        collections: {} // オブジェクトとして初期化
+                    }
+                };
+
+                datasets.forEach(data => {
+                    let pieces = data.pieces || [];
+                    if (isLocal) {
+                        pieces.forEach(piece => {
+                            if (piece['@id'] && piece['@id'].startsWith(GITHUB_IIIF_BASE_URL)) {
+                                piece['@id'] = piece['@id'].replace(GITHUB_IIIF_BASE_URL, localBaseUrl);
+                            }
+                        });
+                    }
+                    combinedData.pieces.push(...pieces);
+
+                    // 統計情報をマージ
+                    const stats = data.statistics || {};
+                    combinedData.statistics.total_pieces += stats.total_pieces || 0;
+                    (stats.instruments || []).forEach(item => combinedData.statistics.instruments.add(item));
+                    (stats.modes || []).forEach(item => combinedData.statistics.modes.add(item));
+                    
+                    // (改善) collectionsオブジェクトを直接マージする
+                    if (stats.collections) {
+                        Object.assign(combinedData.statistics.collections, stats.collections);
                     }
                 });
 
-                if (!response.ok) throw new Error('Failed to load pieces data');
+                // Setを配列に変換
+                combinedData.statistics.instruments = Array.from(combinedData.statistics.instruments);
+                combinedData.statistics.modes = Array.from(combinedData.statistics.modes);
 
-                const data = await response.json();
-
-                // piecesData内の各pieceの@idもローカル環境用に変換（loadManifestに渡す用）
-                if (isLocal && data.pieces) {
-                    data.pieces.forEach(piece => {
-                        if (piece['@id'] && piece['@id'].startsWith(GITHUB_IIIF_BASE_URL)) {
-                            piece['@id'] = piece['@id'].replace(
-                                GITHUB_IIIF_BASE_URL,
-                                localBaseUrl
-                            );
-                        }
-                    });
-                }
-
-                piecesData = data;
+                piecesData = combinedData;
 
                 // フィルタ選択肢を初期化
-                initializeFilters(data.statistics);
+                initializeFilters(combinedData.statistics);
 
-                return data;
+                // ★★★ 修正点 ★★★
+                // 結合した完全なデータを返す
+                return combinedData;
+
             } catch (error) {
                 console.error('Failed to load pieces data:', error);
                 return null;
             }
         }
 
-        // フィルタ選択肢を初期化
-        function initializeFilters(statistics) {
+      // フィルタ選択肢を初期化
+      function initializeFilters(statistics) {
+        const instrumentFilter = document.getElementById("instrumentFilter");
+        const modeFilter = document.getElementById("modeFilter");
+        const collectionFilter = document.getElementById("collectionFilter");
 
-            const instrumentFilter = document.getElementById('instrumentFilter');
-            const modeFilter = document.getElementById('modeFilter');
-            const collectionFilter = document.getElementById('collectionFilter');
-
-            if (!instrumentFilter || !modeFilter || !collectionFilter) {
-                console.error('Filter elements not found!');
-                return;
-            }
-
-            // 楽器フィルタ
-            instrumentFilter.innerHTML = '<option value="">楽器</option>';
-            if (statistics.instruments) { // 存在チェックを明示的に行う
-                statistics.instruments.forEach(instrument => {
-                    const option = document.createElement('option');
-                    option.value = instrument;
-                    option.textContent = instrument;
-                    instrumentFilter.appendChild(option);
-                });
-            }
-
-            // 調子フィルタ（指定した順序で表示）
-            modeFilter.innerHTML = '<option value="">調子</option>';
-            const modeOrder = ['壱越調', '平調', '双調', '黄鐘調', '盤渉調', '太食調'];
-
-            if (statistics.modes) { // 存在チェックを明示的に行う
-                // 指定した順序で調を追加
-                modeOrder.forEach(mode => {
-                    if (statistics.modes.includes(mode)) {
-                        const option = document.createElement('option');
-                        option.value = mode;
-                        option.textContent = mode;
-                        modeFilter.appendChild(option);
-                    }
-                });
-
-                // 万が一、指定した順序にない調があった場合はその後に追加
-                statistics.modes.forEach(mode => {
-                    if (!modeOrder.includes(mode)) {
-                        const option = document.createElement('option');
-                        option.value = mode;
-                        option.textContent = mode;
-                        modeFilter.appendChild(option);
-                    }
-                    else if (mode === '平調') { // '平調' が存在する場合にのみ '東京藝術大学所蔵' を追加
-                        const option = document.createElement('option');
-                        option.value = '東京藝術大学所蔵';
-                        option.textContent = '東京藝術大学所蔵';
-                        collectionFilter.appendChild(option);
-                    }
-                });
-            }
-
-            // 資料フィルタ
-            collectionFilter.innerHTML = '<option value="">資料</option>';
-
-            if (statistics.collections) { // statistics.collectionsがtruthyかどうか確認
-                const collectionKeys = Object.keys(statistics.collections);
-                if (collectionKeys.length > 0) {
-                    collectionKeys.forEach(collection => {
-                        const option = document.createElement('option');
-                        option.value = collection;
-                        option.textContent = collection;
-                        collectionFilter.appendChild(option);
-                    });
-                } else {
-                }
-            } else {
-            }
-
+        if (!instrumentFilter || !modeFilter || !collectionFilter) {
+          console.error("Filter elements not found!");
+          return;
         }
 
-        // ========================================
-        // 旧字正規化機能
-        // ========================================
-
-        /**
-         * 旧字正規化マッピングを取得する関数
-         * 設定ファイルから読み込み、フォールバック設定も提供
-         */
-        function getKanjiNormalizationMap() {
-            // 設定ファイルが読み込まれている場合はそれを使用
-            if (typeof window.KANJI_NORMALIZATION_CONFIG !== 'undefined') {
-                return window.KANJI_NORMALIZATION_CONFIG;
-            }
-
-            // フォールバック: 設定ファイルが読み込まれていない場合の最小限の設定
-            return {
-                '樂': '楽',     // 還城樂 → 還城楽
-                '龍': '竜',     // 龍笛 → 竜笛
-            };
+        // 楽器フィルタ
+        instrumentFilter.innerHTML = '<option value="">楽器</option>';
+        if (statistics && statistics.instruments) {
+          statistics.instruments.sort().forEach((instrument) => {
+            const option = document.createElement("option");
+            option.value = instrument;
+            option.textContent = instrument;
+            instrumentFilter.appendChild(option);
+          });
         }
 
-        /**
-         * 旧字を新字に正規化する関数
-         * @param {string} text - 正規化対象のテキスト
-         * @returns {string} 正規化されたテキスト
-         */
-        function normalizeKanji(text) {
-            let normalized = text;
-            const kanjiMap = getKanjiNormalizationMap();
+        // 調子フィルタ（指定した順序で表示）
+        modeFilter.innerHTML = '<option value="">調子</option>';
+        const modeOrder = [
+          "壱越調",
+          "平調",
+          "双調",
+          "黄鐘調",
+          "盤渉調",
+          "太食調",
+        ];
 
-            // 各旧字-新字ペアに対して置換を実行
-            for (const [oldKanji, newKanji] of Object.entries(kanjiMap)) {
-                normalized = normalized.replace(new RegExp(oldKanji, 'g'), newKanji);
+        if (statistics && statistics.modes) {
+          const availableModes = new Set(statistics.modes);
+
+          modeOrder.forEach((mode) => {
+            if (availableModes.has(mode)) {
+              const option = document.createElement("option");
+              option.value = mode;
+              option.textContent = mode;
+              modeFilter.appendChild(option);
+              availableModes.delete(mode); // 処理済みのものを削除
             }
+          });
 
-            return normalized;
-        }
-
-        /**
-         * 旧字正規化マッピングに新しいペアを動的に追加する関数
-         * @param {string} oldKanji - 旧字
-         * @param {string} newKanji - 新字
-         */
-        function addKanjiNormalization(oldKanji, newKanji) {
-            if (typeof window.KANJI_NORMALIZATION_CONFIG !== 'undefined') {
-                window.KANJI_NORMALIZATION_CONFIG[oldKanji] = newKanji;
-                console.log(`✅ 旧字正規化ペア追加: ${oldKanji} → ${newKanji}`);
-                console.log('💡 変更を永続化するには kanji-normalization-config.js を編集してください');
-            } else {
-                console.warn('⚠️ 設定ファイルが読み込まれていません');
-            }
-        }
-
-        /**
-         * 現在の旧字正規化マッピングを表示する関数
-         */
-        function showKanjiNormalizationMap() {
-            const kanjiMap = getKanjiNormalizationMap();
-            console.log('='.repeat(50));
-            console.log('🔤 現在の旧字正規化マッピング:');
-            console.log('='.repeat(50));
-
-            let count = 0;
-            for (const [oldKanji, newKanji] of Object.entries(kanjiMap)) {
-                console.log(`  ${oldKanji} → ${newKanji}`);
-                count++;
-            }
-
-            console.log('='.repeat(50));
-            console.log(`📊 合計: ${count} ペア`);
-            console.log('='.repeat(50));
-            console.log('💡 新しいペアを追加: addKanjiNormalization("旧字", "新字")');
-        }
-
-        // 楽曲検索機能
-        async function searchPieces() {
-            const data = await loadPiecesData();
-            if (!data) return;
-
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const instrumentFilter = document.getElementById('instrumentFilter').value;
-            const modeFilter = document.getElementById('modeFilter').value;
-            const collectionFilter = document.getElementById('collectionFilter').value;
-
-            // 2-1: フィルターが未選択でキーワードが空の場合、検索結果を非表示
-            if (!searchTerm && !instrumentFilter && !modeFilter && !collectionFilter) {
-                hideSearchResults();
-                return;
-            }
-
-            // 検索語を正規化（旧字→新字変換）
-            const normalizedSearchTerm = normalizeKanji(searchTerm);
-
-            // フィルタリング
-            let filteredPieces = data.pieces.filter(piece => {
-                // 楽曲タイトルのみを正規化して比較
-                const normalizedPieceName = normalizeKanji(piece.metadata.piece_name.toLowerCase());
-
-                const matchesSearch = !searchTerm ||
-                    normalizedPieceName.includes(normalizedSearchTerm) ||
-                    // 元の検索語でも検索（旧字での検索も可能）
-                    piece.metadata.piece_name.toLowerCase().includes(searchTerm);
-
-                const matchesInstrument = !instrumentFilter ||
-                    piece.metadata.instrument === instrumentFilter;
-
-                const matchesMode = !modeFilter ||
-                    piece.metadata.mode === modeFilter;
-
-                const matchesCollection = !collectionFilter ||
-                    piece.metadata.collection === collectionFilter;
-
-                return matchesSearch && matchesInstrument && matchesMode && matchesCollection;
+          // 指定順序にないものをソートして末尾に追加
+          Array.from(availableModes)
+            .sort()
+            .forEach((mode) => {
+              const option = document.createElement("option");
+              option.value = mode;
+              option.textContent = mode;
+              modeFilter.appendChild(option);
             });
-
-            // 結果を表示
-            displaySearchResults(filteredPieces, data.pieces.length);
         }
+
+        // 資料フィルタ
+        collectionFilter.innerHTML = '<option value="">資料</option>';
+        if (statistics && statistics.collections) {
+          // コレクション名をソートして追加
+          const collectionKeys = Object.keys(statistics.collections).sort();
+          collectionKeys.forEach((collection) => {
+            const option = document.createElement("option");
+            option.value = collection;
+            option.textContent = collection;
+            collectionFilter.appendChild(option);
+          });
+        }
+      }
+
+      // ========================================
+      // 旧字正規化機能
+      // ========================================
+
+      /**
+       * 旧字正規化マッピングを取得する関数
+       * 設定ファイルから読み込み、フォールバック設定も提供
+       */
+      function getKanjiNormalizationMap() {
+        // 設定ファイルが読み込まれている場合はそれを使用
+        if (typeof window.KANJI_NORMALIZATION_CONFIG !== "undefined") {
+          return window.KANJI_NORMALIZATION_CONFIG;
+        }
+
+        // フォールバック: 設定ファイルが読み込まれていない場合の最小限の設定
+        return {
+          樂: "楽", // 還城樂 → 還城楽
+          龍: "竜", // 龍笛 → 竜笛
+        };
+      }
+
+      /**
+       * 旧字を新字に正規化する関数
+       * @param {string} text - 正規化対象のテキスト
+       * @returns {string} 正規化されたテキスト
+       */
+      function normalizeKanji(text) {
+        if (!text) return "";
+        let normalized = text;
+        const kanjiMap = getKanjiNormalizationMap();
+
+        // 各旧字-新字ペアに対して置換を実行
+        for (const [oldKanji, newKanji] of Object.entries(kanjiMap)) {
+          normalized = normalized.replace(new RegExp(oldKanji, "g"), newKanji);
+        }
+
+        return normalized;
+      }
+
+      /**
+       * 旧字正規化マッピングに新しいペアを動的に追加する関数
+       * @param {string} oldKanji - 旧字
+       * @param {string} newKanji - 新字
+       */
+      function addKanjiNormalization(oldKanji, newKanji) {
+        if (typeof window.KANJI_NORMALIZATION_CONFIG !== "undefined") {
+          window.KANJI_NORMALIZATION_CONFIG[oldKanji] = newKanji;
+          console.log(`✅ 旧字正規化ペア追加: ${oldKanji} → ${newKanji}`);
+          console.log(
+            "💡 変更を永続化するには kanji-normalization-config.js を編集してください"
+          );
+        } else {
+          console.warn("⚠️ 設定ファイルが読み込まれていません");
+        }
+      }
+
+      /**
+       * 現在の旧字正規化マッピングを表示する関数
+       */
+      function showKanjiNormalizationMap() {
+        const kanjiMap = getKanjiNormalizationMap();
+        console.log("=".repeat(50));
+        console.log("🔤 現在の旧字正規化マッピング:");
+        console.log("=".repeat(50));
+
+        let count = 0;
+        for (const [oldKanji, newKanji] of Object.entries(kanjiMap)) {
+          console.log(`  ${oldKanji} → ${newKanji}`);
+          count++;
+        }
+
+        console.log("=".repeat(50));
+        console.log(`📊 合計: ${count} ペア`);
+        console.log("=".repeat(50));
+        console.log(
+          '💡 新しいペアを追加: addKanjiNormalization("旧字", "新字")'
+        );
+      }
+
+      // 楽曲検索機能
+      async function searchPieces() {
+        const data = await loadPiecesData();
+        if (!data || !data.pieces) {
+          hideSearchResults();
+          return;
+        }
+
+        const searchTerm = document.getElementById("searchInput").value.trim();
+        const instrumentFilter =
+          document.getElementById("instrumentFilter").value;
+        const modeFilter = document.getElementById("modeFilter").value;
+        const collectionFilter =
+          document.getElementById("collectionFilter").value;
+
+        // フィルターが未選択でキーワードが空の場合、検索結果を非表示
+        if (
+          !searchTerm &&
+          !instrumentFilter &&
+          !modeFilter &&
+          !collectionFilter
+        ) {
+          hideSearchResults();
+          return;
+        }
+
+        // 検索語を正規化（旧字→新字変換）
+        const normalizedSearchTerm = normalizeKanji(searchTerm.toLowerCase());
+
+        // フィルタリング
+        let filteredPieces = data.pieces.filter((piece) => {
+          if (!piece.metadata || !piece.metadata.piece_name) return false;
+
+          const pieceName = piece.metadata.piece_name;
+          const normalizedPieceName = normalizeKanji(pieceName.toLowerCase());
+
+          const matchesSearch =
+            !searchTerm ||
+            normalizedPieceName.includes(normalizedSearchTerm) ||
+            pieceName.toLowerCase().includes(searchTerm.toLowerCase());
+
+          const matchesInstrument =
+            !instrumentFilter || piece.metadata.instrument === instrumentFilter;
+
+          const matchesMode = !modeFilter || piece.metadata.mode === modeFilter;
+
+          const matchesCollection =
+            !collectionFilter || piece.metadata.collection === collectionFilter;
+
+          return (
+            matchesSearch &&
+            matchesInstrument &&
+            matchesMode &&
+            matchesCollection
+          );
+        });
+
+        // 結果を表示
+        displaySearchResults(filteredPieces, data.pieces.length);
+      }
+
+      // 検索結果を表示
+      function displaySearchResults(pieces, totalCount) {
+        const resultsContainer = document.getElementById("searchResults");
+        const statsContainer = document.getElementById("searchStats");
 
         // 検索結果を表示
-        function displaySearchResults(pieces, totalCount) {
-            const resultsContainer = document.getElementById('searchResults');
-            const statsContainer = document.getElementById('searchStats');
+        resultsContainer.style.display = "block";
 
-            // 検索結果を表示
-            resultsContainer.style.display = 'block';
+        // 統計表示
+        statsContainer.textContent = `${pieces.length} / ${totalCount} 曲`;
 
-            // 統計表示
-            statsContainer.textContent = `${pieces.length} / ${totalCount} 曲`;
+        // ページ順でソートしてから結果を保存
+        const sortedPieces = [...pieces].sort((a, b) => {
+          const aRange = String(a.metadata.page_range || "0").split("-");
+          const bRange = String(b.metadata.page_range || "0").split("-");
+          const aStart = parseInt(aRange[0], 10);
+          const bStart = parseInt(bRange[0], 10);
+          const aEnd = parseInt(aRange[1] || aRange[0], 10);
+          const bEnd = parseInt(bRange[1] || bRange[0], 10);
 
-            // ページ順でソートしてから結果を保存
-            const sortedPieces = [...pieces].sort((a, b) => {
-                // ページ範囲による詳細ソート：開始ページ -> 終了ページの順
-                const aRange = a.metadata.page_range.split('-');
-                const bRange = b.metadata.page_range.split('-');
-                const aStart = parseInt(aRange[0]);
-                const bStart = parseInt(bRange[0]);
-                const aEnd = parseInt(aRange[1] || aRange[0]); // 終了ページがない場合は開始ページと同じ
-                const bEnd = parseInt(bRange[1] || bRange[0]);
+          if (aStart !== bStart) {
+            return aStart - bStart;
+          }
+          return aEnd - bEnd;
+        });
 
-                // まず開始ページで比較
-                if (aStart !== bStart) {
-                    return aStart - bStart;
-                }
-                // 開始ページが同じ場合は終了ページで比較
-                return aEnd - bEnd;
-            });
+        currentSortedResults = sortedPieces;
 
-            currentSortedResults = sortedPieces;
+        // ソート選択をページ順にリセット
+        document.getElementById("sortBy").value = "page_range";
 
-            // ソート選択をページ順にリセット
-            document.getElementById('sortBy').value = 'page_range';
+        // 楽曲リスト表示
+        displayPiecesList(sortedPieces);
+      }
 
-            // 楽曲リスト表示
-            displayPiecesList(sortedPieces);
+      // 検索結果を非表示にする
+      function hideSearchResults() {
+        const resultsContainer = document.getElementById("searchResults");
+        if (resultsContainer) {
+          resultsContainer.style.display = "none";
         }
-
-        // 検索結果を非表示にする
-        function hideSearchResults() {
-            const resultsContainer = document.getElementById('searchResults');
-            const statsContainer = document.getElementById('searchStats');
-
-            resultsContainer.style.display = 'none';
-            statsContainer.textContent = '';
-
-            // 現在の検索結果をクリア
-            currentSortedResults = [];
+        const statsContainer = document.getElementById("searchStats");
+        if (statsContainer) {
+          statsContainer.textContent = "";
         }
+        // 現在の検索結果をクリア
+        currentSortedResults = [];
+      }
 
-        // 2-2: 検索結果をクリアする関数
-        function clearSearchResults() {
-            // すべての検索条件をクリア
-            document.getElementById('searchInput').value = '';
-            document.getElementById('instrumentFilter').value = '';
-            document.getElementById('modeFilter').value = '';
-            document.getElementById('collectionFilter').value = '';
+      // 検索結果をクリアする関数
+      function clearSearchResults() {
+        document.getElementById("searchInput").value = "";
+        document.getElementById("instrumentFilter").value = "";
+        document.getElementById("modeFilter").value = "";
+        document.getElementById("collectionFilter").value = "";
+        hideSearchResults();
+        updateSearchClearButton();
+        console.log("🔍 検索結果をクリアしました");
+      }
 
-            // 検索結果を非表示
-            hideSearchResults();
+      // 検索をクリア
+      function clearSearch() {
+        document.getElementById("searchInput").value = "";
+        searchPieces(); // 再検索をかける
+        updateSearchClearButton();
+      }
 
-            // 検索クリアボタンも更新
-            updateSearchClearButton();
+      // 検索クリアボタンの表示切り替え
+      function updateSearchClearButton() {
+        const searchInput = document.getElementById("searchInput");
+        const clearButton = document.getElementById("searchClear");
 
-            console.log('🔍 検索結果をクリアしました');
+        if (searchInput.value) {
+          clearButton.classList.add("visible");
+        } else {
+          clearButton.classList.remove("visible");
         }
+      }
 
-        // 検索をクリア
-        // 検索をクリア（既存の機能、主に×ボタン用）
-        function clearSearch() {
-            document.getElementById('searchInput').value = '';
-            document.getElementById('instrumentFilter').value = '';
-            document.getElementById('modeFilter').value = '';
-            document.getElementById('collectionFilter').value = '';
-            searchPieces(); // これにより、すべて空の場合は検索結果が非表示になる
-            updateSearchClearButton();
-        }
+      // 全楽曲を表示
+      async function showAllPieces() {
+        const data = await loadPiecesData();
+        if (!data) return;
 
-        // 検索クリアボタンの表示切り替え
-        function updateSearchClearButton() {
-            const searchInput = document.getElementById('searchInput');
-            const clearButton = document.getElementById('searchClear');
+        document.getElementById("searchInput").value = "";
+        document.getElementById("instrumentFilter").value = "";
+        document.getElementById("modeFilter").value = "";
+        document.getElementById("collectionFilter").value = "";
+        updateSearchClearButton();
 
-            if (searchInput.value) {
-                clearButton.classList.add('visible');
-            } else {
-                clearButton.classList.remove('visible');
-            }
-        }
+        displaySearchResults(data.pieces, data.pieces.length);
+      }
 
-        // 全楽曲を表示
-        async function showAllPieces() {
-            const data = await loadPiecesData();
-            if (!data) return;
+      // 統計情報を表示
+      async function showStatistics() {
+        const data = await loadPiecesData();
+        if (!data) return;
 
-            // 検索条件をクリア
-            document.getElementById('searchInput').value = '';
-            document.getElementById('instrumentFilter').value = '';
-            document.getElementById('modeFilter').value = '';
-            document.getElementById('collectionFilter').value = '';
-            updateSearchClearButton();
+        const stats = data.statistics;
+        const instrumentStats = {};
+        const modeStats = {};
 
-            // 全楽曲を表示（検索結果として表示）
-            displaySearchResults(data.pieces, data.pieces.length);
-        }
+        data.pieces.forEach((piece) => {
+          const instrument = piece.metadata.instrument;
+          const mode = piece.metadata.mode;
 
-        // 統計情報を表示
-        async function showStatistics() {
-            const data = await loadPiecesData();
-            if (!data) return;
+          instrumentStats[instrument] = (instrumentStats[instrument] || 0) + 1;
+          modeStats[mode] = (modeStats[mode] || 0) + 1;
+        });
 
-            const stats = data.statistics;
-            const instrumentStats = {};
-            const modeStats = {};
-
-            // 楽器別、調別の統計を計算
-            data.pieces.forEach(piece => {
-                const instrument = piece.metadata.instrument;
-                const mode = piece.metadata.mode;
-
-                instrumentStats[instrument] = (instrumentStats[instrument] || 0) + 1;
-                modeStats[mode] = (modeStats[mode] || 0) + 1;
-            });
-
-            // 統計情報をHTMLで表示
-            const statsHtml = `
+        const statsHtml = `
                 <div class="statistics-panel">
                     <h4>📊 楽曲統計</h4>
                     <div class="stat-group">
                         <h5>楽器別 (${stats.instruments.length}種類)</h5>
-                        ${stats.instruments.map(inst =>
-                `<div class="stat-item">
+                        ${stats.instruments
+                          .map(
+                            (inst) =>
+                              `<div class="stat-item">
                                 <span class="piece-badge instrument">${inst}</span>
-                                <span>${instrumentStats[inst]}曲</span>
+                                <span>${instrumentStats[inst] || 0}曲</span>
                             </div>`
-            ).join('')}
+                          )
+                          .join("")}
                     </div>
                     <div class="stat-group">
                         <h5>調別 (${stats.modes.length}種類)</h5>
-                        ${stats.modes.map(mode =>
-                `<div class="stat-item">
+                        ${stats.modes
+                          .map(
+                            (mode) =>
+                              `<div class="stat-item">
                                 <span class="piece-badge mode">${mode}</span>
-                                <span>${modeStats[mode]}曲</span>
+                                <span>${modeStats[mode] || 0}曲</span>
                             </div>`
-            ).join('')}
+                          )
+                          .join("")}
                     </div>
                     <div class="stat-total">
                         <strong>総楽曲数: ${stats.total_pieces}曲</strong>
@@ -2012,162 +2224,183 @@
                 </div>
             `;
 
-            const resultsContainer = document.getElementById('searchResults');
-            const piecesListContainer = document.getElementById('piecesList');
-            const statsContainer = document.getElementById('searchStats');
+        const resultsContainer = document.getElementById("searchResults");
+        const piecesListContainer = document.getElementById("piecesList");
+        const statsContainer = document.getElementById("searchStats");
 
-            resultsContainer.style.display = 'block';
-            statsContainer.textContent = '統計情報';
-            piecesListContainer.innerHTML = statsHtml;
-        }
+        resultsContainer.style.display = "block";
+        statsContainer.textContent = "統計情報";
+        piecesListContainer.innerHTML = statsHtml;
+      }
 
-        // 検索結果をソート
-        let currentSortedResults = [];
+      // 検索結果をソート
+      let currentSortedResults = [];
 
-        function sortSearchResults() {
-            const sortBy = document.getElementById('sortBy').value;
+      function sortSearchResults() {
+        const sortBy = document.getElementById("sortBy").value;
 
-            const sorted = [...currentSortedResults].sort((a, b) => {
-                let aVal, bVal;
+        const sorted = [...currentSortedResults].sort((a, b) => {
+          let aVal, bVal;
 
-                switch (sortBy) {
-                    case 'piece_name':
-                        aVal = a.metadata.piece_name;
-                        bVal = b.metadata.piece_name;
-                        break;
-                    case 'instrument':
-                        aVal = a.metadata.instrument;
-                        bVal = b.metadata.instrument;
-                        break;
-                    case 'mode':
-                        aVal = a.metadata.mode;
-                        bVal = b.metadata.mode;
-                        break;
-                    case 'collection':
-                        aVal = a.metadata.collection || '';
-                        bVal = b.metadata.collection || '';
-                        break;
-                    case 'page_range':
-                        // ページ範囲による詳細ソート：開始ページ -> 終了ページの順
-                        const aRange = a.metadata.page_range.split('-');
-                        const bRange = b.metadata.page_range.split('-');
-                        const aStart = parseInt(aRange[0]);
-                        const bStart = parseInt(bRange[0]);
-                        const aEnd = parseInt(aRange[1] || aRange[0]); // 終了ページがない場合は開始ページと同じ
-                        const bEnd = parseInt(bRange[1] || bRange[0]);
+          switch (sortBy) {
+            case "piece_name":
+              aVal = a.metadata.piece_name || "";
+              bVal = b.metadata.piece_name || "";
+              return aVal.localeCompare(bVal, "ja");
+            case "instrument":
+              aVal = a.metadata.instrument || "";
+              bVal = b.metadata.instrument || "";
+              return aVal.localeCompare(bVal, "ja");
+            case "mode":
+              aVal = a.metadata.mode || "";
+              bVal = b.metadata.mode || "";
+              return aVal.localeCompare(bVal, "ja");
+            case "collection":
+              aVal = a.metadata.collection || "";
+              bVal = b.metadata.collection || "";
+              return aVal.localeCompare(bVal, "ja");
+            case "page_range":
+              const aRange = String(a.metadata.page_range || "0").split("-");
+              const bRange = String(b.metadata.page_range || "0").split("-");
+              const aStart = parseInt(aRange[0], 10);
+              const bStart = parseInt(bRange[0], 10);
+              const aEnd = parseInt(aRange[1] || aRange[0], 10);
+              const bEnd = parseInt(bRange[1] || bRange[0], 10);
 
-                        // まず開始ページで比較
-                        if (aStart !== bStart) {
-                            return aStart - bStart;
-                        }
-                        // 開始ページが同じ場合は終了ページで比較
-                        return aEnd - bEnd;
-                    default:
-                        return 0;
-                }
-
-                return aVal.localeCompare(bVal);
-            });
-
-            currentSortedResults = sorted;
-            displayPiecesList(sorted);
-        }
-
-        // 楽曲リストの表示（ソート機能付き）
-        function displayPiecesList(pieces) {
-            const piecesListContainer = document.getElementById('piecesList');
-
-            // コレクション名を短縮表示するヘルパー関数
-            function getShortCollectionName(collection) {
-                if (!collection) return '不明';
-                if (collection === '東京藝術大学所蔵') return '藝大';
-                return collection;
-            }
-
-            if (pieces.length === 0) {
-                piecesListContainer.innerHTML = '<div class="piece-item">検索条件に一致する楽曲が見つかりません</div>';
-            } else {
-                piecesListContainer.innerHTML = pieces.map(piece => `
-                    <div class="piece-item" onclick="loadManifest('${piece['@id']}')">
-                        <div class="piece-title">${piece.metadata.piece_name}</div>
-                        <div class="piece-meta">
-                            <span class="piece-badge instrument">${piece.metadata.instrument}</span>
-                            <span class="piece-badge mode">${piece.metadata.mode}</span>
-                            <span class="piece-badge collection">${getShortCollectionName(piece.metadata.collection)}</span>
-                            <span>ページ ${piece.metadata.page_range}</span>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        }
-
-        // 初期化時に楽曲データを読み込み
-        document.addEventListener('DOMContentLoaded', function () {
-            loadPiecesData();
-
-            // 検索入力のイベントリスナーを追加
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', function () {
-                searchPieces();
-                updateSearchClearButton();
-            });
-
-            // 初期状態でクリアボタンを非表示
-            updateSearchClearButton();
+              if (aStart !== bStart) return aStart - bStart;
+              return aEnd - bEnd;
+            default:
+              return 0;
+          }
         });
 
-        // マニフェスト一覧を更新
-        function refreshManifestList() {
-            loadManifestList();
+        currentSortedResults = sorted;
+        displayPiecesList(sorted);
+      }
+
+      // 楽曲リストの表示（ソート機能付き）
+      function displayPiecesList(pieces) {
+        const piecesListContainer = document.getElementById("piecesList");
+        if (!piecesListContainer) return;
+
+        function getShortCollectionName(collection) {
+          if (!collection) return "不明";
+          if (collection.includes("東京藝術大学")) return "藝大";
+          if (collection.includes("宮内庁書陵部")) return "宮内庁";
+          return collection;
         }
 
-        // ビューアー切り替え機能
-        function switchViewer() {
-            const viewerSelect = document.getElementById('viewerSelect');
-            activeViewerType = viewerSelect.value;
-            if (currentManifestUrl) {
+        if (pieces.length === 0) {
+          piecesListContainer.innerHTML =
+            '<div class="piece-item">検索条件に一致する楽曲が見つかりません</div>';
+        } else {
+          piecesListContainer.innerHTML = pieces
+            .map((piece) => {
+              const meta = piece.metadata;
+              if (!meta) return ""; // メタデータがない場合は表示しない
+              return `
+                    <div class="piece-item" onclick="loadManifest('${
+                      piece["@id"]
+                    }')">
+                        <div class="piece-title">${
+                          meta.piece_name || "名称不明"
+                        }</div>
+                        <div class="piece-meta">
+                            ${
+                              meta.instrument
+                                ? `<span class="piece-badge instrument">${meta.instrument}</span>`
+                                : ""
+                            }
+                            ${
+                              meta.mode
+                                ? `<span class="piece-badge mode">${meta.mode}</span>`
+                                : ""
+                            }
+                            ${
+                              meta.collection
+                                ? `<span class="piece-badge collection">${getShortCollectionName(
+                                    meta.collection
+                                  )}</span>`
+                                : ""
+                            }
+                            ${
+                              meta.page_range
+                                ? `<span>ページ ${meta.page_range}</span>`
+                                : ""
+                            }
+                        </div>
+                    </div>
+                `;
+            })
+            .join("");
+        }
+      }
+
+      // 初期化時に楽曲データを読み込み
+      document.addEventListener("DOMContentLoaded", function () {
+        // 検索入力のイベントリスナーを追加
+        const searchInput = document.getElementById("searchInput");
+        searchInput.addEventListener("input", function () {
+          searchPieces();
+          updateSearchClearButton();
+        });
+
+        // 初期状態でクリアボタンを非表示
+        updateSearchClearButton();
+      });
+
+      // マニフェスト一覧を更新
+      function refreshManifestList() {
+        loadManifestList();
+      }
+
+      // ビューアー切り替え機能
+      function switchViewer() {
+        const viewerSelect = document.getElementById("viewerSelect");
+        activeViewerType = viewerSelect.value;
+        if (currentManifestUrl) {
+          loadManifest(currentManifestUrl);
+        }
+      }
+
+      // 初期化
+      document.addEventListener("DOMContentLoaded", function () {
+        // 全画面表示サポートを有効化
+        enableFullscreenSupport();
+
+        const toggleInputs = document.querySelectorAll(".toggle-input");
+
+        // トグルスイッチの変更を監視するイベントリスナー
+        toggleInputs.forEach((input) => {
+          input.addEventListener("change", (event) => {
+            if (event.target.checked) {
+              activeViewerType = event.target.value; // 'uv' または 'mirador' をセット
+              console.log(`ビューアーを切り替え: ${activeViewerType}`);
+
+              // マニフェストが既に読み込まれている場合は、新しいビューアーで再読み込み
+              if (currentManifestUrl) {
                 loadManifest(currentManifestUrl);
+              }
             }
+          });
+        });
+
+        // 初期状態で選択されているビューアーを`activeViewerType`に設定
+        const initialViewer = document.querySelector(".toggle-input:checked");
+        if (initialViewer) {
+          activeViewerType = initialViewer.value;
         }
 
-        // 初期化
-        document.addEventListener('DOMContentLoaded', function () {
+        // プロトコルの問題を早期検出
+        const hasProtocolIssue = detectProtocolIssue();
 
-            // 全画面表示サポートを有効化
-            enableFullscreenSupport();
-
-            const toggleInputs = document.querySelectorAll('.toggle-input');
-
-            // トグルスイッチの変更を監視するイベントリスナー
-            toggleInputs.forEach(input => {
-                input.addEventListener('change', (event) => {
-                    if (event.target.checked) {
-                        activeViewerType = event.target.value; // 'uv' または 'mirador' をセット
-                        console.log(`ビューアーを切り替え: ${activeViewerType}`);
-
-                        // マニフェストが既に読み込まれている場合は、新しいビューアーで再読み込み
-                        if (currentManifestUrl) {
-                            loadManifest(currentManifestUrl);
-                        }
-                    }
-                });
-            });
-
-            // 初期状態で選択されているビューアーを`activeViewerType`に設定
-            const initialViewer = document.querySelector('.toggle-input:checked');
-            if (initialViewer) {
-                activeViewerType = initialViewer.value;
-            }
-
-            // プロトコルの問題を早期検出
-            const hasProtocolIssue = detectProtocolIssue();
-
-            // 初期メッセージ
-            const iframe = document.getElementById('viewerIframe'); // IDを汎用的なものに変更
-            iframe.src = 'about:blank'; // Clear initial content
-            iframe.onload = () => { // Ensure content is loaded before displaying message
-                iframe.contentWindow.document.open();
-                iframe.contentWindow.document.write(`
+        // 初期メッセージ
+        const iframe = document.getElementById("viewerIframe"); // IDを汎用的なものに変更
+        iframe.src = "about:blank"; // Clear initial content
+        iframe.onload = () => {
+          // Ensure content is loaded before displaying message
+          iframe.contentWindow.document.open();
+          iframe.contentWindow.document.write(`
                     <!DOCTYPE html>
                     <html lang="ja">
                     <head>
@@ -2185,7 +2418,9 @@
                                     <p style="margin:0 0 8px 0;font-size:13px;color:#333;">• 宮内庁書陵部所蔵版</p>
                                     <p style="margin:0;font-size:13px;color:#333;">• 東京芸術大学所蔵版</p>
                                 </div>
-                                ${hasProtocolIssue ? `
+                                ${
+                                  hasProtocolIssue
+                                    ? `
                                 <div style="background:#ffebee;padding:15px;border-radius:6px;margin:20px 0;border-left:4px solid #f44336;">
                                     <p style="margin:0 0 10px 0;font-size:13px;color:#c62828;font-weight:bold;">
                                         ⚠️ セキュリティ制限について
@@ -2197,7 +2432,9 @@
                                         ローカルマニフェストを表示するには、HTTPでアクセスしてください。
                                     </p>
                                 </div>
-                                ` : ''}
+                                `
+                                    : ""
+                                }
                                 <p style="margin:20px 0 0 0;font-size:14px;color:#888;">
                                     または、カスタムURLを入力して任意のIIIFマニフェストを表示できます
                                 </p>
@@ -2211,27 +2448,28 @@
                     </body>
                     </html>
                 `);
-                iframe.contentWindow.document.close();
-            };
+          iframe.contentWindow.document.close();
+        };
 
-            // マニフェスト一覧を読み込み
-            loadManifestList();
+        // マニフェスト一覧を読み込み
+        loadManifestList();
 
-            showStatus('マニフェストを選択して雅楽譜の閲覧を開始してください', 'info');
+        showStatus(
+          "マニフェストを選択して雅楽譜の閲覧を開始してください",
+          "info"
+        );
 
-            // 楽曲検索機能の初期化
-            loadPiecesData();
+        // 楽曲検索機能の初期化
+        loadPiecesData();
 
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', function () {
-                searchPieces();
-                updateSearchClearButton();
-            });
-
-            updateSearchClearButton();
+        const searchInput = document.getElementById("searchInput");
+        searchInput.addEventListener("input", function () {
+          searchPieces();
+          updateSearchClearButton();
         });
 
+        updateSearchClearButton();
+      });
     </script>
-</body>
-
+  </body>
 </html>
