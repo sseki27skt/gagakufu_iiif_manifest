@@ -1,8 +1,11 @@
 {
   "@context": "http://iiif.io/api/presentation/2/context.json",
-  "@id": "https://example.com/iiif/笙_双調_春庭楽_1106-1109.json",
+  "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_双調_春庭楽_1106-1109.json",
   "@type": "sc:Manifest",
   "label": "笙 双調 春庭楽",
+  "attribution": "宮内庁書陵部 国文学研究資料館",
+  "license": "https://kokusho.nijl.ac.jp/page/usage.html",
+  "viewingDirection": "right-to-left",
   "metadata": [
     {
       "label": "Title",

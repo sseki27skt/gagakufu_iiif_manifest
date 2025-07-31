@@ -1,8 +1,11 @@
 {
   "@context": "http://iiif.io/api/presentation/2/context.json",
-  "@id": "https://example.com/iiif/篳篥_双調_酒胡子_1592-1593.json",
+  "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/篳篥_双調_酒胡子_1592-1593.json",
   "@type": "sc:Manifest",
   "label": "篳篥 双調 酒胡子",
+  "attribution": "宮内庁書陵部 国文学研究資料館",
+  "license": "https://kokusho.nijl.ac.jp/page/usage.html",
+  "viewingDirection": "right-to-left",
   "metadata": [
     {
       "label": "Title",

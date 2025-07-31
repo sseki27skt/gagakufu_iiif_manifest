@@ -1,8 +1,11 @@
 {
   "@context": "http://iiif.io/api/presentation/2/context.json",
-  "@id": "https://example.com/iiif/笙_太食調_太平楽道行_1067-1069.json",
+  "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/笙_太食調_太平楽道行_1067-1069.json",
   "@type": "sc:Manifest",
   "label": "笙 太食調 太平楽道行",
+  "attribution": "宮内庁書陵部 国文学研究資料館",
+  "license": "https://kokusho.nijl.ac.jp/page/usage.html",
+  "viewingDirection": "right-to-left",
   "metadata": [
     {
       "label": "Title",

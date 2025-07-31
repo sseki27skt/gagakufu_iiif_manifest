@@ -1,8 +1,11 @@
 {
   "@context": "http://iiif.io/api/presentation/2/context.json",
-  "@id": "https://example.com/iiif/龍笛_平調_相府蓮_2340-2342.json",
+  "@id": "https://sseki27skt.github.io/gagakufu_iiif_manifest/100270332_pieces/龍笛_平調_相府蓮_2340-2342.json",
   "@type": "sc:Manifest",
   "label": "龍笛 平調 相府蓮",
+  "attribution": "宮内庁書陵部 国文学研究資料館",
+  "license": "https://kokusho.nijl.ac.jp/page/usage.html",
+  "viewingDirection": "right-to-left",
   "metadata": [
     {
       "label": "Title",
