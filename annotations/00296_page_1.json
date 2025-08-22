@@ -1,0 +1,106 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "./annotations/00296_page_1.json",
+  "@type": "sc:AnnotationList",
+  "resources": [
+    {
+      "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296/annotation/right-music-0",
+      "@type": "oa:Annotation",
+      "motivation": "oa:tagging",
+      "resource": {
+        "@type": "dctypes:Text",
+        "format": "text/plain",
+        "chars": "music"
+      },
+      "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296#xywh=3468,0,390,2372"
+    },
+    {
+      "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296/annotation/right-music-1",
+      "@type": "oa:Annotation",
+      "motivation": "oa:tagging",
+      "resource": {
+        "@type": "dctypes:Text",
+        "format": "text/plain",
+        "chars": "music"
+      },
+      "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296#xywh=3057,0,412,2372"
+    },
+    {
+      "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296/annotation/right-music-2",
+      "@type": "oa:Annotation",
+      "motivation": "oa:tagging",
+      "resource": {
+        "@type": "dctypes:Text",
+        "format": "text/plain",
+        "chars": "music"
+      },
+      "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296#xywh=2649,0,409,2372"
+    },
+    {
+      "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296/annotation/right-music-3",
+      "@type": "oa:Annotation",
+      "motivation": "oa:tagging",
+      "resource": {
+        "@type": "dctypes:Text",
+        "format": "text/plain",
+        "chars": "music"
+      },
+      "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296#xywh=2242,0,408,2372"
+    },
+    {
+      "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296/annotation/right-music-4",
+      "@type": "oa:Annotation",
+      "motivation": "oa:tagging",
+      "resource": {
+        "@type": "dctypes:Text",
+        "format": "text/plain",
+        "chars": "music"
+      },
+      "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296#xywh=1836,0,407,2372"
+    },
+    {
+      "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296/annotation/right-music-5",
+      "@type": "oa:Annotation",
+      "motivation": "oa:tagging",
+      "resource": {
+        "@type": "dctypes:Text",
+        "format": "text/plain",
+        "chars": "music"
+      },
+      "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296#xywh=1434,0,403,2372"
+    },
+    {
+      "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296/annotation/right-music-6",
+      "@type": "oa:Annotation",
+      "motivation": "oa:tagging",
+      "resource": {
+        "@type": "dctypes:Text",
+        "format": "text/plain",
+        "chars": "music"
+      },
+      "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296#xywh=1032,0,403,2372"
+    },
+    {
+      "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296/annotation/right-music-7",
+      "@type": "oa:Annotation",
+      "motivation": "oa:tagging",
+      "resource": {
+        "@type": "dctypes:Text",
+        "format": "text/plain",
+        "chars": "music"
+      },
+      "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296#xywh=619,0,414,2372"
+    },
+    {
+      "@id": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296/annotation/right-music-8",
+      "@type": "oa:Annotation",
+      "motivation": "oa:tagging",
+      "resource": {
+        "@type": "dctypes:Text",
+        "format": "text/plain",
+        "chars": "music"
+      },
+      "on": "https://kokusho.nijl.ac.jp/biblio/100376839/canvas/296#xywh=0,0,620,2372"
+    }
+  ]
+}
